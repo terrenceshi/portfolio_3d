@@ -1,44 +1,52 @@
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from "@react-three/drei";
+import Navbar from "./components/Navbar.js"
+import Scene from "./components/Scene.js"
 
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
-import { useFBX } from "@react-three/drei";
-
-function Box() {
-  return (
-    <mesh>
-      <boxBufferGeometry attach = "geometry" />
-      <meshLambertMaterial attach = "material" color = "hotpink" />
-    </mesh>
-  );
-}
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+  typography: {
+    button: {
+      textTransform: 'none'
+    }
+  },
+});
 
 function App() {
 
-  const monsterFbx = useFBX('./models/mon.fbx');
-
-  const astroFbx = useFBX('./models/atest5.fbx');
-
-  const robberFbx = useFBX('./models/test.fbx');
-  
   return (
-    <div>
-      <Canvas style = {{height: "100vh", background: "#171717"}}>
-        <OrbitControls />
-        <ambientLight intensity={0.5}/>
-        <directionalLight position={[1, 1, 3]}/>
+    <div className = "App">
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
 
-        <primitive object={monsterFbx} position = {[-1.5,-1,0]} scale = {0.03}/>
-        <primitive object={astroFbx} position = {[1.5,-1,0]} scale = {0.11}/>
-        <primitive object={robberFbx} position = {[0,-1,0]} scale = {0.02}/>
+        <Box sx = {{zIndex: 1001, position: "absolute"}}>
+          <Navbar />
+        </Box>
 
-        <mesh position={[1, 1, -1]}>
-          <boxGeometry />
-          <meshLambertMaterial attach = "material" color = "hotpink" />
-        </mesh>
+        <Box sx = {{zIndex: 1000, position: "absolute", display: "flex", flexDirection: "column"}}>
 
-      </Canvas>
+          <Box sx = {{display: "flex", width: "100vw", height: "88vh", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
+            <Box sx = {{display: 'flex', flexDirection: "column", alignItems: 'flex-start'}}>
+              <Typography variant="h2">
+                Hi. I'm
+              </Typography>
+              <Typography variant="h1" gutterBottom>
+                Terrence.
+              </Typography>
+            </Box>
+            
+          </Box>
+        </Box>
+
+        <Scene />
+
+      </ThemeProvider>
+
     </div>
   );
 }

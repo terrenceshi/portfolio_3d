@@ -65,7 +65,7 @@ function Scene({sceneNumber, setSceneNumber}) {
             <pointLight
                 position={[1, 1, 2.25]}
                 intensity = {4}
-                color = {"pink"}
+                color = {"#f792bc"}
                 castShadow // highlight-line
                 shadow-mapSize-height={512}
                 shadow-mapSize-width={512}

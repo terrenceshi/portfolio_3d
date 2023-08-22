@@ -33,7 +33,6 @@ function App() {
         </Box>
 
         <Box sx = {{zIndex: 1000, position: "absolute", display: "flex", flexDirection: "column"}}>
-
           <Box sx = {{display: "flex", width: "100vw", height: "88vh", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
             <Box sx = {{display: 'flex', flexDirection: "column", alignItems: 'flex-start'}}>
               <Typography variant="h2">

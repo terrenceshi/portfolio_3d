@@ -71,7 +71,7 @@ function Scene({sceneNumber, setSceneNumber}) {
                 shadow-mapSize-width={512}
             />
 
-            <ambientLight intensity = {0.025}/>
+            <ambientLight color = {"cyan"} intensity = {0.025}/>
 
             {/* Ground and Wall(s) */}
 
@@ -80,8 +80,8 @@ function Scene({sceneNumber, setSceneNumber}) {
                 <meshPhongMaterial />
             </mesh>
 
-            <mesh receiveShadow position={[0, -1, 0]}>
-                <planeGeometry args={[50, 10]} />
+            <mesh receiveShadow position={[40, -1, 0]}>
+                <planeGeometry args={[120, 10]} />
                 <meshPhongMaterial />
             </mesh>
 

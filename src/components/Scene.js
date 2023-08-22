@@ -1,127 +1,91 @@
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls } from "@react-three/drei";
-import { useFBX, useGLTF, SpotLight } from "@react-three/drei";
-
-import { useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
-
 import { useState, useRef } from 'react';
 
-const Model = ({path, scale, pos, rot}) => {
-  const model = useGLTF(path);
+import Model from "./Model.js"
 
-  let mixer
-  if (model.animations.length) {
-      mixer = new THREE.AnimationMixer(model.scene);
-      model.animations.forEach(clip => {
-          const action = mixer.clipAction(clip)
-          action.play();
-      });
-  }
+import { Canvas, useFrame } from '@react-three/fiber'
+import { useFBX, OrbitControls } from "@react-three/drei";
+import * as THREE from 'three'
+import { Bloom } from '@react-three/postprocessing'
+import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
 
-  useFrame((state, delta) => {
-      mixer?.update(delta)
-  })
+function Scene({sceneNumber, setSceneNumber}) {
+    function SceneController(){
+        const homeVec = new THREE.Vector3();
+        const aboutVec = new THREE.Vector3();
+        const artVec = new THREE.Vector3();
+        const csVec = new THREE.Vector3();
+        const musicVec = new THREE.Vector3();
 
-  model.scene.traverse(child => {
-      if (child.isMesh) {
-          child.castShadow = true
-          child.receiveShadow = true
-          child.material.side = THREE.FrontSide
-      }
-  })
+        homeVec.set(0,0.25,5);
+        aboutVec.set(15,0.25,5);
+        artVec.set(30,0.25,5);
+        csVec.set(45,0.25,5);
+        musicVec.set(60,0.25,5);
 
-  return (
+        const swapSpeed = 0.05;
 
-    <primitive 
-        object = {model.scene}
-        scale = {scale}
-        position = {pos}
-        rotation = {rot}
-        castShadow 
-        receiveShadow 
-    />
-
-  )
-}
-
-function Marker() {
-    const [ clicked, setClicked ] = useState(false);
-    const markerRef = useRef();
-    const vec = new THREE.Vector3();
-    const vec2 = new THREE.Vector3();
-
-    const markerRef2 = useRef();
-
-    let xPosition = 1;
-    let yPosition = 3;
-    let zPosition = 0;
-
-    vec.set(xPosition, yPosition, zPosition)
-    vec2.set(0, 0, 4)
-
-    const q = new THREE.Quaternion();
-    q.setFromAxisAngle( new THREE.Vector3( 0, 1, 0 ), Math.PI / 2 );
-
-    const q2 = new THREE.Quaternion();
-    q2.setFromAxisAngle( new THREE.Vector3( 0, 0, 0 ), Math.PI / 2 );
-
-    const target = THREE.MathUtils.degToRad(30);
-
-    let first = true;
-    let startTime = 0;
-    let ogY = 0;
-
-    let rotate = true;
-    let x = 0;
-
-    useFrame(state => {
-        markerRef.current.rotation.x = state.clock.elapsedTime;
-
-        if (clicked) {
-            //state.camera.position.lerp(vec, 0.05)
-
-            //state.camera.lookAt(markerRef.current.position); // markerRef.current.quaternion
-
-            let x = 0;
-
-            if(x < 1.0){
-                state.camera.quaternion.slerp(q, x)
-                x += 0.02;
+        useFrame(state => {
+            if (sceneNumber == 0){
+                state.camera.position.lerp(homeVec, swapSpeed);
+            } else if(sceneNumber == 1){
+                state.camera.position.lerp(aboutVec, swapSpeed);
+            } else if(sceneNumber == 2){
+                state.camera.position.lerp(artVec, swapSpeed);
+            } else if(sceneNumber == 3){
+                state.camera.position.lerp(csVec, swapSpeed);
+            } else if(sceneNumber == 4){
+                state.camera.position.lerp(musicVec, swapSpeed);
             }
-            
-        }
-        return null;
-    })
+            return null;
+        })
 
-    return (
-        <group>
+        return (
+            <group/>
+        );
+    }
 
-            <mesh position={[1, 1, 8]} ref = {markerRef} onClick = {() => setClicked(!clicked)}>
-                <boxGeometry />
-                <meshLambertMaterial attach = "material" color = "hotpink" />
-            </mesh>
-
-            <mesh position={[-1, 1, 8]} ref = {markerRef2}>
-                <boxGeometry />
-                <meshLambertMaterial attach = "material" color = "blue" />
-            </mesh>
-
-        </group>
-    )
-}
-
-function Scene() {
     const policeFbx = useFBX('./models/gtpd.fbx');
     const wreckFbx = useFBX('./models/wreck.fbx');
 
     return (
-        <Canvas style = {{height: "100vh", background: "#171717"}} >
-            <OrbitControls />
+        <Canvas 
+            style = {{height: "100vh", background: "#171717"}}
+            camera = {{position: [0,0.25,5]}}
+            shadows
+            onCreated={(state) => {
+                state.camera.rotation.set(THREE.MathUtils.degToRad(-5), 0, 0);
 
-            <fog attach="fog" args={['#202020', 5, 20]} />
+            }}
+        >
+            <SceneController />
+            {/*<OrbitControls />*/}
 
-            <pointLight position={[1, 1, 2.25]} intensity = {4} color = {"pink"}/>
+            {/*<fog attach="fog" color="#3142b0" near={-4} far={12} />*/}
+
+            <pointLight
+                position={[1, 1, 2.25]}
+                intensity = {4}
+                color = {"pink"}
+                castShadow // highlight-line
+                shadow-mapSize-height={512}
+                shadow-mapSize-width={512}
+            />
+
+            <ambientLight intensity = {0.025}/>
+
+            {/* Ground and Wall(s) */}
+
+            <mesh receiveShadow position={[40, -1, 0]} rotation-x={-Math.PI / 2}>
+                <planeGeometry args={[120, 15]} />
+                <meshPhongMaterial />
+            </mesh>
+
+            <mesh receiveShadow position={[0, -1, 0]}>
+                <planeGeometry args={[50, 10]} />
+                <meshPhongMaterial />
+            </mesh>
+
+            {/* Models */}
 
             <Model
                 path = {'./models/mon_crawl.gltf'} 
@@ -146,18 +110,6 @@ function Scene() {
 
             <primitive object={policeFbx} position = {[-3,-1,8]} scale = {0.11} rotation={[0, Math.PI, 0]}/>
             <primitive object={wreckFbx} position = {[-4.5,-1,8]} scale = {0.11} rotation={[0, Math.PI, 0]}/>
-
-            <Marker />
-
-            <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2}>
-                <planeGeometry args={[25, 15]} />
-                <meshPhongMaterial />
-            </mesh>
-
-            <mesh receiveShadow position={[0, -6, 0]}>
-                <planeGeometry args={[25, 25]} />
-                <meshPhongMaterial />
-            </mesh>
 
         </Canvas>
     );

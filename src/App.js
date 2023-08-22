@@ -1,3 +1,5 @@
+import { useState, useRef } from 'react';
+
 import Navbar from "./components/Navbar.js"
 import Scene from "./components/Scene.js"
 
@@ -13,11 +15,13 @@ const darkTheme = createTheme({
   typography: {
     button: {
       textTransform: 'none'
-    }
+    },
+    fontSize: 18
   },
 });
 
 function App() {
+  const [ sceneNumber, setSceneNumber ] = useState(0); //0 = landing, 1 = about, 2 = art, 3 = CS, 4 = music
 
   return (
     <div className = "App">
@@ -25,7 +29,7 @@ function App() {
         <CssBaseline />
 
         <Box sx = {{zIndex: 1001, position: "absolute"}}>
-          <Navbar />
+          <Navbar setSceneNumber={setSceneNumber}/>
         </Box>
 
         <Box sx = {{zIndex: 1000, position: "absolute", display: "flex", flexDirection: "column"}}>
@@ -43,7 +47,10 @@ function App() {
           </Box>
         </Box>
 
-        <Scene />
+        <Scene
+          sceneNumber = {sceneNumber}
+          setSceneNumber = {setSceneNumber}
+        />
 
       </ThemeProvider>
 

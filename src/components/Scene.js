@@ -71,7 +71,7 @@ function Scene({sceneNumber, setSceneNumber}) {
                 shadow-mapSize-width={512}
             />
 
-            <ambientLight color = {"cyan"} intensity = {0.025}/>
+            <ambientLight color = {"cyan"} intensity = {0.03}/>
 
             {/* Ground and Wall(s) */}
 

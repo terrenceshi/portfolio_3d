@@ -28,12 +28,11 @@ function About() {
             <Box sx = {{display: 'flex', flexDirection: "column", gap: 2}}>
               <Typography variant="body">
                 I'm a CS major from Georgia Tech. My forte lies in frontend, but I'm adept 
-                as a full-stack engineer, with skills in backend and deployment.
+                as a full-stack engineer, with skills in backend and deployment. Also, 
+                I'm proficient with AI, having implemented image classifiers and 
+                using word vectorization for projects.
               </Typography>
-              <Typography variant="body">
-                Additionally, I'm proficient in the realm of AI, with experience implementing image 
-                classifiers and using word vectorization techniques for various applications.
-              </Typography>
+
               <Typography variant="body">
                 In my free time, I like to draw and make music. Sometimes, I'll do some 3D modeling.
               </Typography>

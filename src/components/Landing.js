@@ -9,15 +9,15 @@ function Landing() {
             overflowY: "scroll",
             display: "flex", 
             width: "100vw", 
-            height: "88vh",
-             alignItems: "center", 
-             justifyContent: "center"
+            alignItems: "center", 
+            justifyContent: "center",
+            pt: 18
           }}>
             <Box sx = {{display: 'flex', flexDirection: "column", alignItems: 'flex-start'}}>
               <Typography variant="h2">
                 Hi. I'm
               </Typography>
-              <Typography variant="h1" gutterBottom>
+              <Typography variant="h1">
                 Terrence.
               </Typography>
             </Box>

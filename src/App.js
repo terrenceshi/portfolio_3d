@@ -55,15 +55,17 @@ function App() {
 
         <Box sx = {{zIndex: 1001, position: "absolute", pt: 1}}>
           <Navbar/>
+
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Art" element={<Art />} />
+            <Route path="/CS" element={<Cs />} />
+            <Route path="/Music" element={<Music />} />
+          </Routes>
         </Box>
 
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Art" element={<Art />} />
-          <Route path="/CS" element={<Cs />} />
-          <Route path="/Music" element={<Music />} />
-        </Routes>
+        
 
         <Scene sceneNumber = {sceneNumber}/>
 

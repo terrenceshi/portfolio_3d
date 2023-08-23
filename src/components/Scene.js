@@ -17,8 +17,8 @@ function Scene({sceneNumber}) {
         homeVec.set(0,0.25,5);
         aboutVec.set(25,0.25,10);
         artVec.set(50,0.25,5);
-        csVec.set(75,0.25,5);
-        musicVec.set(100,0.25,5);
+        csVec.set(75,0,5);
+        musicVec.set(100,0.4,5);
 
         const swapSpeed = 0.05;
 
@@ -58,30 +58,10 @@ function Scene({sceneNumber}) {
             <SceneController />
             {/*<OrbitControls />*/}
 
-            {/*<fog attach="fog" color="#3142b0" near={-4} far={12} />*/}
-
-            <pointLight
-                position={[1, 1, 2.25]}
-                intensity = {4}
-                color = {"#f792bc"}
-                castShadow
-                shadow-mapSize-height={512}
-                shadow-mapSize-width={512}
-            />
-
-            <pointLight
-                position={[25,1,7]}
-                intensity = {4}
-                color = {"cyan"}
-                castShadow
-                shadow-mapSize-height={512}
-                shadow-mapSize-width={512}
-            />
-
             <pointLight
                 position={[50,1,5]}
                 intensity = {4}
-                color = {"red"}
+                color = {"#7b55d4"}
                 castShadow
                 shadow-mapSize-height={512}
                 shadow-mapSize-width={512}
@@ -101,20 +81,15 @@ function Scene({sceneNumber}) {
                 <meshPhongMaterial />
             </mesh>
 
-            {/* Models */}
+            {/* Landing Page Scene */}
 
-            <Model
-                path = {'./models/mon_crawl.gltf'} 
-                scale = {4.0} 
-                pos = {[-0.5,-1,8]}
-                rot = {[0, -Math.PI / 28 ,0]}
-            />
-
-            <Model
-                path = {'./models/astro_strut.gltf'} 
-                scale = {12.0} 
-                pos = {[3.0,-1,8]}
-                rot = {[0, 0 ,0]}
+            <pointLight
+                position={[1, 1, 2.25]}
+                intensity = {4}
+                color = {"#f792bc"}
+                castShadow
+                shadow-mapSize-height={512}
+                shadow-mapSize-width={512}
             />
 
             <Model
@@ -124,8 +99,79 @@ function Scene({sceneNumber}) {
                 rot = {[0, -Math.PI / 3 ,0]}
             />
 
-            <primitive object={policeFbx} position = {[-3,-1,8]} scale = {0.11} rotation={[0, Math.PI, 0]}/>
-            <primitive object={wreckFbx} position = {[-4.5,-1,8]} scale = {0.11} rotation={[0, Math.PI, 0]}/>
+            {/* About Page Scene */}
+
+            {/*<fog attach="fog" color="#9ecfd9" near={-8} far={50} />*/}
+
+            <pointLight
+                position={[25,1,8]}
+                intensity = {4}
+                color = {"#6dd2ed"}
+                distance = {30}
+            />
+
+            {/*
+            <pointLight
+                position={[23,0, 5.5]}
+                intensity = {1}
+                color = {"red"}
+                distance = {2}
+            />
+
+            <spotLight
+                position={[30,1,8]}
+                intensity = {4}
+                color = {"yellow"}
+                angle = {Math.PI/4}
+                decay = {1.5}
+            />
+            */}
+
+            <primitive
+                object={policeFbx} 
+                position = {[23.75,-1, 5.5]} 
+                scale = {0.11} 
+                rotation={[0, THREE.MathUtils.degToRad(220), 0]}
+            />
+
+            <primitive
+                object={wreckFbx}
+                position = {[26,-1,8]}
+                scale = {0.11}
+                rotation={[0, THREE.MathUtils.degToRad(210), 0]}
+            />
+
+            {/* CS */}
+
+            <pointLight
+                position={[75,1,5]}
+                intensity = {4}
+                color = {"#f05972"}
+                distance = {30}
+            />
+
+            <Model
+                path = {'./models/mon_crouch.gltf'} 
+                scale = {2} 
+                pos = {[74,-1,3]}
+                rot = {[0, Math.PI / 8 ,0]}
+            />
+
+            {/* Music */}
+
+            <pointLight
+                position={[100,1,5]}
+                intensity = {4}
+                color = {"#d1e9f0"}
+                distance = {30}
+            />
+
+            <Model
+                path = {'./models/astro_strut.gltf'} 
+                scale = {8.0} 
+                pos = {[101.75,-1,2.75]}
+                rot = {[0, -Math.PI / 6 ,0]}
+            />
 
         </Canvas>
     );

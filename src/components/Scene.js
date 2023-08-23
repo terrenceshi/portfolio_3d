@@ -1,5 +1,3 @@
-import { useState, useRef } from 'react';
-
 import Model from "./Model.js"
 
 import { Canvas, useFrame } from '@react-three/fiber'
@@ -8,7 +6,7 @@ import * as THREE from 'three'
 import { Bloom } from '@react-three/postprocessing'
 import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
 
-function Scene({sceneNumber, setSceneNumber}) {
+function Scene({sceneNumber}) {
     function SceneController(){
         const homeVec = new THREE.Vector3();
         const aboutVec = new THREE.Vector3();
@@ -17,23 +15,23 @@ function Scene({sceneNumber, setSceneNumber}) {
         const musicVec = new THREE.Vector3();
 
         homeVec.set(0,0.25,5);
-        aboutVec.set(15,0.25,5);
-        artVec.set(30,0.25,5);
-        csVec.set(45,0.25,5);
-        musicVec.set(60,0.25,5);
+        aboutVec.set(25,0.25,10);
+        artVec.set(50,0.25,5);
+        csVec.set(75,0.25,5);
+        musicVec.set(100,0.25,5);
 
         const swapSpeed = 0.05;
 
         useFrame(state => {
-            if (sceneNumber == 0){
+            if (sceneNumber === 0){
                 state.camera.position.lerp(homeVec, swapSpeed);
-            } else if(sceneNumber == 1){
+            } else if(sceneNumber === 1){
                 state.camera.position.lerp(aboutVec, swapSpeed);
-            } else if(sceneNumber == 2){
+            } else if(sceneNumber === 2){
                 state.camera.position.lerp(artVec, swapSpeed);
-            } else if(sceneNumber == 3){
+            } else if(sceneNumber === 3){
                 state.camera.position.lerp(csVec, swapSpeed);
-            } else if(sceneNumber == 4){
+            } else if(sceneNumber === 4){
                 state.camera.position.lerp(musicVec, swapSpeed);
             }
             return null;
@@ -49,7 +47,7 @@ function Scene({sceneNumber, setSceneNumber}) {
 
     return (
         <Canvas 
-            style = {{height: "100vh", background: "#171717"}}
+            style = {{height: "100vh", background: "#171717", zIndex: -100, position: "absolute"}}
             camera = {{position: [0,0.25,5]}}
             shadows
             onCreated={(state) => {
@@ -66,7 +64,25 @@ function Scene({sceneNumber, setSceneNumber}) {
                 position={[1, 1, 2.25]}
                 intensity = {4}
                 color = {"#f792bc"}
-                castShadow // highlight-line
+                castShadow
+                shadow-mapSize-height={512}
+                shadow-mapSize-width={512}
+            />
+
+            <pointLight
+                position={[25,1,7]}
+                intensity = {4}
+                color = {"cyan"}
+                castShadow
+                shadow-mapSize-height={512}
+                shadow-mapSize-width={512}
+            />
+
+            <pointLight
+                position={[50,1,5]}
+                intensity = {4}
+                color = {"red"}
+                castShadow
                 shadow-mapSize-height={512}
                 shadow-mapSize-width={512}
             />
@@ -75,13 +91,13 @@ function Scene({sceneNumber, setSceneNumber}) {
 
             {/* Ground and Wall(s) */}
 
-            <mesh receiveShadow position={[40, -1, 0]} rotation-x={-Math.PI / 2}>
-                <planeGeometry args={[120, 15]} />
+            <mesh receiveShadow position={[50, -1, 0]} rotation-x={-Math.PI / 2}>
+                <planeGeometry args={[140, 20]} />
                 <meshPhongMaterial />
             </mesh>
 
-            <mesh receiveShadow position={[40, -1, 0]}>
-                <planeGeometry args={[120, 10]} />
+            <mesh receiveShadow position={[50, -1, 0]}>
+                <planeGeometry args={[140, 20]} />
                 <meshPhongMaterial />
             </mesh>
 

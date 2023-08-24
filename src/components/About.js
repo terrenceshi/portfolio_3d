@@ -1,9 +1,14 @@
+import { useState } from 'react';
+
 import pfp from "../assets/pfp.jpg"
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Skeleton from '@mui/material/Skeleton';
 
 function About() {
+  const [pfpLoaded, setPfpLoaded] = useState(false)
+
   return (
     <Box sx = {{
       display: 'flex', 
@@ -11,7 +16,8 @@ function About() {
       width: "1000px",
       gap: 2,
       pt: 16
-    }}>
+    }}
+    >
         <Typography variant="h4">
           About Me
         </Typography>
@@ -29,7 +35,30 @@ function About() {
             </Typography>
           </Box>
 
-          <img src = {pfp} alt = "pfp" style = {{width: 175, height: 175, borderRadius: "50%"}}/>
+          {/* 
+            Might be kinda complex to animate once on load:
+            https://medium.com/@davidfalconbernhard/how-to-animate-once-on-page-load-in-react-js-e357fd899a4b
+            , animation: "fadeIn 1.25s"
+
+            However, doesn't really matter if whole page is animated
+          */}
+
+          <div style = {pfpLoaded ? {display: "block"}:{display: "none"}}>
+            <img
+              src = {pfp} 
+              alt = "pfp" 
+              onLoad = {() => setPfpLoaded(true)}
+              style = {{width: 175, height: 175, borderRadius: "50%", animation: "fadeIn 1.25s"}}
+            />
+          </div>
+
+          <div style = {pfpLoaded ? {display: "none"}:{display: "block"}}>
+            <Skeleton 
+              variant="circular" 
+              sx = {{width: 175, height: 175}}
+            />
+          </div>
+          
         </Box>
       
     </Box>

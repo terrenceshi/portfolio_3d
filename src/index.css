@@ -22,3 +22,8 @@ code {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+@keyframes fadeIn {
+  0%    { opacity: 0; }
+  100%  { opacity: 1;}
+}

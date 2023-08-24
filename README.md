@@ -17,8 +17,8 @@ CS
 Music
  - Implement whole fking thing lol
 
-Bugs
- - Why does styling change when first time go to CS or About?
+Animations
+ - Pages should transition when switching. (probably opacity, i think howtoselldrugsonline does that)
 
 Mobile
  - Not only change width of elements, but also change camera locations of scenes

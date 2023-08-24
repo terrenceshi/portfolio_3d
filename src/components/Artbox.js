@@ -7,7 +7,11 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 const ArtBox = ({ artDict }) => {
     return (
         <div className = "artBox">
-            <img src={artDict.images[0]} style = {{width: 300, height: 300, objectFit: "cover"}}/>
+            <img 
+                src={artDict.images[0]} 
+                alt = {artDict.title} 
+                style = {{width: 300, height: 300, objectFit: "cover"}}
+            />
             
         </div>
     )

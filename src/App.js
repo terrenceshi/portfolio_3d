@@ -55,7 +55,17 @@ function App() {
 
         <Box sx = {{zIndex: 1001, position: "absolute", pt: 1}}>
           <Navbar/>
+        </Box>
 
+        <Box sx = {{
+          zIndex: 1000, 
+          position: "absolute",
+          overflowY: "scroll",
+          display: "flex", 
+          width: "100vw",
+          height: "100vh",
+          justifyContent: "center"
+        }}>
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/About" element={<About />} />

@@ -146,15 +146,15 @@ function Scene({sceneNumber}) {
             <pointLight
                 position={[75,1,5]}
                 intensity = {4}
-                color = {"#f05972"}
+                color = {"#e36b6b"}
                 distance = {30}
             />
 
             <Model
                 path = {'./models/mon_crouch.gltf'} 
                 scale = {2} 
-                pos = {[74,-1,3]}
-                rot = {[0, Math.PI / 8 ,0]}
+                pos = {[73.5,-1,3]}
+                rot = {[0, Math.PI / 6 ,0]}
             />
 
             {/* Music */}

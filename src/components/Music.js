@@ -3,18 +3,19 @@ import Typography from '@mui/material/Typography';
 
 function Music() {
   return (
-        <Box sx = {{zIndex: 1000, position: "absolute", overflowY: "scroll"}}>
-          <Box sx = {{display: "flex", width: "100vw",alignItems: "center", justifyContent: "center"}}>
-            <Box sx = {{display: 'flex', flexDirection: "column", alignItems: 'flex-start'}}>
-              <Typography variant="h2">
-                Hi. I'm
-              </Typography>
-              <Typography variant="h1" gutterBottom>
-                mnusic
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
+    <Box sx = {{
+      display: 'flex', 
+      flexDirection: "column", 
+      alignItems: 'flex-start',
+      pt: 33
+    }}>
+      <Typography variant="h2">
+        Hi. I'm
+      </Typography>
+      <Typography variant="h1">
+        mnusic
+      </Typography>
+    </Box>
   );
 }
 

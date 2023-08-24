@@ -3,25 +3,19 @@ import Typography from '@mui/material/Typography';
 
 function Landing() {
   return (
-          <Box sx = {{
-            zIndex: 1000,
-            position: "absolute",
-            overflowY: "scroll",
-            display: "flex", 
-            width: "100vw", 
-            alignItems: "center", 
-            justifyContent: "center",
-            pt: 18
-          }}>
-            <Box sx = {{display: 'flex', flexDirection: "column", alignItems: 'flex-start'}}>
-              <Typography variant="h2">
-                Hi. I'm
-              </Typography>
-              <Typography variant="h1">
-                Terrence.
-              </Typography>
-            </Box>
-          </Box>
+    <Box sx = {{
+      display: 'flex', 
+      flexDirection: "column", 
+      alignItems: 'flex-start',
+      pt: 33
+    }}>
+      <Typography variant="h2">
+        Hi. I'm
+      </Typography>
+      <Typography variant="h1">
+        Terrence.
+      </Typography>
+    </Box>
   );
 }
 

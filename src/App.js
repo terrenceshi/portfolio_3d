@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Navbar from "./components/Navbar.js"
+import Footer from "./components/Footer.js"
 import Scene from "./components/Scene.js"
 
 import Landing from "./components/Landing.js"
@@ -64,7 +65,9 @@ function App() {
           display: "flex", 
           width: "100vw",
           height: "100vh",
-          justifyContent: "center"
+          alignItems: "center",
+          justifyContent: 'space-between',
+          flexDirection: "column"
         }}>
           <Routes>
             <Route path="/" element={<Landing />} />
@@ -73,9 +76,12 @@ function App() {
             <Route path="/CS" element={<Cs />} />
             <Route path="/Music" element={<Music />} />
           </Routes>
-        </Box>
 
-        
+          <Box sx = {{pb: 10, pt: 14}}>
+            <Footer/>
+          </Box>
+          
+        </Box>
 
         <Scene sceneNumber = {sceneNumber}/>
 

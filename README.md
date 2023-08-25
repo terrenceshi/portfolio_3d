@@ -8,6 +8,8 @@ Scene
 
 Art
  - Implement Artbox (could copy paste, but at least add improvement for showing year)
+ - Add loading
+ - Should have boxes pop up on scroll (any page that requires scrolling should)
 
 CS
  - Figure out layout for article and such
@@ -19,8 +21,12 @@ Music
 
 Animations
  - Pages should transition when switching. (probably opacity, i think howtoselldrugsonline does that)
+ - Look into implementing: https://mui.com/material-ui/transitions/
 
 Mobile
  - Not only change width of elements, but also change camera locations of scenes
  - Art: change layout when in mobile
  - CS: figure out how to not spill a shit load of text when screen gets smaller
+
+Misc
+ - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 

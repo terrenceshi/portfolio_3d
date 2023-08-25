@@ -1,10 +1,10 @@
-import artData from '../artData.js';
-import ArtBox from './Artbox.js';
+import ArtData from '../data/ArtData.js';
+import ArtBox from '../components/Artbox.js';
 
 import Box from '@mui/material/Box';
 
 function Art() {
-  const artDataChunks = artData.reduce((resultArray, item, index) => { 
+  const artDataChunks = ArtData.reduce((resultArray, item, index) => { 
     const chunkIndex = Math.floor(index/3)
   
     if(!resultArray[chunkIndex]) {

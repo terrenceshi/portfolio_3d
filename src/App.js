@@ -5,11 +5,11 @@ import Navbar from "./components/Navbar.js"
 import Footer from "./components/Footer.js"
 import Scene from "./components/Scene.js"
 
-import Landing from "./components/Landing.js"
-import About from "./components/About.js"
-import Art from "./components/Art.js"
-import Cs from "./components/Cs.js"
-import Music from "./components/Music.js"
+import Landing from "./pages/Landing.js"
+import About from "./pages/About.js"
+import Art from "./pages/Art.js"
+import Cs from "./pages/Cs.js"
+import Music from "./pages/Music.js"
 
 import Box from '@mui/material/Box';
 import { ThemeProvider, createTheme } from '@mui/material/styles';

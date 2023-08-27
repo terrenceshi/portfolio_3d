@@ -8,7 +8,8 @@ const ArtData = [
                     require("../assets/art/azula/a4.png"), 
                     require("../assets/art/azula/a1.png"), 
                     require("../assets/art/azula/a2.png"), 
-                    require("../assets/art/azula/a3.png")
+                    require("../assets/art/azula/a3.png"),
+                    require("../assets/art/azula/a4.png")
                 ]
     },
     {
@@ -22,7 +23,7 @@ const ArtData = [
                     require("../assets/art/get_out/wip1.png"), 
                     require("../assets/art/get_out/wip2.png"),
                     require("../assets/art/get_out/wip3.png"), 
-                    require("../assets/art/get_out/wip4.png"), 
+                    require("../assets/art/get_out/wip4.png"),
                     require("../assets/art/get_out/wip6.png")
                 ]
     },
@@ -37,8 +38,9 @@ const ArtData = [
                     require("../assets/art/parasyte/para2.png"), 
                     require("../assets/art/parasyte/para3.png"),
                     require("../assets/art/parasyte/para4.png"), 
-                    require("../assets/art/parasyte/para5.png"), 
-                    require("../assets/art/parasyte/para6.png")
+                    require("../assets/art/parasyte/para6.png"), 
+                    require("../assets/art/parasyte/para7.png"),
+                    require("../assets/art/parasyte/para.png")
                 ]
     },
     {
@@ -52,7 +54,8 @@ const ArtData = [
                     require("../assets/art/eren/wip2.png"), 
                     require("../assets/art/eren/wip3.png"),
                     require("../assets/art/eren/wip4.png"), 
-                    require("../assets/art/eren/wip5.png")
+                    require("../assets/art/eren/wip5.png"),
+                    require("../assets/art/eren/yeager.png")
                 ]
     },
     {
@@ -66,7 +69,8 @@ const ArtData = [
                     require("../assets/art/hl/wip2.png"), 
                     require("../assets/art/hl/wip3.png"),
                     require("../assets/art/hl/wip4.png"),
-                    require("../assets/art/hl/wip5.png")
+                    require("../assets/art/hl/wip5.png"),
+                    require("../assets/art/hl/hl.png")
                 ]
     },
     {

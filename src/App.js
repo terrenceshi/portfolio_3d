@@ -29,6 +29,7 @@ const darkTheme = createTheme({
 
 function App() {
   const [ sceneNumber, setSceneNumber ] = useState(0); //0 = landing, 1 = about, 2 = art, 3 = CS, 4 = music
+  const [ thumbnailsLoaded, setThumbnailsLoaded ] = useState(false);
 
   const location = useLocation();
   useEffect(() => {
@@ -72,7 +73,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/About" element={<About />} />
-            <Route path="/Art" element={<Art />} />
+            <Route path="/Art" element={
+              <Art 
+                thumbnailsLoaded = {thumbnailsLoaded}
+                setThumbnailsLoaded = {setThumbnailsLoaded} 
+              />
+            } />
             <Route path="/CS" element={<Cs />} />
             <Route path="/Music" element={<Music />} />
           </Routes>
@@ -83,7 +89,10 @@ function App() {
           
         </Box>
 
-        <Scene sceneNumber = {sceneNumber}/>
+        <Scene 
+          sceneNumber = {sceneNumber}
+          thumbnailsLoaded = {thumbnailsLoaded}
+        />
 
       </ThemeProvider>
 

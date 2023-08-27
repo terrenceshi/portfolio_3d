@@ -3,7 +3,7 @@ import ArtBox from '../components/Artbox.js';
 
 import Box from '@mui/material/Box';
 
-function Art() {
+function Art({thumbnailsLoaded, setThumbnailsLoaded}) {
   const artDataChunks = ArtData.reduce((resultArray, item, index) => { 
     const chunkIndex = Math.floor(index/3)
   
@@ -18,22 +18,40 @@ function Art() {
 
   const gridGap = 3;
 
+  var thumbnailLoadLst = new Array(ArtData.length).fill(0);
+
   return (
-    <Box sx = {{
-      display: 'flex', 
-      flexDirection: "column", 
-      gap: gridGap,
-      pt: 16
-    }}>
-      {artDataChunks.map((lst, index) => (
-        <Box sx = {{display: 'flex', flexDirection: 'row', gap: gridGap}} key = {index}>
-          {lst.map((dict, index)=> (
-            <ArtBox artDict = {dict} key = {index} />
-          ))}
-        </Box>
-        
-      ))}
+    <Box>
+      <Box sx = {{
+        display: thumbnailsLoaded ? 'flex': 'none', 
+        flexDirection: "column", 
+        gap: gridGap,
+        pt: 16
+        }}
+      >
+        {artDataChunks.map((lst, chunkIdx) => (
+          <Box sx = {{display: 'flex', flexDirection: 'row', gap: gridGap}} key = {chunkIdx}>
+            {lst.map((dict, rowIdx)=> (
+              <ArtBox 
+                key = {rowIdx}
+                idx = {chunkIdx * 3 + rowIdx}
+                artDict = {dict} 
+                setThumbnailsLoaded = {setThumbnailsLoaded}
+                thumbnailLoadLst = {thumbnailLoadLst}
+              />
+            ))}
+          </Box>
+        ))}
+      </Box>
+
+      {/* Placeholder meaningless box that exists just so that the footer stays at the bottom when art is not loaded*/}
+
+      <Box sx = {{
+        display: thumbnailsLoaded ? 'none' : 'flex'
+      }}/>
+
     </Box>
+    
   );
 }
 

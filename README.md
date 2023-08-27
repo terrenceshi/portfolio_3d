@@ -7,8 +7,9 @@ Scene
  - Look into post effects and see what can be done
 
 Art
- - Implement Artbox (could copy paste, but at least add improvement for showing year)
- - Add loading
+ - Add loading for artBox
+ - Implement hover
+ - Add good animation. Page should pop up AFTER the vector lerp. Applies to all animations.
  - Should have boxes pop up on scroll (any page that requires scrolling should)
 
 CS

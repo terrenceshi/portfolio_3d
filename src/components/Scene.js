@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+
 import Model from "./Model.js"
 
 import { Canvas, useFrame } from '@react-three/fiber'
@@ -6,7 +8,7 @@ import * as THREE from 'three'
 import { Bloom } from '@react-three/postprocessing'
 import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
 
-function Scene({sceneNumber}) {
+function Scene({sceneNumber, thumbnailsLoaded}) {
     function SceneController(){
         const homeVec = new THREE.Vector3();
         const aboutVec = new THREE.Vector3();
@@ -16,13 +18,19 @@ function Scene({sceneNumber}) {
 
         homeVec.set(0,0.25,5);
         aboutVec.set(25,0.25,10);
-        artVec.set(50,0.25,5);
+        artVec.set(50,15,5);
         csVec.set(75,0,5);
         musicVec.set(100,0.4,5);
 
         const swapSpeed = 0.05;
 
         useFrame(state => {
+            // Modify Art Camera depending on if pictures are loaded
+            if (thumbnailsLoaded){
+                artVec.set(50,0.25,5);
+            }
+
+            // Handle Scene Change
             if (sceneNumber === 0){
                 state.camera.position.lerp(homeVec, swapSpeed);
             } else if(sceneNumber === 1){
@@ -42,6 +50,19 @@ function Scene({sceneNumber}) {
         );
     }
 
+    function RotatingBox({position, rotation, color}) {
+        const box = useRef()
+        useFrame(({ clock }) => {
+            box.current.rotation.x = clock.getElapsedTime()
+          })
+        return (
+            <mesh ref={box} position = {position} rotation = {rotation}>
+                <boxGeometry />
+                <meshNormalMaterial color={color} />
+            </mesh>
+        )
+    }
+
     const policeFbx = useFBX('./models/gtpd.fbx');
     const wreckFbx = useFBX('./models/wreck.fbx');
 
@@ -58,15 +79,6 @@ function Scene({sceneNumber}) {
             <SceneController />
             {/*<OrbitControls />*/}
 
-            <pointLight
-                position={[50,1,5]}
-                intensity = {4}
-                color = {"#7b55d4"}
-                castShadow
-                shadow-mapSize-height={512}
-                shadow-mapSize-width={512}
-            />
-
             <ambientLight color = {"cyan"} intensity = {0.03}/>
 
             {/* Ground and Wall(s) */}
@@ -77,7 +89,7 @@ function Scene({sceneNumber}) {
             </mesh>
 
             <mesh receiveShadow position={[50, -1, 0]}>
-                <planeGeometry args={[140, 20]} />
+                <planeGeometry args={[140, 40]} />
                 <meshPhongMaterial />
             </mesh>
 
@@ -139,6 +151,23 @@ function Scene({sceneNumber}) {
                 position = {[26,-1,8]}
                 scale = {0.11}
                 rotation={[0, THREE.MathUtils.degToRad(210), 0]}
+            />
+
+            {/* Art */}
+
+            <pointLight
+                position={[50,1,3]}
+                intensity = {4}
+                color = {"#7b55d4"}
+                castShadow
+                shadow-mapSize-height={512}
+                shadow-mapSize-width={512}
+            />
+
+            <RotatingBox 
+                position={[50,15.1,2]}
+                rotation={[0, 0, 0]}
+                color = {"white"}
             />
 
             {/* CS */}

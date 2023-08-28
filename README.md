@@ -16,7 +16,8 @@ CS
  - Implement slider for different articles
 
 Music
- - Implement whole fking thing lol
+ - Figure out how to implement player
+ - Add some cool effects for playing track
 
 Animations
  - Pages should transition when switching. (probably opacity, i think howtoselldrugsonline does that)

@@ -20,8 +20,6 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded}) {
 
   const gridGap = 3;
 
-  
-
   return (
     <Box>
       <Box sx = {{

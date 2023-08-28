@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import Divider from '@mui/material/Divider';
+import Fade from '@mui/material/Fade';
 
 function Music() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -24,49 +25,55 @@ function Music() {
   })
 
   return (
-    <Box sx = {{
-      display: 'flex', 
-      flexDirection: "column", 
-      width: "600px",
-      pt: 14
-    }}
+    <Fade 
+      in={true}
+      timeout={{ enter: 1500 }}
+      style={{ transitionDelay: '1450ms' }}
     >
-      <audio 
-        src={currentSong}
-        ref={audioElem}
-        /*onTimeUpdate={onPlaying}*/
-        onEnded={() => setIsPlaying(false)}
-      />
+      <Box sx = {{
+        display: 'flex', 
+        flexDirection: "column", 
+        width: "600px",
+        pt: 14
+      }}
+      >
+        <audio 
+          src={currentSong}
+          ref={audioElem}
+          /*onTimeUpdate={onPlaying}*/
+          onEnded={() => setIsPlaying(false)}
+        />
 
-      {MusicData.map((song, idx) => (
-        <Box>
-          <Box sx = {{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 2,
-            py: 2
-          }}>
-            <Box>
-              <IconButton 
-                sx={{ "&:hover": { backgroundColor: "transparent" }}}
-                onClick={() => {
-                  setIsPlaying(!isPlaying);
-                  setCurrentSong(song.src);
-                }}
-              >
-                {isPlaying & currentSong === song.src ? <PauseCircleIcon/> : <PlayCircleIcon/>}
-              </IconButton>
+        {MusicData.map((song, idx) => (
+          <Box key = {idx}>
+            <Box sx = {{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 2,
+              py: 2
+            }}>
+              <Box>
+                <IconButton 
+                  sx={{ "&:hover": { backgroundColor: "transparent" }}}
+                  onClick={() => {
+                    setIsPlaying(!isPlaying);
+                    setCurrentSong(song.src);
+                  }}
+                >
+                  {isPlaying & currentSong === song.src ? <PauseCircleIcon/> : <PlayCircleIcon/>}
+                </IconButton>
+              </Box>
+
+              <Typography variant = "body">
+                {song.title}
+              </Typography>
             </Box>
-
-            <Typography variant = "body">
-              {song.title}
-            </Typography>
+            {idx != MusicData.length - 1 ? <Divider/> : <div/>}
           </Box>
-          {idx != MusicData.length - 1 ? <Divider/> : <div/>}
-        </Box>
-      ))}
-    </Box>
+        ))}
+      </Box>
+    </Fade>
   );
 }
 

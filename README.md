@@ -7,7 +7,6 @@ Scene
  - Look into post effects and see what can be done
 
 Art
- - Add good animation. Page should pop up AFTER the vector lerp. Applies to all animations.
  - Should have boxes pop up on scroll (any page that requires scrolling should)
 
 CS
@@ -20,9 +19,8 @@ Music
  - Add some cool effects for playing track
 
 Animations
- - Pages should transition when switching. (probably opacity, i think howtoselldrugsonline does that)
- - Look into implementing: https://mui.com/material-ui/transitions/
- - Also need a delay before pages pop up
+ - See if there are cooler animations to implement.
+ - https://mui.com/material-ui/transitions/ 's grow could print.
 
 Mobile
  - Not only change width of elements, but also change camera locations of scenes

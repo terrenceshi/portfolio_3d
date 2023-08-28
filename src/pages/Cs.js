@@ -1,37 +1,46 @@
-import pfp from "../assets/cs_thumbs/b2n2.png"
+import CsData from '../data/CsData.js';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Fade from '@mui/material/Fade';
 
 function Cs() {
   return (
-    <Box sx = {{
-      display: 'flex', 
-      flexDirection: "column", 
-      width: "1000px",
-      gap: 2,
-      pt: 16
-    }}>
-        <Typography variant="h5">
-          Books2Nooks
-        </Typography>
-        <Box sx = {{display: 'flex', flexDirection: "row", gap: 2}}>
-          <Box sx = {{display: 'flex', flexDirection: "column", gap: 2}}>
-            <Typography variant="body">
-              Books2Nooks takes a user inputted book and generates a music playlist. 
-              We collected 16k books and 400k songs from various datasets. Then data
-              was then cleaned such that all songs were in english and all songs could 
-              be found on spotify. Next, all song lyrics and book descriptions were
-              converted to vectors using Sentence Transformers. Cosine Similarity scores 
-              were then computed for all songs and books. Whenever the user selects a 
-              book, the top 15 similar songs are returned.
+    <Fade 
+      in={true}
+      timeout={{ enter: 1500 }}
+      style={{ transitionDelay: '1450ms' }}
+    >
+      <Box sx = {{
+        display: 'flex', 
+      }}>
+        {CsData.map((project, projectIdx) => (
+          <Box key = {projectIdx} sx = {{
+            display: 'flex', 
+            flexDirection: "column", 
+            width: "600px",
+            gap: 2,
+            pt: 16
+          }}>
+            <Typography variant="h5">
+              {project.title}
             </Typography>
-          </Box>
 
-          <img src = {pfp} alt = "pfp" style = {{width: 175, height: 175}}/>
-        </Box>
-      
-    </Box>
+            <Box sx = {{display: 'flex', flexDirection: "row", gap: 2}}>
+              <Box sx = {{display: 'flex', flexDirection: "column", gap: 2}}>
+                {project.description.map((text, textIdx) => (
+                  <Typography variant="body" key = {textIdx}>
+                    {text}
+                  </Typography>
+                ))}
+              </Box>
+
+              <img src = {project.image} style = {{width: 175, height: 175}}/>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+    </Fade>
   );
 }
 

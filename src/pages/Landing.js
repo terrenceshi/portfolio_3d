@@ -1,21 +1,28 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Fade from '@mui/material/Fade';
 
 function Landing() {
   return (
-    <Box sx = {{
-      display: 'flex', 
-      flexDirection: "column", 
-      alignItems: 'flex-start',
-      pt: 33
-    }}>
-      <Typography variant="h2">
-        Hi. I'm
-      </Typography>
-      <Typography variant="h1">
-        Terrence.
-      </Typography>
-    </Box>
+    <Fade 
+      in={true}
+      timeout={{ enter: 1500 }}
+      style={{ transitionDelay: '1450ms' }}
+    >
+      <Box sx = {{
+        display: 'flex', 
+        flexDirection: "column", 
+        alignItems: 'flex-start',
+        pt: 33
+      }}>
+        <Typography variant="h2">
+          Hi. I'm
+        </Typography>
+        <Typography variant="h1">
+          Terrence.
+        </Typography>
+      </Box>
+    </Fade>
   );
 }
 

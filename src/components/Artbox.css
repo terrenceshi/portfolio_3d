@@ -1,0 +1,4 @@
+.art_img:hover {
+    -webkit-filter: brightness(50%);
+    -webkit-transition: all 0.35s ease;
+}

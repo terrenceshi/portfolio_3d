@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import './Artbox.css';
+
+import { useState } from 'react';
 
 import ArtData from '../data/ArtData.js';
 
@@ -8,9 +10,12 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography'
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import Skeleton from '@mui/material/Skeleton';
+
+var numArtLoaded = 0;
 
 const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
-    var numArtLoaded = 0;
+    
     const [artLoaded, setArtLoaded] = useState(false);
     const [open, setOpen] = useState(false);
     const [sliderX, setSliderX] = useState(0);
@@ -21,6 +26,7 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
     return (
         <div className = "artBox">
             <img 
+                className = "art_img"
                 src={artDict.images[0]} 
                 alt = {artDict.title} 
                 style = {{
@@ -29,7 +35,7 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                     objectFit: "cover", 
                     cursor: "pointer"
                 }}
-                onClick={() => {setSliderX(0); setOpen(true)}}
+                onClick={() => {setSliderX(0); setArtLoaded(false); setOpen(true)}}
                 onLoad={() => {
                     thumbnailLoadLst[idx] = 1;
 
@@ -50,10 +56,10 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
             >
                 <Box sx = {{display: "flex", flexDirection: "row"}}>
                     <Box sx = {{
-                        display: "flex",
+                        display: artLoaded ? "flex" : "none",
                         flexDirection: "row",
                         gap: 0,
-                        width: 700,
+                        width: 650,
                         overflow: "hidden"
                     }}>
                         {imgLst.map((imgSrc,index)=>{
@@ -68,7 +74,7 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                                         }
                                     }}
                                     style = {{
-                                        minWidth: 700,
+                                        minWidth: 650,
                                         transform: `translateX(${sliderX}%)`, 
                                         transition: "0.75s"
                                     }}
@@ -76,6 +82,15 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                             )
                         })
                         }
+                    </Box>
+                    <Box sx = {{
+                        display: artLoaded ? "none" : "flex"
+                    }}>
+                        <Skeleton 
+                            variant="rectangular" 
+                            width={650} 
+                            height={(artDict.height / artDict.width) * 650} 
+                        />
                     </Box>
                     <Box sx = {{
                         display: "flex", 
@@ -98,14 +113,14 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                         }}>
                             <IconButton 
                                 onClick={() => setSliderX(sliderX + 100)}
-                                disabled={sliderX === 0}
+                                disabled={sliderX === 0 || !artLoaded}
                             >
                                 <ArrowLeftIcon/>
                             </IconButton>
                             
                             <IconButton
                                 onClick={() => setSliderX(sliderX - 100)}
-                                disabled = {sliderX === maxSliderX}
+                                disabled = {sliderX === maxSliderX || !artLoaded}
                             >
                                 <ArrowRightIcon/>
                             </IconButton>

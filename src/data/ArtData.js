@@ -10,7 +10,9 @@ const ArtData = [
                     require("../assets/art/azula/a2.png"), 
                     require("../assets/art/azula/a3.png"),
                     require("../assets/art/azula/a4.png")
-                ]
+                ],
+        "width": 700,
+        "height": 817
     },
     {
         "title": "Get Out",
@@ -25,7 +27,9 @@ const ArtData = [
                     require("../assets/art/get_out/wip3.png"), 
                     require("../assets/art/get_out/wip4.png"),
                     require("../assets/art/get_out/wip6.png")
-                ]
+                ],
+        "width": 700,
+        "height": 700
     },
     {
         "title": "Split Face",
@@ -41,7 +45,9 @@ const ArtData = [
                     require("../assets/art/parasyte/para6.png"), 
                     require("../assets/art/parasyte/para7.png"),
                     require("../assets/art/parasyte/para.png")
-                ]
+                ],
+        "width": 700,
+        "height": 700
     },
     {
         "title": "Eren Yeager",
@@ -56,7 +62,9 @@ const ArtData = [
                     require("../assets/art/eren/wip4.png"), 
                     require("../assets/art/eren/wip5.png"),
                     require("../assets/art/eren/yeager.png")
-                ]
+                ],
+        "width": 700,
+        "height": 906
     },
     {
         "title": "Homelander",
@@ -71,7 +79,9 @@ const ArtData = [
                     require("../assets/art/hl/wip4.png"),
                     require("../assets/art/hl/wip5.png"),
                     require("../assets/art/hl/hl.png")
-                ]
+                ],
+        "width": 700,
+        "height": 700
     },
     {
         "title": "3D Head",
@@ -84,7 +94,9 @@ const ArtData = [
                     require("../assets/art/modelface/happy.jpg"), 
                     require("../assets/art/modelface/sad.jpg"),
                     require("../assets/art/modelface/surprised.jpg")
-                ]
+                ],
+        "width": 700,
+        "height": 700
     },
     {
         "title": "Green Goblin",
@@ -93,7 +105,9 @@ const ArtData = [
         "images":
                 [
                     require("../assets/art/misc/goblin.jpg")
-                ]
+                ],
+        "width": 700,
+        "height": 784
     },
     {
         "title": "Hannibal",
@@ -102,7 +116,9 @@ const ArtData = [
         "images":
                 [
                     require("../assets/art/misc/hanni.jpg")
-                ]
+                ],
+        "width": 700,
+        "height": 671.953
     },
     {
         "title": "Price Heist",
@@ -112,7 +128,9 @@ const ArtData = [
                 [
                     require("../assets/art/priceheist/bizcard_front.jpg"), 
                     require("../assets/art/priceheist/bizcard_back_fixed.jpg")
-                ]
+                ],
+        "width": 700,
+        "height": 400
     },
     {
         "title": "Portal",
@@ -121,7 +139,9 @@ const ArtData = [
         "images":
                 [
                     require("../assets/art/misc/portal.jpg")
-                ]
+                ],
+        "width": 700,
+        "height": 906
     },
     {
         "title": "Inebriated Cat",
@@ -130,7 +150,9 @@ const ArtData = [
         "images":
                 [
                     require("../assets/art/misc/cat.png")
-                ]
+                ],
+        "width": 700,
+        "height": 394
     },
     {
         "title": "Starlord",
@@ -139,7 +161,9 @@ const ArtData = [
         "images":
                 [
                     require("../assets/art/misc/starlord.jpg")
-                ]
+                ],
+        "width": 700,
+        "height": 700
     },
     {
         "title": "Moira",
@@ -148,7 +172,9 @@ const ArtData = [
         "images":
                 [
                     require("../assets/art/misc/moira.jpg")
-                ]
+                ],
+        "width": 700,
+        "height": 700
     }
 ]
 

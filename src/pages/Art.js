@@ -3,6 +3,8 @@ import ArtBox from '../components/Artbox.js';
 
 import Box from '@mui/material/Box';
 
+var thumbnailLoadLst = new Array(ArtData.length).fill(0);
+
 function Art({thumbnailsLoaded, setThumbnailsLoaded}) {
   const artDataChunks = ArtData.reduce((resultArray, item, index) => { 
     const chunkIndex = Math.floor(index/3)
@@ -18,7 +20,7 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded}) {
 
   const gridGap = 3;
 
-  var thumbnailLoadLst = new Array(ArtData.length).fill(0);
+  
 
   return (
     <Box>

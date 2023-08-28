@@ -159,9 +159,6 @@ function Scene({sceneNumber, thumbnailsLoaded}) {
                 position={[50,1,3]}
                 intensity = {4}
                 color = {"#7b55d4"}
-                castShadow
-                shadow-mapSize-height={512}
-                shadow-mapSize-width={512}
             />
 
             <RotatingBox 

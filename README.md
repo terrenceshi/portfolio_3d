@@ -12,6 +12,8 @@ Art
  - Add good animation. Page should pop up AFTER the vector lerp. Applies to all animations.
  - Should have boxes pop up on scroll (any page that requires scrolling should)
 
+ - BUG: if the user reloads art page, it may be stuck on loading. I think its because the pictures are loaded already (setting images display to flex shows them fine). Need better method to handle loading. Tried a package, but the package is just too slow.
+
 CS
  - Figure out layout for article and such
  - Make articles data-able

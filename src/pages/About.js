@@ -48,7 +48,7 @@ function About() {
               src = {pfp} 
               alt = "pfp" 
               onLoad = {() => setPfpLoaded(true)}
-              style = {{width: 175, height: 175, borderRadius: "50%", animation: "fadeIn 1.25s"}}
+              style = {{width: 175, height: 175, borderRadius: "50%"}}
             />
           </div>
 

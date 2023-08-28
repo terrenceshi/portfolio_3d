@@ -22,6 +22,7 @@ Music
 Animations
  - Pages should transition when switching. (probably opacity, i think howtoselldrugsonline does that)
  - Look into implementing: https://mui.com/material-ui/transitions/
+ - Also need a delay before pages pop up
 
 Mobile
  - Not only change width of elements, but also change camera locations of scenes

@@ -5,6 +5,7 @@ Scene
  - Add lights from cars (hard as fuck, may need to download a new package for this one)
  - Experiment with different options for Art Background (optional)
  - Look into post effects and see what can be done
+ - On awake, make pink light go from dark to lit up
 
 Art
  - Should have boxes pop up on scroll (any page that requires scrolling should)

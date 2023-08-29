@@ -33,7 +33,7 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded}) {
           display: thumbnailsLoaded ? 'flex': 'none', 
           flexDirection: "column", 
           gap: gridGap,
-          pt: 16
+          pt: "12.5vh"
           }}
         >
           {artDataChunks.map((lst, chunkIdx) => (

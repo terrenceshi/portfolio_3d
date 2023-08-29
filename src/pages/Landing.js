@@ -13,7 +13,7 @@ function Landing() {
         display: 'flex', 
         flexDirection: "column", 
         alignItems: 'flex-start',
-        pt: "12%" //was 33
+        pt: "28.5vh"
       }}>
         <Typography variant="h2">
           Hi. I'm

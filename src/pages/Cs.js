@@ -27,7 +27,7 @@ function Cs() {
       timeout={{ enter: 1500 }}
       style={{ transitionDelay: '1450ms' }}
     >
-      <Box sx = {{display: "flex",justifyContent: "center", pt: "6%"}}>
+      <Box sx = {{display: "flex",justifyContent: "center", pt: "12.5vh"}}>
         {CsData.map((project, projectIdx) => {
           const indexLeft = mod(activeIdx - 1, CsData.length);
           const indexRight = mod(activeIdx + 1, CsData.length);

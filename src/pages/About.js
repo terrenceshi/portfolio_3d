@@ -41,14 +41,6 @@ function About() {
               </Typography>
             </Box>
 
-            {/* 
-              Might be kinda complex to animate once on load:
-              https://medium.com/@davidfalconbernhard/how-to-animate-once-on-page-load-in-react-js-e357fd899a4b
-              , animation: "fadeIn 1.25s"
-
-              However, doesn't really matter if whole page is animated
-            */}
-
             <div style = {pfpLoaded ? {display: "block"}:{display: "none"}}>
               <img
                 src = {pfp} 

@@ -9,7 +9,7 @@ Scene
 Art
  - Should have boxes pop up on scroll (any page that requires scrolling should)
  - improve loading / not loading lerp (could use a timer before lerp just to see if images are loaded)
-    - Could consider having a timer before every lerp to turn off all lights (me thinks probably not though)
+    - Could consider having a timer before every lerp to fade out
 
 CS
  - Layout is more or less complete. 

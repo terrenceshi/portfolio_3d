@@ -3,9 +3,6 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-import { SelectiveBloom } from '@react-three/postprocessing'
-import { BlurPass, Resizer, KernelSize } from 'postprocessing'
-
 function lerp( a, b, alpha ) {
     return a + alpha * (b - a);
 }

@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography'
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import Skeleton from '@mui/material/Skeleton';
+import Fade from '@mui/material/Fade';
 
 var numArtLoaded = 0;
 
@@ -55,34 +56,39 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                 maxWidth = {false}
             >
                 <Box sx = {{display: "flex", flexDirection: "row"}}>
-                    <Box sx = {{
-                        display: artLoaded ? "flex" : "none",
-                        flexDirection: "row",
-                        gap: 0,
-                        width: 650,
-                        overflow: "hidden"
-                    }}>
-                        {imgLst.map((imgSrc,index)=>{
-                            return(
-                                <img 
-                                    src = {imgSrc} 
-                                    key = {index}
-                                    onLoad = {() => {
-                                        numArtLoaded += 1;
-                                        if(numArtLoaded >= imgLst.length){
-                                            setArtLoaded(true);
-                                        }
-                                    }}
-                                    style = {{
-                                        minWidth: 650,
-                                        transform: `translateX(${sliderX}%)`, 
-                                        transition: "0.75s"
-                                    }}
-                                />
-                            )
-                        })
-                        }
-                    </Box>
+                    <Fade 
+                    in={artLoaded}
+                    timeout={{ enter: 1500 }}
+                    >
+                        <Box sx = {{
+                            display: artLoaded ? "flex" : "none",
+                            flexDirection: "row",
+                            gap: 0,
+                            width: 650,
+                            overflow: "hidden"
+                        }}>
+                            {imgLst.map((imgSrc,index)=>{
+                                return(
+                                    <img 
+                                        src = {imgSrc} 
+                                        key = {index}
+                                        onLoad = {() => {
+                                            numArtLoaded += 1;
+                                            if(numArtLoaded >= imgLst.length){
+                                                setArtLoaded(true);
+                                            }
+                                        }}
+                                        style = {{
+                                            minWidth: 650,
+                                            transform: `translateX(${sliderX}%)`, 
+                                            transition: "0.75s"
+                                        }}
+                                    />
+                                )
+                            })
+                            }
+                        </Box>
+                    </Fade>
                     <Box sx = {{
                         display: artLoaded ? "none" : "flex"
                     }}>

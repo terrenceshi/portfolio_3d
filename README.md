@@ -29,3 +29,4 @@ Mobile
 
 Misc
  - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
+ - Padding top for where to put your content is ineffective. Use % or something.

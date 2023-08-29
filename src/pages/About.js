@@ -21,7 +21,7 @@ function About() {
         flexDirection: "column", 
         width: "1000px",
         gap: 2,
-        pt: 16
+        pt: "6%" //was 16
       }}
       >
           <Typography variant="h4">

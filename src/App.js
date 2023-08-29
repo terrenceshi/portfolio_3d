@@ -83,7 +83,7 @@ function App() {
             <Route path="/Music" element={<Music />} />
           </Routes>
 
-          <Box sx = {{pb: 10, pt: 14}}>
+          <Box sx = {{pb: 10, pt: sceneNumber === 2 ? 14 : 4}}>
             <Footer/>
           </Box>
           

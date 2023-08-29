@@ -34,7 +34,7 @@ function Music() {
         display: 'flex', 
         flexDirection: "column", 
         width: "600px",
-        pt: 14
+        pt: "5%" //was 14
       }}
       >
         <audio 

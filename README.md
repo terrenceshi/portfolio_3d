@@ -1,7 +1,6 @@
 ## TO DO:
 
 Scene
- - Bloom added! See if you can make it selective to improve runtime.
  - Add lights from cars (hard as fuck, may need to download a new package for this one)
  - Experiment with different options for Art Background (optional)
  - Look into post effects and see what can be done (mostly editing stuff like hue saturation, brightness / contrast)
@@ -30,4 +29,4 @@ Mobile
 
 Misc
  - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
- - Padding top for where to put your content is ineffective. Use % or something.
+ - Check to see if % padding top works well on desktop

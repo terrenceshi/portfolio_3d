@@ -6,8 +6,8 @@ import LightsAndCamera from "./LightsAndCamera.js"
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useFBX } from "@react-three/drei";
 import * as THREE from 'three'
-import { Bloom, EffectComposer, SSAO } from '@react-three/postprocessing'
-import { BlurPass, Resizer, KernelSize, Resolution } from 'postprocessing'
+import { Bloom, EffectComposer, BrightnessContrast, ChromaticAberration } from '@react-three/postprocessing'
+import { BlendFunction } from 'postprocessing'
 
 function Scene({sceneNumber, thumbnailsLoaded}) {
     function RotatingBox({position, rotation, color}) {
@@ -36,6 +36,17 @@ function Scene({sceneNumber, thumbnailsLoaded}) {
 
             }}
         >
+            <EffectComposer>
+                <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+                <BrightnessContrast
+                    brightness={0.05} // brightness. min: -1, max: 1
+                    contrast={0.15} // contrast: min -1, max: 1
+                />
+                <ChromaticAberration
+                    blendFunction={BlendFunction.NORMAL} // blend mode
+                    offset={[0.002, 0.00]} // color offset
+                />
+            </EffectComposer>
 
             <LightsAndCamera sceneNumber = {sceneNumber} thumbnailsLoaded = {thumbnailsLoaded}/>
 

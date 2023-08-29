@@ -3,6 +3,7 @@ import ArtBox from '../components/Artbox.js';
 
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 var thumbnailLoadLst = new Array(ArtData.length).fill(0);
 

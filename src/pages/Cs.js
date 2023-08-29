@@ -3,6 +3,9 @@ import CsData from '../data/CsData.js';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Fade from '@mui/material/Fade';
+import Paper from '@mui/material/Paper';
+import LaunchIcon from '@mui/icons-material/Launch';
+import IconButton from '@mui/material/IconButton';
 
 function Cs() {
   return (
@@ -13,31 +16,38 @@ function Cs() {
     >
       <Box sx = {{
         display: 'flex', 
+        pt: 14
       }}>
         {CsData.map((project, projectIdx) => (
-          <Box key = {projectIdx} sx = {{
-            display: 'flex', 
-            flexDirection: "column", 
-            width: "600px",
-            gap: 2,
-            pt: 16
-          }}>
-            <Typography variant="h5">
-              {project.title}
-            </Typography>
+          <Paper elevation={3} key = {projectIdx}>
+            <Box sx = {{
+              display: 'flex', 
+              flexDirection: "column", 
+              width: "600px",
+              gap: 2,
+              p: 4,
+              pt: 3
+            }}>
+              <Box sx = {{display: 'flex',flexDirection: 'row', alignItems: 'center', gap: 2}}>
+                <Typography variant="h5">
+                  {project.title}
+                </Typography>
 
-            <Box sx = {{display: 'flex', flexDirection: "row", gap: 2}}>
-              <Box sx = {{display: 'flex', flexDirection: "column", gap: 2}}>
+                <IconButton disabled = {project.disabled}>
+                  <LaunchIcon/>
+                </IconButton>
+              </Box>
+
+              <div style={{flexDirection:'row'}}>
+                <img src = {project.image} style = {{width: 175, height: 175, float: "right", paddingLeft: 2 * 8, paddingBottom: 2 * 8}}/>
                 {project.description.map((text, textIdx) => (
-                  <Typography variant="body" key = {textIdx}>
+                  <Typography variant="body2" key = {textIdx} sx = {{textIndent: "32px", pb: 2}}>
                     {text}
                   </Typography>
                 ))}
-              </Box>
-
-              <img src = {project.image} style = {{width: 175, height: 175}}/>
+              </div>
             </Box>
-          </Box>
+          </Paper>
         ))}
       </Box>
     </Fade>

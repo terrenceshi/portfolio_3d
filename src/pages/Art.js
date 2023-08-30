@@ -26,7 +26,7 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded}) {
     <Fade 
       in={thumbnailsLoaded}
       timeout={{ enter: 1500 }}
-      style={{ transitionDelay: '1450ms' }}
+      style={{ transitionDelay: '1750ms' }}
     >
       <Box>
         <Box sx = {{

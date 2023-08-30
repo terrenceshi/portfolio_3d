@@ -44,7 +44,7 @@ function Scene({sceneNumber, thumbnailsLoaded}) {
                 />
                 <HueSaturation
                     blendFunction={BlendFunction.NORMAL} // blend mode
-                    hue={0.1} // hue in radians
+                    hue={0} // hue in radians
                     saturation={0.175} // saturation in radians
                 />
             </EffectComposer>

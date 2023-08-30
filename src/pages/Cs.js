@@ -25,7 +25,7 @@ function Cs() {
     <Fade 
       in={true}
       timeout={{ enter: 1500 }}
-      style={{ transitionDelay: '1450ms' }}
+      style={{ transitionDelay: '1750ms' }}
     >
       <Box sx = {{display: "flex",justifyContent: "center", pt: "12.5vh"}}>
         {CsData.map((project, projectIdx) => {

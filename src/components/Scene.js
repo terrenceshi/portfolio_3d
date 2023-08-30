@@ -23,6 +23,37 @@ function Scene({sceneNumber, thumbnailsLoaded}) {
         )
     }
 
+    function Effects(){
+        const bloomRef = useRef()
+
+        useFrame(({ state }) => {
+            if(sceneNumber === 2 && !thumbnailsLoaded){
+                bloomRef.current.intensity = 0.15;
+            } else {
+                bloomRef.current.intensity = 1;
+            }
+        })
+        return (
+            <EffectComposer>
+                <Bloom 
+                    ref = {bloomRef}
+                    luminanceThreshold={0} 
+                    luminanceSmoothing={0.8} 
+                    height={300} 
+                />
+                <BrightnessContrast
+                    brightness={0.05} // brightness. min: -1, max: 1
+                    contrast={0.15} // contrast: min -1, max: 1
+                />
+                <HueSaturation
+                    blendFunction={BlendFunction.NORMAL} // blend mode
+                    hue={0} // hue in radians
+                    saturation={0.175} // saturation in radians
+                />
+            </EffectComposer>
+        )
+    }
+
     const policeFbx = useFBX('./models/gtpd.fbx');
     const wreckFbx = useFBX('./models/wreck.fbx');
 
@@ -36,18 +67,7 @@ function Scene({sceneNumber, thumbnailsLoaded}) {
 
             }}
         >
-            <EffectComposer>
-                <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-                <BrightnessContrast
-                    brightness={0.05} // brightness. min: -1, max: 1
-                    contrast={0.15} // contrast: min -1, max: 1
-                />
-                <HueSaturation
-                    blendFunction={BlendFunction.NORMAL} // blend mode
-                    hue={0} // hue in radians
-                    saturation={0.175} // saturation in radians
-                />
-            </EffectComposer>
+            <Effects/>
 
             <LightsAndCamera sceneNumber = {sceneNumber} thumbnailsLoaded = {thumbnailsLoaded}/>
 

@@ -91,7 +91,7 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded}){
                 ref = {artLight}
                 position={[50,1,3]}
                 intensity = {minIntensity}
-                color = {"#7b55d4"}
+                color = {"#754bd6"}
             />
             <pointLight
                 ref = {csLight}

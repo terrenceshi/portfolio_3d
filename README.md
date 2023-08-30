@@ -2,8 +2,9 @@
 
 Scene
  - Add lights from cars (hard as fuck, may need to download a new package for this one)
- - Experiment with different options for Art Background (optional)
- - Look into post effects and see what can be done (mostly editing stuff like hue saturation, brightness / contrast)
+ - Experiment with different options for Art Background (optional) (new color? maybe a model from vg design?)
+ - look into having box not receive bloom
+ - play with music and cs lights so that the models receive bloom
  - look up use of chromatic abberation for fun
 
 Art
@@ -18,15 +19,12 @@ CS
     - The alternative is to have an earnest article and let the user be able to scroll in CS (con is lack of monster model)
 
 Music
- - Figure out how to implement player
-    - Could just give footer huge padding when on music page and put player at the bottom, absolute style
+ - Decide if you really want to replan whole structure of project so that player can be absolute
  - Add some cool effects for playing track
 
 Mobile
  - Not only change width of elements, but also change camera locations of scenes
- - Art: change layout when in mobile
- - CS: figure out how to not spill a shit load of text when screen gets smaller
 
 Misc
  - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
- - Check to see if % padding top works well on desktop
+ - Check to see if vh padding works well on laptop

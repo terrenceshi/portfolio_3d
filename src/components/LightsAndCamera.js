@@ -95,16 +95,16 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded}){
             />
             <pointLight
                 ref = {csLight}
-                position={[75,1,5]}
+                position={[74.5,0.4,4]}
                 intensity = {minIntensity}
-                color = {"#e36b6b"}
+                color = {"#ba5050"}
                 distance = {30}
             />
             <pointLight
                 ref = {musicLight}
-                position={[100,1,5]}
+                position={[100.8,1,3.6]}
                 intensity = {minIntensity}
-                color = {"#d1e9f0"}
+                color = {"#b4c8cf"}
                 distance = {30}
             />
         </group>

@@ -35,12 +35,12 @@ function Cs() {
           const leftStyle = {
             transform: "translateX(-25%) scale(0.8)",
             transition: "900ms",
-            opacity: "0.4"
+            opacity: "0.6"
           }
           const rightStyle = {
             transform: "translateX(25%) scale(0.8)",
             transition: "900ms",
-            opacity: "0.4"
+            opacity: "0.6"
           }
           const midStyle = {
             opacity: 1,

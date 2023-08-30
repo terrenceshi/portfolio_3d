@@ -4,7 +4,6 @@ Scene
  - Add lights from cars (hard as fuck, may need to download a new package for this one)
  - Experiment with different options for Art Background (optional) (new color? maybe a model from vg design?)
  - look into having box not receive bloom
- - play with music and cs lights so that the models receive bloom
  - look up use of chromatic abberation for fun
 
 Art

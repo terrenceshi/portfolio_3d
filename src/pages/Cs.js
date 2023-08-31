@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import CsData from '../data/CsData.js';
 
@@ -12,12 +12,17 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import LaunchIcon from '@mui/icons-material/Launch'
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
+import Skeleton from '@mui/material/Skeleton';
 import { styled } from '@mui/material';
 
 const MuiImg = styled("img")({});
 
 function Cs() {
   const [activeIdx, setActiveIdx] = useState(0);
+
+  const arr = Array.from(Array(CsData.length).keys())
+  const initMap = new Map(arr.map(element => [element, false]))
+  const [loadedImgs, setLoadedImgs] = useState(initMap);
 
   const mod = (n, m) => {
     let result = n % m;
@@ -39,6 +44,10 @@ function Cs() {
     sm: "translateX(20%) scale(0.8)", 
     xs: "translateX(15%) scale(0.8)"
   };
+
+  useEffect(() => {
+    console.log(loadedImgs);
+  });
 
   return (
     <Fade 
@@ -92,16 +101,32 @@ function Cs() {
                 </Box>
 
                 <div style={{flexDirection:'row'}}>
-                  <MuiImg
-                    src = {project.image} 
-                    sx = {{
-                      width: 150, 
-                      height: 150, 
-                      float: "right", 
-                      paddingLeft: 2, 
-                      paddingBottom: 2,
-                      display: {md: 'block', sm: 'none', xs: 'none'}
+
+                    <MuiImg
+                      src = {project.image} 
+                      onLoad = {() => {
+                        console.log("hi")
+                        setLoadedImgs(loadedImgs.set(projectIdx,true));
+                      }}
+                      sx = {{
+                        width: 150, 
+                        height: 150, 
+                        pl: 2,
+                        pb: 2,
+                        float: "right",
+                        display: loadedImgs.get(projectIdx) ? {md: 'block', sm: 'none', xs: 'none'} : "none"
+                    }}/>
+
+
+                  <Skeleton variant = {"rectangular"} sx = {{
+                    width: 134, 
+                    height: 134, 
+                    ml: 2,
+                    mb: 2,
+                    float: "right",
+                    display: loadedImgs.get(projectIdx) ? "none" : "block"
                   }}/>
+
                   {project.description.map((text, textIdx) => (
                     <Typography 
                       variant="body2" 

@@ -19,7 +19,6 @@ Misc
  - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
  - Look into why sometimes menu link does not work
  - figure out how to deal with height discrepency (laptop has about 800 height)
-    - landing screen uses different padding top value depending on device
     - on desktop, artbox can go up to 650 width but gotta shave it down for laptop
         - maybe create some algorithm to calculate an images dimensions and see how much you can fit
     - music padding on footer is extremely awkward

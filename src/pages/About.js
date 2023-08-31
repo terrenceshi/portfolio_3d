@@ -46,18 +46,23 @@ function About() {
               </Typography>
             </Box>
 
-            <Box sx = {{display: pfpLoaded ? {sm:"block", xs: "none"} : "none"}}>
-              <img
-                src = {pfp} 
-                alt = "pfp" 
-                onLoad = {() => setPfpLoaded(true)}
-                style = {{
-                  width: 175, 
-                  height: 175, 
-                  borderRadius: "50%"
-                }}
-              />
-            </Box>
+            <Fade 
+              in={pfpLoaded}
+              timeout={{ enter: 1500 }}
+            >
+              <Box sx = {{display: pfpLoaded ? {sm:"block", xs: "none"} : "none"}}>
+                <img
+                  src = {pfp} 
+                  alt = "pfp" 
+                  onLoad = {() => setPfpLoaded(true)}
+                  style = {{
+                    width: 175, 
+                    height: 175, 
+                    borderRadius: "50%"
+                  }}
+                />
+              </Box>
+            </Fade>
 
             <div style = {pfpLoaded ? {display: "none"}:{display: "block"}}>
               <Skeleton 

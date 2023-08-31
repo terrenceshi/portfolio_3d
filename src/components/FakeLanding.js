@@ -38,15 +38,20 @@ function FakeLanding ({canvasLoaded, screenSize}) {
                 justifyContent: 'space-between',
                 flexDirection: "column"
             }}>
-                <Box sx = {{
-                    display: 'flex', 
-                    flexDirection: "column", 
-                    alignItems: 'flex-start',
-                    pt: { sm: "28vh", xs: "34vh" },
-                    gap: 4
-                }}>
-                    <Skeleton variant="rounded" sx = {{width: {sm: 211.64, xs: 172.91}, height: {sm: 80, xs: 66}}}  />
-                    <Skeleton variant="rounded" sx = {{width: {sm: 497.13, xs: 315.78}, height: {sm: 126, xs: 80}}}  />
+                <Box>
+                    <Box sx = {{
+                        display: 'flex', 
+                        flexDirection: "column", 
+                        alignItems: 'flex-start',
+                        position: "absolute",
+                        left: "50%",
+                        top: "41.5%",
+                        transform: "translate(-50%, -50%)",
+                        gap: 4
+                    }}>
+                        <Skeleton variant="rounded" sx = {{width: {sm: 211.64, xs: 172.91}, height: {sm: 84, xs: 66}}}  />
+                        <Skeleton variant="rounded" sx = {{width: {sm: 497.13, xs: 315.78}, height: {sm: 100, xs: 84}}}  />
+                    </Box>
                 </Box>
 
                 <Box sx = {{pb: 10, pt: 2}}>

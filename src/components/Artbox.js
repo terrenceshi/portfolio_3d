@@ -139,7 +139,7 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                             </Typography>
                             <Typography sx = {{
                                 display: {md: 'block', sm: 'none', xs: 'none'},
-                                typography: {lg: "body1", md: "body2"}
+                                typography: "body2"
                             }}>
                                 {artDict.description}
                             </Typography>

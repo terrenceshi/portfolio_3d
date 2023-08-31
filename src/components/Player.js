@@ -61,7 +61,7 @@ function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, mute, set
             </Box>
             
             <Box sx = {{display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%', justifyContent: 'space-evenly'}}>
-              <Box sx = {{width: {sm: 127, xs: 98}, height: {sm: 44, xs: 40}}}/>
+              <Box sx = {{width: {sm: 127, xs: 88}, height: {sm: 44, xs: 40}}}/>
 
               <Box sx = {{display: 'flex', flexDirection: 'row', gap: 1}}>
                 <IconButton onClick={()=>setCurrentSong(MusicData[currentSong.index - 1 < 0 ? MusicData.length - 1 : currentSong.index - 1])}>
@@ -89,10 +89,10 @@ function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, mute, set
                     value = {volume * 100}
                     onChange = {(event, newValue) => setVolume(newValue / 100)}
                     sx = {{
-                        width: {sm: 75, xs: 50},
+                        width: {sm: 75, xs: 40},
                         '& .MuiSlider-thumb': {
-                            height: 14,
-                            width: 14
+                            height: {sm: 14, xs: 12},
+                            width: {sm: 14, xs: 12}
                         }
                 }}/>
               </Box>

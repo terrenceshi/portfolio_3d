@@ -70,7 +70,7 @@ function App() {
     } else if (xl) {
       setScreenSize('xl');
     }
-    console.log(screenSize);
+    //console.log(screenSize);
   });
 
   return (

@@ -48,6 +48,7 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize}){
             csVec.set(74.6,-0.15,5);
             musicVec.set(100.3,0.7,5.5);
         } else if (screenSize === 'lg'){
+            homeVec.set(0,0.25,5);
             aboutVec.set(25.25,0.25,10);
             csVec.set(74.85,-0.1,5);
             musicVec.set(100.25,0.4,5);

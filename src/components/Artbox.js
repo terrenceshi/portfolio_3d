@@ -126,7 +126,7 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                         gap: 1
                     }}>
                         <Box sx = {{display: "flex", flexDirection: "column", gap: 1}}>
-                            <Typography sx={{ typography: { sm: 'h5', xs: 'h7' } }}>
+                            <Typography sx={{ typography: { sm: 'h5', xs: 'h6' } }}>
                                 {artDict.title}
                             </Typography>
                             <Typography 

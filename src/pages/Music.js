@@ -44,7 +44,7 @@ function Music({screenSize}) {
         display: 'flex', 
         flexDirection: "column", 
         width: {sm: 600, xs: 400},
-        pt: "8.75vh" //was 14
+        pt: "8.75vh"
       }}
       >
         <audio 
@@ -80,7 +80,7 @@ function Music({screenSize}) {
               gap: 2,
               py: 2
             }}>
-              <Box>
+              <Box sx = {{px: 1}}>
                 <IconButton 
                   sx={{ "&:hover": { backgroundColor: "transparent" }}}
                   onClick={() => {

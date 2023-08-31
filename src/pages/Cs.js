@@ -49,7 +49,7 @@ function Cs() {
       <Box sx = {{
         display: "flex",
         justifyContent: "center", 
-        pt: {sm: "12.5vh", xs: "22.5vh"},
+        pt: {sm: "12.5vh", xs: "20vh"},
         pl: {lg: "40vw", md: "32vw", sm: "32vw", xs: "0vw"}
       }}>
         {CsData.map((project, projectIdx) => {

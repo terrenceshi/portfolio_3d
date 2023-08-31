@@ -33,7 +33,7 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
     let imgLst = artDict.images;
     let maxSliderX = (artDict.images.length - 1) * -100;
 
-    const dialogImgSize = {lg: 550, md: 525, sm: 525, xs: 320};
+    const dialogImgSize = {lg: 550, md: 525, sm: 425, xs: 320};
 
     return (
         <Box sx = {{display: "flex"}}>

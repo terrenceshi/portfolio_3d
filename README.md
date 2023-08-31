@@ -23,5 +23,6 @@ Misc
         - maybe create some algorithm to calculate an images dimensions and see how much you can fit
     - music padding on footer is extremely awkward
         - making ONE song or sample would solve this issue.
+ - Improve run time by looking into this: https://github.com/pmndrs/gltfjsx
 
  - look up use of chromatic abberation for fun

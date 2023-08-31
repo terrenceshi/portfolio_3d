@@ -1,9 +1,6 @@
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 
-import Landing from "../pages/Landing.js"
-import Navbar from "./Navbar.js"
-
 function FakeLanding ({canvasLoaded, screenSize}) {
     const iconDim = {sm: 68.77, xs: 51.63};
     return (

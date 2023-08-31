@@ -15,7 +15,6 @@ import Box from '@mui/material/Box';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import Fade from '@mui/material/Fade';
 
 const darkTheme = createTheme({
@@ -30,6 +29,14 @@ const darkTheme = createTheme({
   },
 });
 
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
 function App() {
   const [ sceneNumber, setSceneNumber ] = useState(0); //0 = landing, 1 = about, 2 = art, 3 = CS, 4 = music
   const [ thumbnailsLoaded, setThumbnailsLoaded ] = useState(false);
@@ -37,26 +44,27 @@ function App() {
   const [ canvasLoaded, setCanvasLoaded ] = useState(false);
 
   const theme = useTheme();
-  const xs = useMediaQuery(theme.breakpoints.between("xs", "sm"));
-  const sm = useMediaQuery(theme.breakpoints.between("sm", "md"));
-  const md = useMediaQuery(theme.breakpoints.between("md", "lg"));
-  const lg = useMediaQuery(theme.breakpoints.between("lg", "xl"));
-  const xl = useMediaQuery(theme.breakpoints.up('xl'));
 
-  useEffect(() => {
-    if (xs) {
+  function handleResize() {
+    var width = getWindowDimensions().width;
+    if (width >= theme.breakpoints.values.xs && width < theme.breakpoints.values.sm) {
       setScreenSize('xs');
-    } else if (sm) {
+    } else if (width >= theme.breakpoints.values.sm && width < theme.breakpoints.values.md) {
       setScreenSize('sm');
-    } else if (md) {
+    } else if (width >= theme.breakpoints.values.md && width < theme.breakpoints.values.lg) {
       setScreenSize('md');
-    } else if (lg) {
+    } else if (width >= theme.breakpoints.values.lg && width < theme.breakpoints.values.xl) {
       setScreenSize('lg');
-    } else if (xl) {
+    } else if (width >= theme.breakpoints.values.xl) {
       setScreenSize('xl');
     }
-    //console.log(screenSize);
-  });
+  }
+
+  useEffect(() => {
+    handleResize()
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className = "App">

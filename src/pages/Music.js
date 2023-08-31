@@ -96,7 +96,7 @@ function Music({screenSize}) {
                 {song.title}
               </Typography>
             </Box>
-            {idx != MusicData.length - 1 ? <Divider/> : <div/>}
+            {idx !== MusicData.length - 1 ? <Divider/> : <div/>}
           </Box>
         ))}
       </Box>

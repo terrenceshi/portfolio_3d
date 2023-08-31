@@ -4,7 +4,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from "./components/Navbar.js"
 import Footer from "./components/Footer.js"
 import Scene from "./components/Scene.js"
-
+import FakeLanding from "./components/FakeLanding.js"
 import Landing from "./pages/Landing.js"
 import About from "./pages/About.js"
 import Art from "./pages/Art.js"
@@ -16,6 +16,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import Fade from '@mui/material/Fade';
 
 const darkTheme = createTheme({
   palette: {
@@ -33,6 +34,7 @@ function App() {
   const [ sceneNumber, setSceneNumber ] = useState(0); //0 = landing, 1 = about, 2 = art, 3 = CS, 4 = music
   const [ thumbnailsLoaded, setThumbnailsLoaded ] = useState(false);
   const [ screenSize, setScreenSize ] = useState('md');
+  const [ canvasLoaded, setCanvasLoaded ] = useState(false);
 
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.between("xs", "sm"));
@@ -78,49 +80,59 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
 
-        <Box sx = {{zIndex: 1001, position: "absolute", pt: 1}}>
-          <Navbar/>
-        </Box>
+        <Fade 
+          in={canvasLoaded}
+          timeout={{ enter: 1500 }}
+        >
+          <Box>
+            <Box sx = {{zIndex: 1001, position: "absolute", pt: 1}}>
+              <Navbar/>
+            </Box>
 
-        <Box sx = {{
-          zIndex: 1000, 
-          position: "absolute",
-          overflowY: "scroll",
-          display: "flex", 
-          width: "100vw",
-          height: "100vh",
-          alignItems: "center",
-          justifyContent: 'space-between',
-          flexDirection: "column"
-        }}>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Art" element={
-              <Art 
-                thumbnailsLoaded = {thumbnailsLoaded}
-                setThumbnailsLoaded = {setThumbnailsLoaded} 
-              />
-            } />
-            <Route path="/CS" element={<Cs />} />
-            <Route path="/Music" element={
-              <Music 
-                screenSize = {screenSize}
-              />} 
+            <Box sx = {{
+              zIndex: 1000, 
+              position: "absolute",
+              overflowY: "scroll",
+              display: "flex", 
+              width: "100vw",
+              height: "100vh",
+              alignItems: "center",
+              justifyContent: 'space-between',
+              flexDirection: "column"
+            }}>
+              <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/About" element={<About />} />
+                <Route path="/Art" element={
+                  <Art 
+                    thumbnailsLoaded = {thumbnailsLoaded}
+                    setThumbnailsLoaded = {setThumbnailsLoaded} 
+                  />
+                } />
+                <Route path="/CS" element={<Cs />} />
+                <Route path="/Music" element={
+                  <Music 
+                    screenSize = {screenSize}
+                  />} 
+                />
+              </Routes>
+
+              <Box sx = {{pb: 10, pt: sceneNumber === 2 ? 14 : 2}}>
+                <Footer screenSize = {screenSize}/>
+              </Box>
+              
+            </Box>
+
+            <Scene 
+              sceneNumber = {sceneNumber}
+              thumbnailsLoaded = {thumbnailsLoaded}
+              screenSize = {screenSize}
+              setCanvasLoaded = {setCanvasLoaded}
             />
-          </Routes>
-
-          <Box sx = {{pb: 10, pt: sceneNumber === 2 ? 14 : 2}}>
-            <Footer screenSize = {screenSize}/>
           </Box>
-          
-        </Box>
+        </Fade>
 
-        <Scene 
-          sceneNumber = {sceneNumber}
-          thumbnailsLoaded = {thumbnailsLoaded}
-          screenSize = {screenSize}
-        />
+        <FakeLanding canvasLoaded = {canvasLoaded} screenSize = {screenSize}/>
 
       </ThemeProvider>
 

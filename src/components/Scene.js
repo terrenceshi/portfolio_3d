@@ -9,7 +9,7 @@ import * as THREE from 'three'
 import { Bloom, EffectComposer, BrightnessContrast, HueSaturation } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
 
-function Scene({sceneNumber, thumbnailsLoaded, screenSize}) {
+function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded}) {
     function RotatingBox({position, rotation, color}) {
         const box = useRef()
         useFrame(({ clock }) => {
@@ -63,8 +63,8 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize}) {
             camera = {{position: [0,0.25,5]}}
             shadows
             onCreated={(state) => {
+                setCanvasLoaded(true);
                 state.camera.rotation.set(THREE.MathUtils.degToRad(-5), 0, 0);
-
             }}
         >
             <Effects/>

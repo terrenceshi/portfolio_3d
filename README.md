@@ -20,7 +20,7 @@ Mobile
 
 Misc
  - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
- - Look for onCanvas load type thingie. Threejs canvas wont load easily for everyone.
+ - Look into why sometimes menu link does not work
  - Check to see if vh padding works well on laptop
 
  - look up use of chromatic abberation for fun

@@ -16,7 +16,7 @@ function Landing() {
           alignItems: 'flex-start',
           position: "absolute",
           left: "50%",
-          top: "42%",
+          top: "41.5%",
           transform: "translate(-50%, -50%)"
         }}>
           <Typography sx={{ typography: { sm: 'h2', xs: 'h3' } }}>

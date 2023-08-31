@@ -9,18 +9,23 @@ function Landing() {
       timeout={{ enter: 1500 }}
       style={{ transitionDelay: '1750ms' }}
     >
-      <Box sx = {{
-        display: 'flex', 
-        flexDirection: "column", 
-        alignItems: 'flex-start',
-        pt: { sm: "28vh", xs: "34vh" }
-      }}>
-        <Typography sx={{ typography: { sm: 'h2', xs: 'h3' } }}>
-          Hi. I'm
-        </Typography>
-        <Typography sx={{ typography: { sm: 'h1', xs: 'h2' } }}>
-          Terrence.
-        </Typography>
+      <Box>
+        <Box sx = {{
+          display: 'flex', 
+          flexDirection: "column", 
+          alignItems: 'flex-start',
+          position: "absolute",
+          left: "50%",
+          top: "42%",
+          transform: "translate(-50%, -50%)"
+        }}>
+          <Typography sx={{ typography: { sm: 'h2', xs: 'h3' } }}>
+            Hi. I'm
+          </Typography>
+          <Typography sx={{ typography: { sm: 'h1', xs: 'h2' } }}>
+            Terrence.
+          </Typography>
+        </Box>
       </Box>
     </Fade>
   );

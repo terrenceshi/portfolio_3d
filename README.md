@@ -15,15 +15,14 @@ Music
 CS
  - Image load?
 
-Mobile
- - Do some quick testing make sure its good!
-
 Misc
  - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
  - Look into why sometimes menu link does not work
- - Check to see if vh padding works well on laptop
-    - fix azula height
-    - fix computer vision text
-    - fix cs height
+ - figure out how to deal with height discrepency (laptop has about 800 height)
+    - landing screen uses different padding top value depending on device
+    - on desktop, artbox can go up to 650 width but gotta shave it down for laptop
+        - maybe create some algorithm to calculate an images dimensions and see how much you can fit
+    - music padding on footer is extremely awkward
+        - making ONE song or sample would solve this issue.
 
  - look up use of chromatic abberation for fun

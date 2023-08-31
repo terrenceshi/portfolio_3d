@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import Navbar from "./components/Navbar.js"
 import Footer from "./components/Footer.js"
@@ -42,25 +42,8 @@ function App() {
   const md = useMediaQuery(theme.breakpoints.between("md", "lg"));
   const lg = useMediaQuery(theme.breakpoints.between("lg", "xl"));
   const xl = useMediaQuery(theme.breakpoints.up('xl'));
-  
-  const location = useLocation();
-  
+
   useEffect(() => {
-    if(location['pathname'] === '/' & sceneNumber !== 0){
-      setSceneNumber(0)
-    }
-    if(location['pathname'] === '/About' & sceneNumber !== 1){
-      setSceneNumber(1)
-    }
-    if(location['pathname'] === '/Art' & sceneNumber !== 2){
-      setSceneNumber(2)
-    }
-    if(location['pathname'] === '/CS' & sceneNumber !== 3){
-      setSceneNumber(3)
-    }
-    if(location['pathname'] === '/Music' & sceneNumber !== 4){
-      setSceneNumber(4)
-    }
     if (xs) {
       setScreenSize('xs');
     } else if (sm) {
@@ -101,18 +84,20 @@ function App() {
               flexDirection: "column"
             }}>
               <Routes>
-                <Route path="/" element={<Landing />} />
-                <Route path="/About" element={<About />} />
+                <Route path="/" element={<Landing setSceneNumber={setSceneNumber}/>} />
+                <Route path="/About" element={<About setSceneNumber={setSceneNumber}/>} />
                 <Route path="/Art" element={
                   <Art 
                     thumbnailsLoaded = {thumbnailsLoaded}
                     setThumbnailsLoaded = {setThumbnailsLoaded} 
+                    setSceneNumber={setSceneNumber}
                   />
                 } />
-                <Route path="/CS" element={<Cs />} />
+                <Route path="/CS" element={<Cs setSceneNumber={setSceneNumber}/>} />
                 <Route path="/Music" element={
                   <Music 
                     screenSize = {screenSize}
+                    setSceneNumber={setSceneNumber}
                   />} 
                 />
               </Routes>

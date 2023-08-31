@@ -11,7 +11,7 @@ import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import Divider from '@mui/material/Divider';
 import Fade from '@mui/material/Fade';
 
-function Music({screenSize}) {
+function Music({screenSize, setSceneNumber}) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSong, setCurrentSong] = useState(MusicData[0]);
   const [mute, setMute] = useState(false);
@@ -19,6 +19,10 @@ function Music({screenSize}) {
   const [currentTime, setCurrentTime] = useState(0)
 
   const audioElem = useRef();
+
+  useEffect(() => {
+    setSceneNumber(4);
+  }, []);
 
   useEffect(() => {
     if(mute){

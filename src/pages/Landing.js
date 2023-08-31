@@ -1,8 +1,13 @@
+import { useEffect } from 'react';
+
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Fade from '@mui/material/Fade';
 
-function Landing() {
+function Landing({setSceneNumber}) {
+  useEffect(() => {
+    setSceneNumber(0);
+  }, []);
   return (
     <Fade 
       in={true}

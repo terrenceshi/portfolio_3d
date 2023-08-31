@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import ArtData from '../data/ArtData.js';
 import ArtBox from '../components/Artbox.js';
 
@@ -6,7 +8,7 @@ import Fade from '@mui/material/Fade';
 
 var thumbnailLoadLst = new Array(ArtData.length).fill(0);
 
-function Art({thumbnailsLoaded, setThumbnailsLoaded}) {
+function Art({thumbnailsLoaded, setThumbnailsLoaded, setSceneNumber}) {
   const artDataChunks = ArtData.reduce((resultArray, item, index) => { 
     const chunkIndex = Math.floor(index/3)
   
@@ -20,6 +22,10 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded}) {
   }, [])
 
   const gridGap = {lg: 3, md: 2, sm: 1, xs: 3};
+
+  useEffect(() => {
+    setSceneNumber(2);
+  }, []);
 
   return (
     <Fade 

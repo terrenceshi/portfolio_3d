@@ -17,7 +17,7 @@ import { styled } from '@mui/material';
 
 const MuiImg = styled("img")({});
 
-function Cs() {
+function Cs({setSceneNumber}) {
   const [activeIdx, setActiveIdx] = useState(0);
 
   const arr = Array.from(Array(CsData.length).keys())
@@ -46,9 +46,9 @@ function Cs() {
   };
 
   useEffect(() => {
-    console.log(loadedImgs);
-  });
-
+    setSceneNumber(3);
+  }, []);
+  
   return (
     <Fade 
       in={true}

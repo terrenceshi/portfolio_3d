@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import pfp from "../assets/pfp.jpg"
 
@@ -7,8 +7,12 @@ import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 import Fade from '@mui/material/Fade';
 
-function About() {
+function About({setSceneNumber}) {
   const [pfpLoaded, setPfpLoaded] = useState(false)
+
+  useEffect(() => {
+    setSceneNumber(1);
+  }, []);
 
   return (
     <Fade 

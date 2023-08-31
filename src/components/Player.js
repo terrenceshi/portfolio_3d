@@ -61,7 +61,7 @@ function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, mute, set
             </Box>
             
             <Box sx = {{display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%', justifyContent: 'space-evenly'}}>
-              <Box sx = {{width: {sm: 127, xs: 88}, height: {sm: 44, xs: 40}}}/>
+              <Box sx = {{width: {sm: 119, xs: 80}, height: {sm: 44, xs: 40}}}/>
 
               <Box sx = {{display: 'flex', flexDirection: 'row', gap: 1}}>
                 <IconButton onClick={()=>setCurrentSong(MusicData[currentSong.index - 1 < 0 ? MusicData.length - 1 : currentSong.index - 1])}>
@@ -78,7 +78,7 @@ function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, mute, set
                 </IconButton>
               </Box>
 
-              <Box sx = {{display: 'flex', flexDirection: 'row',alignItems: 'center', gap: 1}}>
+              <Box sx = {{display: 'flex', flexDirection: 'row',alignItems: 'center', gap: 0}}>
                 <IconButton onClick = {() => setMute(!mute)}>
                   {mute ? 
                     <VolumeOffIcon sx = {{fontSize: {sm: 28, xs: 24}}}/> : 

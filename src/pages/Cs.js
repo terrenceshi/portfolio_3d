@@ -49,7 +49,8 @@ function Cs() {
       <Box sx = {{
         display: "flex",
         justifyContent: "center", 
-        pt: {sm: "12.5vh", xs: "22.5vh"}
+        pt: {sm: "12.5vh", xs: "22.5vh"},
+        pl: {lg: "40vw", md: "32vw", sm: "32vw", xs: "0vw"}
       }}>
         {CsData.map((project, projectIdx) => {
           const indexLeft = mod(activeIdx - 1, CsData.length);
@@ -75,7 +76,7 @@ function Cs() {
               <Box sx = {{
                 display: 'flex', 
                 flexDirection: "column", 
-                width: { lg: 600, md: 500, sm: 400, xs: 300 },
+                width: { lg: 500, md: 500, sm: 380, xs: 270 },
                 gap: 2,
                 p: 4,
                 pt: 3
@@ -100,7 +101,7 @@ function Cs() {
                       variant="body2" 
                       key = {textIdx} 
                       sx = {{
-                        textIndent: "32px", 
+                        textIndent: {sm: 32, xs: 0}, 
                         pb: 2,
                         display: textIdx !== 0 ? {sm: "block", xs: "none"} : "block"
                       }}>

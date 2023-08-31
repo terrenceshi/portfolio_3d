@@ -110,7 +110,7 @@ function App() {
             />
           </Routes>
 
-          <Box sx = {{pb: 10, pt: sceneNumber === 2 ? 14 : 4}}>
+          <Box sx = {{pb: 10, pt: sceneNumber === 2 ? 14 : 2}}>
             <Footer screenSize = {screenSize}/>
           </Box>
           

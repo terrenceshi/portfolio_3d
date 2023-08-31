@@ -35,27 +35,27 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize}){
         if(screenSize === 'xs'){
             homeVec.set(1.05, 0.1, 7);
             aboutVec.set(25.5,1.25,13);
-            csVec.set(74.15,-0.15,5);
+            csVec.set(74.6,0,6.5);
             musicVec.set(100.85,0.4,7);
         } else if(screenSize === 'sm') {
             homeVec.set(0.6,0.15,6.5);
             aboutVec.set(25.5,0.5,11);
-            csVec.set(74.4,-0.15,5);
+            csVec.set(74.4,-0.05,5.75);
             musicVec.set(101.025,0.7,5.5);
         } else if(screenSize === 'md'){
             homeVec.set(0.4,0.25,5.5);
             aboutVec.set(25.5,0.3,10.5);
-            csVec.set(74.6,-0.15,5);
+            csVec.set(74.75,-0.05,5.5);
             musicVec.set(100.3,0.7,5.5);
         } else if (screenSize === 'lg'){
             homeVec.set(0,0.25,5);
             aboutVec.set(25.25,0.25,10);
-            csVec.set(74.85,-0.1,5);
+            csVec.set(74.5,-0.05,5);
             musicVec.set(100.25,0.4,5);
         } else {
             homeVec.set(0,0.25,5);
             aboutVec.set(25,0.25,10);
-            csVec.set(75,-0.05,5);
+            csVec.set(74.75,-0.05,5);
             musicVec.set(100,0.4,5);
         }
 

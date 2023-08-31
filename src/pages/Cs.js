@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import LaunchIcon from '@mui/icons-material/Launch'
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material';
@@ -80,16 +81,22 @@ function Cs() {
                 p: 4,
                 pt: 3
               }}>
-                <Typography sx = {{typography:{sm: "h5", xs: "body1"}}}>
-                  {project.title}
-                </Typography>
+                <Box sx = {{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2}}>
+                  <Typography sx = {{typography:{md: "h5", sm: "h6", xs: "body1"}}}>
+                    {project.title}
+                  </Typography>
+
+                  <IconButton disabled = {project.disabled} sx = {{display: {sm: 'inline-flex', xs: 'none'}}}>
+                    <LaunchIcon/>
+                  </IconButton>
+                </Box>
 
                 <div style={{flexDirection:'row'}}>
                   <MuiImg
                     src = {project.image} 
                     sx = {{
-                      width: 175, 
-                      height: 175, 
+                      width: 150, 
+                      height: 150, 
                       float: "right", 
                       paddingLeft: 2, 
                       paddingBottom: 2,
@@ -112,7 +119,7 @@ function Cs() {
                     variant="text"
                     component = {Link}
                     to = {project.link}
-                    sx = {{color: 'primary.main'}}
+                    sx = {{color: 'primary.main', display: {sm: "none", xs: "block"}}}
                     disabled = {project.disabled}
                   >
                     Read more

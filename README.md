@@ -22,5 +22,8 @@ Misc
  - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
  - Look into why sometimes menu link does not work
  - Check to see if vh padding works well on laptop
+    - fix azula height
+    - fix computer vision text
+    - fix cs height
 
  - look up use of chromatic abberation for fun

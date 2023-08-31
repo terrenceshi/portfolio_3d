@@ -2,8 +2,7 @@
 
 Scene
  - Add lights from cars (hard as fuck, may need to download a new package for this one)
- - Experiment with different options for Art Background (optional) (new color? maybe a model from vg design?)
- - look up use of chromatic abberation for fun
+ - Look at different colors for Art page
 
 Art
  - Should have boxes pop up on scroll (any page that requires scrolling should)
@@ -15,11 +14,13 @@ Music
 
 CS
  - Image load?
- - refactor cs code to make it not look ugly as fuckign sin
 
 Mobile
  - Do some quick testing make sure its good!
 
 Misc
  - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
+ - Look for onCanvas load type thingie. Threejs canvas wont load easily for everyone.
  - Check to see if vh padding works well on laptop
+
+ - look up use of chromatic abberation for fun

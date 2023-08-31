@@ -54,23 +54,28 @@ function Navbar () {
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={() => {setAnchorEl(null)}}
+          sx = {{".MuiMenu-list": { py: 0 }}}
         >
-          <MenuItem onClick={() => setAnchorEl(null)}>
-            <Typography variant = "body2">
-              <Link style = {{textDecoration: "none", color: "white"}} to = {'/'}>
-                Home
-              </Link>
-            </Typography>
-          </MenuItem>
+          <Link style = {{textDecoration: "none", color: "white"}} to = {'/'}>
+            <Box sx = {{pt: 1}} onClick={() => setAnchorEl(null)}>
+              <MenuItem>
+                <Typography variant = "body2">
+                    Home
+                </Typography>
+              </MenuItem>
+            </Box>
+          </Link>
 
-          {pages.map((page) => (
-            <MenuItem key={page} onClick={() => setAnchorEl(null)}>
-              <Typography variant = "body2">
-                <Link style = {{textDecoration: "none", color: "white"}} to = {`/${page}`}>
-                  {page}
-                </Link>
-              </Typography>
-            </MenuItem>
+          {pages.map((page, idx) => (
+            <Link style = {{textDecoration: "none", color: "white"}} to = {`/${page}`}>
+              <Box sx = {{pb: idx === pages.length - 1 ? 1 : 0}} onClick={() => setAnchorEl(null)}>
+                <MenuItem key={page}>
+                  <Typography variant = "body2">
+                      {page}
+                  </Typography>
+                </MenuItem>
+              </Box>
+            </Link>
           ))}
         </Menu>
       </Box>

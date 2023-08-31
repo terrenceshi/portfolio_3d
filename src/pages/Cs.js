@@ -101,7 +101,6 @@ function Cs({setSceneNumber}) {
                 </Box>
 
                 <div style={{flexDirection:'row'}}>
-
                     <MuiImg
                       src = {project.image} 
                       onLoad = {() => {
@@ -124,7 +123,7 @@ function Cs({setSceneNumber}) {
                     ml: 2,
                     mb: 2,
                     float: "right",
-                    display: loadedImgs.get(projectIdx) ? "none" : "block"
+                    display: loadedImgs.get(projectIdx) ? "none" : {md: 'block', sm: 'none', xs: 'none'}
                   }}/>
 
                   {project.description.map((text, textIdx) => (

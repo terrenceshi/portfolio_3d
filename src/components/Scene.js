@@ -9,7 +9,7 @@ import * as THREE from 'three'
 import { Bloom, EffectComposer, BrightnessContrast, HueSaturation } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
 
-function Scene({sceneNumber, thumbnailsLoaded}) {
+function Scene({sceneNumber, thumbnailsLoaded, screenSize}) {
     function RotatingBox({position, rotation, color}) {
         const box = useRef()
         useFrame(({ clock }) => {
@@ -69,12 +69,16 @@ function Scene({sceneNumber, thumbnailsLoaded}) {
         >
             <Effects/>
 
-            <LightsAndCamera sceneNumber = {sceneNumber} thumbnailsLoaded = {thumbnailsLoaded}/>
+            <LightsAndCamera 
+                sceneNumber = {sceneNumber} 
+                thumbnailsLoaded = {thumbnailsLoaded} 
+                screenSize = {screenSize}
+            />
 
             {/* Ground and Wall(s) */}
 
             <mesh receiveShadow position={[50, -1, 0]} rotation-x={-Math.PI / 2}>
-                <planeGeometry args={[140, 20]} />
+                <planeGeometry args={[140, 25]} />
                 <meshPhongMaterial />
             </mesh>
 

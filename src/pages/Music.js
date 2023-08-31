@@ -11,7 +11,7 @@ import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import Divider from '@mui/material/Divider';
 import Fade from '@mui/material/Fade';
 
-function Music() {
+function Music({screenSize}) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSong, setCurrentSong] = useState(MusicData[0]);
   const [mute, setMute] = useState(false);
@@ -43,7 +43,7 @@ function Music() {
       <Box sx = {{
         display: 'flex', 
         flexDirection: "column", 
-        width: "600px",
+        width: {sm: 600, xs: 400},
         pt: "8.75vh" //was 14
       }}
       >
@@ -68,6 +68,7 @@ function Music() {
           volume = {volume}
           setVolume = {setVolume}
           currentTime = {currentTime}
+          screenSize = {screenSize}
         />
 
         {MusicData.map((song, idx) => (

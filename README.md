@@ -10,18 +10,15 @@ Art
  - improve loading / not loading lerp (could use a timer before lerp just to see if images are loaded)
     - Could consider having a timer before every lerp to fade out
 
-CS
- - Layout is more or less complete. 
-    - Main con is the fact that not much information can be put in. 
-    - This con would be offset by having projects with external pages (put back improved B2N + another)
-    - The alternative is to have an earnest article and let the user be able to scroll in CS (con is lack of monster model)
-
 Music
- - Decide if you really want to replan whole structure of project so that player can be absolute
  - Add some cool effects for playing track
 
+CS
+ - Image load?
+ - refactor cs code to make it not look ugly as fuckign sin
+
 Mobile
- - Not only change width of elements, but also change camera locations of scenes
+ - Do some quick testing make sure its good!
 
 Misc
  - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 

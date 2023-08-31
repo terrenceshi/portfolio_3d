@@ -14,6 +14,8 @@ import Music from "./pages/Music.js"
 import Box from '@mui/material/Box';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const darkTheme = createTheme({
   palette: {
@@ -30,8 +32,17 @@ const darkTheme = createTheme({
 function App() {
   const [ sceneNumber, setSceneNumber ] = useState(0); //0 = landing, 1 = about, 2 = art, 3 = CS, 4 = music
   const [ thumbnailsLoaded, setThumbnailsLoaded ] = useState(false);
+  const [ screenSize, setScreenSize ] = useState('md');
 
+  const theme = useTheme();
+  const xs = useMediaQuery(theme.breakpoints.between("xs", "sm"));
+  const sm = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const md = useMediaQuery(theme.breakpoints.between("md", "lg"));
+  const lg = useMediaQuery(theme.breakpoints.between("lg", "xl"));
+  const xl = useMediaQuery(theme.breakpoints.up('xl'));
+  
   const location = useLocation();
+  
   useEffect(() => {
     if(location['pathname'] === '/' & sceneNumber !== 0){
       setSceneNumber(0)
@@ -48,6 +59,18 @@ function App() {
     if(location['pathname'] === '/Music' & sceneNumber !== 4){
       setSceneNumber(4)
     }
+    if (xs) {
+      setScreenSize('xs');
+    } else if (sm) {
+      setScreenSize('sm');
+    } else if (md) {
+      setScreenSize('md');
+    } else if (lg) {
+      setScreenSize('lg');
+    } else if (xl) {
+      setScreenSize('xl');
+    }
+    console.log(screenSize);
   });
 
   return (
@@ -80,11 +103,15 @@ function App() {
               />
             } />
             <Route path="/CS" element={<Cs />} />
-            <Route path="/Music" element={<Music />} />
+            <Route path="/Music" element={
+              <Music 
+                screenSize = {screenSize}
+              />} 
+            />
           </Routes>
 
           <Box sx = {{pb: 10, pt: sceneNumber === 2 ? 14 : 4}}>
-            <Footer/>
+            <Footer screenSize = {screenSize}/>
           </Box>
           
         </Box>
@@ -92,6 +119,7 @@ function App() {
         <Scene 
           sceneNumber = {sceneNumber}
           thumbnailsLoaded = {thumbnailsLoaded}
+          screenSize = {screenSize}
         />
 
       </ThemeProvider>

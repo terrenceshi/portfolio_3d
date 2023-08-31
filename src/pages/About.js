@@ -19,36 +19,45 @@ function About() {
       <Box sx = {{
         display: 'flex', 
         flexDirection: "column", 
-        width: "1000px",
+        width: {lg: 1000, md: 800, sm: 560, xs: 340},
         gap: 2,
         pt: "12.5vh"
       }}
       >
-          <Typography variant="h4">
+          <Typography sx={{ typography: { sm: 'h4', xs: 'h5' } }}>
             About Me
           </Typography>
-          <Box sx = {{display: 'flex', flexDirection: "row", gap: 2}}>
+          <Box sx = {{
+            display: 'flex', 
+            flexDirection: {sm: "row", xs: "column-reverse"}, 
+            gap: 2, 
+            alignItems: {sm: 'flex-start', xs: 'center'}
+          }}>
             <Box sx = {{display: 'flex', flexDirection: "column", gap: 2}}>
-              <Typography variant="body">
+              <Typography sx={{ typography: { md: 'body1', sm: 'body2', xs: 'body2' } }}>
                 I'm a CS major from Georgia Tech. My forte lies in frontend, but I'm adept 
                 as a full-stack engineer, with skills in backend and deployment. Also, 
                 I'm proficient with AI, having implemented image classifiers and 
                 using word vectorization for projects.
               </Typography>
 
-              <Typography variant="body">
+              <Typography sx={{ typography: { md: 'body1', sm: 'body2', xs: 'body2' } }}>
                 In my free time, I like to draw and make music. Sometimes, I'll do some 3D modeling.
               </Typography>
             </Box>
 
-            <div style = {pfpLoaded ? {display: "block"}:{display: "none"}}>
+            <Box sx = {{display: pfpLoaded ? {sm:"block", xs: "none"} : "none"}}>
               <img
                 src = {pfp} 
                 alt = "pfp" 
                 onLoad = {() => setPfpLoaded(true)}
-                style = {{width: 175, height: 175, borderRadius: "50%"}}
+                style = {{
+                  width: 175, 
+                  height: 175, 
+                  borderRadius: "50%"
+                }}
               />
-            </div>
+            </Box>
 
             <div style = {pfpLoaded ? {display: "none"}:{display: "block"}}>
               <Skeleton 

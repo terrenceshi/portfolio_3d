@@ -13,12 +13,12 @@ function Landing() {
         display: 'flex', 
         flexDirection: "column", 
         alignItems: 'flex-start',
-        pt: "28.5vh"
+        pt: { sm: "28vh", xs: "34vh" }
       }}>
-        <Typography variant="h2">
+        <Typography sx={{ typography: { sm: 'h2', xs: 'h3' } }}>
           Hi. I'm
         </Typography>
-        <Typography variant="h1">
+        <Typography sx={{ typography: { sm: 'h1', xs: 'h2' } }}>
           Terrence.
         </Typography>
       </Box>

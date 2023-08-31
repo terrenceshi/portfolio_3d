@@ -3,7 +3,6 @@ import ArtBox from '../components/Artbox.js';
 
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
-import LaunchIcon from '@mui/icons-material/Launch';
 
 var thumbnailLoadLst = new Array(ArtData.length).fill(0);
 
@@ -20,7 +19,7 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded}) {
     return resultArray
   }, [])
 
-  const gridGap = 3;
+  const gridGap = {lg: 3, md: 2, sm: 1, xs: 3};
 
   return (
     <Fade 
@@ -37,7 +36,13 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded}) {
           }}
         >
           {artDataChunks.map((lst, chunkIdx) => (
-            <Box sx = {{display: 'flex', flexDirection: 'row', gap: gridGap}} key = {chunkIdx}>
+            <Box 
+              key = {chunkIdx}
+              sx = {{
+                display: 'flex', 
+                flexDirection: {sm: 'row', xs: 'column'}, 
+                gap: gridGap
+            }}>
               {lst.map((dict, rowIdx)=> (
                 <ArtBox 
                   key = {rowIdx}

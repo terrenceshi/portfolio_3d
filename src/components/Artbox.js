@@ -12,11 +12,20 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import Skeleton from '@mui/material/Skeleton';
 import Fade from '@mui/material/Fade';
+import { styled } from '@mui/material';
 
 var numArtLoaded = 0;
 
+const MuiImg = styled("img")({});
+
+function objectMap(object, mapFn) {
+    return Object.keys(object).reduce(function(result, key) {
+        result[key] = mapFn(object[key])
+        return result
+    }, {})
+}
+
 const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
-    
     const [artLoaded, setArtLoaded] = useState(false);
     const [open, setOpen] = useState(false);
     const [sliderX, setSliderX] = useState(0);
@@ -24,16 +33,18 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
     let imgLst = artDict.images;
     let maxSliderX = (artDict.images.length - 1) * -100;
 
+    const dialogImgSize = {lg: 650, md: 525, sm: 525, xs: 320};
+
     return (
-        <div className = "artBox">
-            <img 
+        <Box sx = {{display: "flex"}}>
+            <MuiImg 
                 className = "art_img"
                 src={artDict.images[0]} 
                 alt = {artDict.title} 
-                style = {{
-                    width: 300, 
-                    height: 300, 
-                    objectFit: "cover", 
+                sx = {{
+                    width: {lg: 300, md: 250, sm: 190, xs: 300},
+                    height: {lg: 300, md: 250, sm: 190, xs: 300},
+                    objectFit: 'cover',
                     cursor: "pointer"
                 }}
                 onClick={() => {setSliderX(0); setArtLoaded(false); setOpen(true)}}
@@ -55,7 +66,10 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                 onClose={() => {setOpen(false)}}
                 maxWidth = {false}
             >
-                <Box sx = {{display: "flex", flexDirection: "row"}}>
+                <Box sx = {{
+                    display: "flex", 
+                    flexDirection: {md: "row", sm: 'column', xs: 'column'}
+                }}>
                     <Fade 
                     in={artLoaded}
                     timeout={{ enter: 1500 }}
@@ -64,12 +78,12 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                             display: artLoaded ? "flex" : "none",
                             flexDirection: "row",
                             gap: 0,
-                            width: 650,
+                            width: dialogImgSize,
                             overflow: "hidden"
                         }}>
                             {imgLst.map((imgSrc,index)=>{
                                 return(
-                                    <img 
+                                    <MuiImg 
                                         src = {imgSrc} 
                                         key = {index}
                                         onLoad = {() => {
@@ -78,8 +92,8 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                                                 setArtLoaded(true);
                                             }
                                         }}
-                                        style = {{
-                                            minWidth: 650,
+                                        sx = {{
+                                            minWidth: dialogImgSize,
                                             transform: `translateX(${sliderX}%)`, 
                                             transition: "0.75s"
                                         }}
@@ -94,22 +108,41 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                     }}>
                         <Skeleton 
                             variant="rectangular" 
-                            width={650} 
-                            height={(artDict.height / artDict.width) * 650} 
+                            sx = {{
+                                width: dialogImgSize,
+                                height: objectMap(dialogImgSize, (value) => {
+                                    return (artDict.height / artDict.width) * value;
+                                })
+                            }}
                         />
                     </Box>
                     <Box sx = {{
                         display: "flex", 
                         flexDirection: "column", 
-                        p: 4,
-                        pt: 3,
-                        width: 300, 
-                        justifyContent: 'space-between'
+                        p: {sm: 4, xs: 3},
+                        pt: {sm: 3, xs: 2},
+                        width: {md: 300, sm: "100%", xs: "100%"}, 
+                        justifyContent: 'space-between',
+                        gap: 1
                     }}>
                         <Box sx = {{display: "flex", flexDirection: "column", gap: 1}}>
-                            <Typography variant = "h5">{artDict.title}</Typography>
-                            <Typography variant = "body2" color = "text.secondary">{artDict.year}</Typography>
-                            <Typography variant = "body">{artDict.description}</Typography>
+                            <Typography sx={{ typography: { sm: 'h5', xs: 'h7' } }}>
+                                {artDict.title}
+                            </Typography>
+                            <Typography 
+                                variant = "body2" 
+                                color = "text.secondary" 
+                                sx = {{
+                                    display: {md: 'block', sm: 'none', xs: 'none'},
+                            }}>
+                                {artDict.year}
+                            </Typography>
+                            <Typography sx = {{
+                                display: {md: 'block', sm: 'none', xs: 'none'},
+                                typography: {lg: "body1", md: "body2"}
+                            }}>
+                                {artDict.description}
+                            </Typography>
                         </Box>
 
                         <Box sx = {{
@@ -134,7 +167,7 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                     </Box>
                 </Box>
             </Dialog>
-        </div>
+        </Box>
     )
 }
 export default ArtBox;

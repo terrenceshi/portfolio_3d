@@ -59,11 +59,16 @@ function Cs({setSceneNumber}) {
           const indexRight = mod(activeIdx + 1, CsData.length);
 
           return (
-            <Paper 
-              elevation={0} 
+            <Box
               key = {projectIdx} 
               sx = {{
                 position: "absolute",
+                display: 'flex', 
+                flexDirection: "column", 
+                width: { lg: 500, md: 500, sm: 380, xs: 270 },
+                gap: 2,
+                p: 4,
+                pt: 3,
                 transition: "900ms",
                 zIndex: projectIdx === activeIdx ? 1002 : 1001,
                 opacity: 
@@ -77,102 +82,93 @@ function Cs({setSceneNumber}) {
                 backdropFilter: 'blur(20px)' ,
                 animation: 
                   !firstLoad ? "" :
-                  projectIdx === activeIdx ? "1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn, 1750ms wait":"1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn6, 1750ms wait"
+                  projectIdx === activeIdx ? "1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn, 1750ms wait":"1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn6, 1750ms wait",
+                borderRadius: 2
                 
             }}>
-            
-              <Box sx = {{
-                display: 'flex', 
-                flexDirection: "column", 
-                width: { lg: 500, md: 500, sm: 380, xs: 270 },
-                gap: 2,
-                p: 4,
-                pt: 3
-              }}>
-                <Box sx = {{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2}}>
-                  <Typography sx = {{typography:{md: "h5", sm: "h6", xs: "body1"}}}>
-                    {project.title}
-                  </Typography>
+              <Box sx = {{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2}}>
+                <Typography sx = {{typography:{md: "h5", sm: "h6", xs: "body1"}}}>
+                  {project.title}
+                </Typography>
 
-                  <IconButton disabled = {project.disabled} sx = {{display: {sm: 'inline-flex', xs: 'none'}}}>
-                    <LaunchIcon/>
-                  </IconButton>
-                </Box>
-
-                <div style={{flexDirection:'row'}}>
-                  <Fade 
-                    in={loadLst[projectIdx][0]}
-                    timeout={{ enter: 1500 }}
-                  >
-                    <MuiImg
-                      src = {project.image} 
-                      onLoad = {() => {
-                        loadLst[projectIdx][1](true)
-                      }}
-                      sx = {{
-                        width: 150, 
-                        height: 150, 
-                        pl: 2,
-                        pb: 2,
-                        float: "right",
-                        display: loadLst[projectIdx][0] ? {md: 'block', sm: 'none', xs: 'none'} : "none"
-                    }}/>
-                  </Fade>
-
-                  <Skeleton variant = {"rectangular"} sx = {{
-                    width: 134, 
-                    height: 134, 
-                    ml: 2,
-                    mb: 2,
-                    float: "right",
-                    display: loadLst[projectIdx][0] ? "none" : {md: 'block', sm: 'none', xs: 'none'}
-                  }}/>
-
-                  {project.description.map((text, textIdx) => (
-                    <Typography 
-                      variant="body2" 
-                      key = {textIdx} 
-                      sx = {{
-                        textIndent: {sm: 32, xs: 0}, 
-                        pb: 2,
-                        display: textIdx !== 0 ? {sm: "block", xs: "none"} : "block"
-                      }}>
-                      {text}
-                    </Typography>
-                  ))}
-                  
-                  <Button
-                    variant="text"
-                    component = {Link}
-                    to = {project.link}
-                    sx = {{color: 'primary.main', display: {sm: "none", xs: "block"}}}
-                    disabled = {project.disabled}
-                  >
-                    Read more
-                  </Button>
-                </div>
-
-                <Box sx = {{
-                    display: "flex", 
-                    flexDirection: "row", 
-                    justifyContent: 'space-between'
-                }}>
-                    <IconButton 
-                        onClick={()=>{setFirstLoad(false); activeIdx <= 0 ? setActiveIdx(CsData.length-1) : setActiveIdx((activeIdx-1)%CsData.length)}}
-                        disabled={projectIdx !== activeIdx}
-                    >
-                        <ArrowLeftIcon/>
-                    </IconButton>
-                    
-                    <IconButton
-                        onClick={()=>{setFirstLoad(false); setActiveIdx((activeIdx+1)%CsData.length)}}
-                        disabled={projectIdx !== activeIdx}
-                    >
-                        <ArrowRightIcon/>
-                    </IconButton>
-                </Box>
+                <IconButton disabled = {project.disabled} sx = {{display: {sm: 'inline-flex', xs: 'none'}}}>
+                  <LaunchIcon/>
+                </IconButton>
               </Box>
-            </Paper>
+
+              <div style={{flexDirection:'row'}}>
+                <Fade 
+                  in={loadLst[projectIdx][0]}
+                  timeout={{ enter: 1500 }}
+                >
+                  <MuiImg
+                    src = {project.image} 
+                    onLoad = {() => {
+                      loadLst[projectIdx][1](true)
+                    }}
+                    sx = {{
+                      width: 150, 
+                      height: 150, 
+                      pl: 2,
+                      pb: 2,
+                      float: "right",
+                      display: loadLst[projectIdx][0] ? {md: 'block', sm: 'none', xs: 'none'} : "none"
+                  }}/>
+                </Fade>
+
+                <Skeleton variant = {"rectangular"} sx = {{
+                  width: 134, 
+                  height: 134, 
+                  ml: 2,
+                  mb: 2,
+                  float: "right",
+                  display: loadLst[projectIdx][0] ? "none" : {md: 'block', sm: 'none', xs: 'none'}
+                }}/>
+
+                {project.description.map((text, textIdx) => (
+                  <Typography 
+                    variant="body2" 
+                    key = {textIdx} 
+                    sx = {{
+                      textIndent: {sm: 32, xs: 0}, 
+                      pb: 2,
+                      display: textIdx !== 0 ? {sm: "block", xs: "none"} : "block"
+                    }}>
+                    {text}
+                  </Typography>
+                ))}
+                
+                <Button
+                  variant="text"
+                  component = {Link}
+                  to = {project.link}
+                  sx = {{color: 'primary.main', display: {sm: "none", xs: "block"}}}
+                  disabled = {project.disabled}
+                >
+                  Read more
+                </Button>
+              </div>
+
+              <Box sx = {{
+                  display: "flex", 
+                  flexDirection: "row", 
+                  justifyContent: 'space-between'
+              }}>
+                  <IconButton 
+                      onClick={()=>{setFirstLoad(false); activeIdx <= 0 ? setActiveIdx(CsData.length-1) : setActiveIdx((activeIdx-1)%CsData.length)}}
+                      disabled={projectIdx !== activeIdx}
+                  >
+                      <ArrowLeftIcon/>
+                  </IconButton>
+                  
+                  <IconButton
+                      onClick={()=>{setFirstLoad(false); setActiveIdx((activeIdx+1)%CsData.length)}}
+                      disabled={projectIdx !== activeIdx}
+                  >
+                      <ArrowRightIcon/>
+                  </IconButton>
+              </Box>
+            </Box>
           )
         })}
       </Box>

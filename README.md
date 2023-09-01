@@ -1,5 +1,7 @@
 ## TO DO:
 
+ - figure out why some things can blur and opacity and others cant so u can make cs page look preetty
+
  - art height discrepency
     - either hardcode since height pixel values 
     - or change the containers transition property such that it wont transition on width change

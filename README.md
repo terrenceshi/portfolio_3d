@@ -1,7 +1,5 @@
 ## TO DO:
 
- - see if you can make CS less hacky
-
  - art height discrepency
     - either hardcode since height pixel values 
     - or change the containers transition property such that it wont transition on width change

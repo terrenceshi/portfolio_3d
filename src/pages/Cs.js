@@ -19,6 +19,7 @@ const MuiImg = styled("img")({});
 
 function Cs({setSceneNumber}) {
   const [activeIdx, setActiveIdx] = useState(0);
+  const [firstLoad, setFirstLoad] = useState(true);
   var loadLst = new Array(CsData.length).fill(useState(false));
 
   const mod = (n, m) => {
@@ -75,8 +76,9 @@ function Cs({setSceneNumber}) {
                 backgroundColor: 'rgba(0,0,0,0.4)',
                 backdropFilter: 'blur(20px)' ,
                 animation: 
-                  projectIdx === activeIdx ? "1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn, 1750ms wait":
-                  "1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn6, 1750ms wait"
+                  !firstLoad ? "" :
+                  projectIdx === activeIdx ? "1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn, 1750ms wait":"1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn6, 1750ms wait"
+                
             }}>
             
               <Box sx = {{
@@ -156,14 +158,14 @@ function Cs({setSceneNumber}) {
                     justifyContent: 'space-between'
                 }}>
                     <IconButton 
-                        onClick={()=>activeIdx <= 0 ? setActiveIdx(CsData.length-1) : setActiveIdx((activeIdx-1)%CsData.length)}
+                        onClick={()=>{setFirstLoad(false); activeIdx <= 0 ? setActiveIdx(CsData.length-1) : setActiveIdx((activeIdx-1)%CsData.length)}}
                         disabled={projectIdx !== activeIdx}
                     >
                         <ArrowLeftIcon/>
                     </IconButton>
                     
                     <IconButton
-                        onClick={()=>setActiveIdx((activeIdx+1)%CsData.length)}
+                        onClick={()=>{setFirstLoad(false); setActiveIdx((activeIdx+1)%CsData.length)}}
                         disabled={projectIdx !== activeIdx}
                     >
                         <ArrowRightIcon/>

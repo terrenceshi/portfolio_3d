@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 const pages = ['About', 'Art','CS','Music'];
 
 function Navbar () {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   return (
     <Box>
@@ -22,14 +22,19 @@ function Navbar () {
         display: {sm: 'flex', xs: 'none'}, 
         gap: 1, 
         p: 2,
+        pt: 3,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        /*borderRadius: 2,
+        width: '100vw',
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        backdropFilter: 'blur(20px)' */
       }}>
         <IconButton
           component = {Link}
           to = {'/'}
         >
-          <HomeIcon/>
+          <HomeIcon />
         </IconButton>
 
         {pages.map((page) => (
@@ -67,9 +72,9 @@ function Navbar () {
           </Link>
 
           {pages.map((page, idx) => (
-            <Link style = {{textDecoration: "none", color: "white"}} to = {`/${page}`}>
+            <Link style = {{textDecoration: "none", color: "white"}} to = {`/${page}`} key={page}>
               <Box sx = {{pb: idx === pages.length - 1 ? 1 : 0}} onClick={() => setAnchorEl(null)}>
-                <MenuItem key={page}>
+                <MenuItem>
                   <Typography variant = "body2">
                       {page}
                   </Typography>

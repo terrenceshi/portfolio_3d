@@ -1,28 +1,24 @@
 ## TO DO:
 
-Scene
- - Add lights from cars (hard as fuck, may need to download a new package for this one)
- - Look at different colors for Art page
+ - art height discrepency
+    - either hardcode since height pixel values 
+    - or change the containers transition property such that it wont transition on width change
 
-Art
+ - make ONE song to make music height discrepency better
+
+ - Add some cool effects for playing track
+
+ - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
+
  - Should have boxes pop up on scroll (any page that requires scrolling should)
+
+ - Improve run time by looking into this: https://github.com/pmndrs/gltfjsx
+
+ - Add lights from cars (hard as fuck, may need to download a new package for this one)
+
  - improve loading / not loading lerp (could use a timer before lerp just to see if images are loaded)
     - Could consider having a timer before every lerp to fade out
 
-Music
- - Add some cool effects for playing track
-
-CS
- - Image load?
-
-Misc
- - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
- - Look into why sometimes menu link does not work
- - figure out how to deal with height discrepency (laptop has about 800 height)
-    - on desktop, artbox can go up to 650 width but gotta shave it down for laptop
-        - maybe create some algorithm to calculate an images dimensions and see how much you can fit
-    - music padding on footer is extremely awkward
-        - making ONE song or sample would solve this issue.
- - Improve run time by looking into this: https://github.com/pmndrs/gltfjsx
+ - Look at different colors for Art page
 
  - look up use of chromatic abberation for fun

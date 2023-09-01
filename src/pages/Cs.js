@@ -19,10 +19,7 @@ const MuiImg = styled("img")({});
 
 function Cs({setSceneNumber}) {
   const [activeIdx, setActiveIdx] = useState(0);
-
-  const arr = Array.from(Array(CsData.length).keys())
-  const initMap = new Map(arr.map(element => [element, false]))
-  const [loadedImgs, setLoadedImgs] = useState(initMap);
+  var loadLst = new Array(CsData.length).fill(useState(false));
 
   const mod = (n, m) => {
     let result = n % m;
@@ -101,11 +98,14 @@ function Cs({setSceneNumber}) {
                 </Box>
 
                 <div style={{flexDirection:'row'}}>
+                  <Fade 
+                    in={loadLst[projectIdx][0]}
+                    timeout={{ enter: 1500 }}
+                  >
                     <MuiImg
                       src = {project.image} 
                       onLoad = {() => {
-                        console.log("hi")
-                        setLoadedImgs(loadedImgs.set(projectIdx,true));
+                        loadLst[projectIdx][1](true)
                       }}
                       sx = {{
                         width: 150, 
@@ -113,9 +113,9 @@ function Cs({setSceneNumber}) {
                         pl: 2,
                         pb: 2,
                         float: "right",
-                        display: loadedImgs.get(projectIdx) ? {md: 'block', sm: 'none', xs: 'none'} : "none"
+                        display: loadLst[projectIdx][0] ? {md: 'block', sm: 'none', xs: 'none'} : "none"
                     }}/>
-
+                  </Fade>
 
                   <Skeleton variant = {"rectangular"} sx = {{
                     width: 134, 
@@ -123,7 +123,7 @@ function Cs({setSceneNumber}) {
                     ml: 2,
                     mb: 2,
                     float: "right",
-                    display: loadedImgs.get(projectIdx) ? "none" : {md: 'block', sm: 'none', xs: 'none'}
+                    display: loadLst[projectIdx][0] ? "none" : {md: 'block', sm: 'none', xs: 'none'}
                   }}/>
 
                   {project.description.map((text, textIdx) => (

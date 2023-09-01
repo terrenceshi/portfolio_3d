@@ -119,8 +119,8 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                     <Box sx = {{
                         display: "flex", 
                         flexDirection: "column", 
-                        p: {sm: 4, xs: 3},
-                        pt: {sm: 3, xs: 2},
+                        p: {md: 4, sm: 3, xs: 2},
+                        pt: {md: 3, sm: 2, xs: 1},
                         width: {md: 300, sm: "100%", xs: "100%"}, 
                         justifyContent: 'space-between',
                         gap: 1

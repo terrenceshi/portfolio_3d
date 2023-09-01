@@ -76,7 +76,7 @@ function App() {
           timeout={{ enter: 1500 }}
         >
           <Box>
-            <Box sx = {{zIndex: 1001, position: "absolute", pt: 1}}>
+            <Box sx = {{zIndex: 1001, position: "absolute"}}>
               <Navbar/>
             </Box>
 

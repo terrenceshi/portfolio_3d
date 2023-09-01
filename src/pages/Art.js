@@ -24,6 +24,7 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded, setSceneNumber}) {
   const gridGap = {lg: 3, md: 2, sm: 1, xs: 3};
 
   useEffect(() => {
+    setThumbnailsLoaded(false);
     setSceneNumber(2);
   }, []);
 

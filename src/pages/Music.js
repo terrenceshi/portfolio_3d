@@ -48,7 +48,8 @@ function Music({screenSize, setSceneNumber}) {
         display: 'flex', 
         flexDirection: "column", 
         width: {sm: 600, xs: 400},
-        pt: "8.75vh"
+        pt: "8.75vh",
+        pb: 8
       }}
       >
         <audio 

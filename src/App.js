@@ -77,7 +77,7 @@ function App() {
           timeout={{ enter: 1500 }}
         >
           <Box>
-            <Box sx = {{zIndex: 1001, position: "absolute"}}>
+            <Box sx = {{zIndex: 1002, position: "absolute"}}>
               <Navbar 
                 atTop = {atTop} 
                 setAtTop = {setAtTop}
@@ -101,7 +101,7 @@ function App() {
               }}
               sx = {{
                 zIndex: 1000, 
-                position: "absolute",
+                position: "relative",
                 overflowY: "scroll",
                 display: "flex", 
                 width: "100vw",
@@ -129,7 +129,7 @@ function App() {
                 />
               </Routes>
 
-              <Box sx = {{pb: 10, pt: sceneNumber === 2 || 4 ? 14 : 2}}>
+              <Box sx = {{pb: 10}}>
                 <Footer screenSize = {screenSize}/>
               </Box>
               

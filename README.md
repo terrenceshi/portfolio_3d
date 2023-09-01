@@ -4,7 +4,7 @@
     - either hardcode since height pixel values 
     - or change the containers transition property such that it wont transition on width change
 
- - make ONE song to make music height discrepency better
+ - make two songs to make music height discrepency better
 
  - Add some cool effects for playing track
 

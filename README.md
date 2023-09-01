@@ -8,11 +8,11 @@
 
  - Add some cool effects for playing track
 
- - Navbar currently gets overlayed when u scroll under it. Make it look pretty. 
-
  - Should have boxes pop up on scroll (any page that requires scrolling should)
 
  - Improve run time by looking into this: https://github.com/pmndrs/gltfjsx
+
+ - Try to fix navbar blur transition
 
  - Add lights from cars (hard as fuck, may need to download a new package for this one)
 

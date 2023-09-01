@@ -61,20 +61,23 @@ function Music({screenSize, setSceneNumber}) {
           onTimeUpdate={() => setCurrentTime(audioElem.current.currentTime)}
         />
 
-        <Player
-          audioElem = {audioElem}
-          currentSong = {currentSong}
-          setCurrentSong = {setCurrentSong}
-          isPlaying = {isPlaying}
-          setIsPlaying = {setIsPlaying}
-          mute = {mute}
-          setMute = {setMute}
-          volume = {volume}
-          setVolume = {setVolume}
-          currentTime = {currentTime}
-          screenSize = {screenSize}
-        />
+        <Box sx = {{pt: 1}}>
+          <Player
+            audioElem = {audioElem}
+            currentSong = {currentSong}
+            setCurrentSong = {setCurrentSong}
+            isPlaying = {isPlaying}
+            setIsPlaying = {setIsPlaying}
+            mute = {mute}
+            setMute = {setMute}
+            volume = {volume}
+            setVolume = {setVolume}
+            currentTime = {currentTime}
+            screenSize = {screenSize}
+          />
+        </Box>
 
+        <Box sx = {{pt: 1}}>
         {MusicData.map((song, idx) => (
           <Box key = {idx}>
             <Box sx = {{
@@ -103,6 +106,7 @@ function Music({screenSize, setSceneNumber}) {
             {idx !== MusicData.length - 1 ? <Divider/> : <div/>}
           </Box>
         ))}
+        </Box>
       </Box>
     </Fade>
   );

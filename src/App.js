@@ -42,6 +42,7 @@ function App() {
   const [ thumbnailsLoaded, setThumbnailsLoaded ] = useState(false);
   const [ screenSize, setScreenSize ] = useState('md');
   const [ canvasLoaded, setCanvasLoaded ] = useState(false);
+  const [ atTop, setAtTop ] = useState(true);
 
   const theme = useTheme();
 
@@ -77,19 +78,37 @@ function App() {
         >
           <Box>
             <Box sx = {{zIndex: 1001, position: "absolute"}}>
-              <Navbar/>
+              <Navbar 
+                atTop = {atTop} 
+                setAtTop = {setAtTop}
+              />
             </Box>
 
-            <Box sx = {{
-              zIndex: 1000, 
-              position: "absolute",
-              overflowY: "scroll",
-              display: "flex", 
-              width: "100vw",
-              height: "100vh",
-              alignItems: "center",
-              justifyContent: 'space-between',
-              flexDirection: "column"
+            <Scene 
+              sceneNumber = {sceneNumber}
+              thumbnailsLoaded = {thumbnailsLoaded}
+              screenSize = {screenSize}
+              setCanvasLoaded = {setCanvasLoaded}
+            />
+
+            <Box 
+              onScroll={(e) => {
+                if(e.currentTarget.scrollTop !== 0){
+                  setAtTop(false);
+                } else {
+                  setAtTop(true);
+                }
+              }}
+              sx = {{
+                zIndex: 1000, 
+                position: "absolute",
+                overflowY: "scroll",
+                display: "flex", 
+                width: "100vw",
+                height: "100vh",
+                alignItems: "center",
+                justifyContent: 'space-between',
+                flexDirection: "column"
             }}>
               <Routes>
                 <Route path="/" element={<Landing setSceneNumber={setSceneNumber}/>} />
@@ -116,12 +135,6 @@ function App() {
               
             </Box>
 
-            <Scene 
-              sceneNumber = {sceneNumber}
-              thumbnailsLoaded = {thumbnailsLoaded}
-              screenSize = {screenSize}
-              setCanvasLoaded = {setCanvasLoaded}
-            />
           </Box>
         </Fade>
 

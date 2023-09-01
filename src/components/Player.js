@@ -31,71 +31,73 @@ function convertToSeconds(stamp){
 
 function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, mute, setMute, volume, setVolume, currentTime, audioElem, screenSize}) {
     return(
-        <Paper elevation={0}>
-          <Box sx = {{
+        <Paper 
+          elevation={0}
+          sx = {{
             display: 'flex',
             flexDirection: 'column', 
             alignItems: 'center', 
             gap: 2, 
-            p: 2
-          }}>
+            p: 2,
+            backgroundColor: 'rgba(0,0,0,0.4)',
+            backdropFilter: 'blur(15px)'
+        }}>
+          <Typography variant = "body2">
+            {currentSong.title}
+          </Typography>
+
+          <Box sx = {{display: 'flex', flexDirection: 'row', gap: 3, alignItems: 'center'}}>
             <Typography variant = "body2">
-              {currentSong.title}
+              {convertToTimeStamp(currentTime)}
             </Typography>
+            <Slider 
+              size="small" 
+              value = {(currentTime / convertToSeconds(currentSong.duration)) * 100}
+              onChange = {(event, newValue) => {
+                  audioElem.current.currentTime = (newValue / 100) * audioElem.current.duration;
+              }}
+              sx = {{width: {sm: 300, xs: 140}}}
+          />
+            <Typography variant = "body2">
+              {currentSong.duration}
+            </Typography>
+          </Box>
+          
+          <Box sx = {{display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%', justifyContent: 'space-evenly'}}>
+            <Box sx = {{width: {sm: 119, xs: 80}, height: {sm: 44, xs: 40}}}/>
 
-            <Box sx = {{display: 'flex', flexDirection: 'row', gap: 3, alignItems: 'center'}}>
-              <Typography variant = "body2">
-                {convertToTimeStamp(currentTime)}
-              </Typography>
-              <Slider 
-                size="small" 
-                value = {(currentTime / convertToSeconds(currentSong.duration)) * 100}
-                onChange = {(event, newValue) => {
-                    audioElem.current.currentTime = (newValue / 100) * audioElem.current.duration;
-                }}
-                sx = {{width: {sm: 300, xs: 140}}}
-            />
-              <Typography variant = "body2">
-                {currentSong.duration}
-              </Typography>
-            </Box>
-            
-            <Box sx = {{display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%', justifyContent: 'space-evenly'}}>
-              <Box sx = {{width: {sm: 119, xs: 80}, height: {sm: 44, xs: 40}}}/>
-
-              <Box sx = {{display: 'flex', flexDirection: 'row', gap: 1}}>
-                <IconButton onClick={()=>setCurrentSong(MusicData[currentSong.index - 1 < 0 ? MusicData.length - 1 : currentSong.index - 1])}>
-                    <SkipPreviousIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
-                </IconButton>
-                <IconButton onClick={()=>setIsPlaying(!isPlaying)}>
-                    {isPlaying ? 
-                      <PauseIcon sx = {{fontSize: {sm: 48, xs: 36}}}/> : 
-                      <PlayArrowIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
-                    }
-                </IconButton>
-                <IconButton onClick={()=>setCurrentSong(MusicData[currentSong.index + 1 >= MusicData.length ? 0 : currentSong.index + 1])}>
-                    <SkipNextIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
-                </IconButton>
-              </Box>
-
-              <Box sx = {{display: 'flex', flexDirection: 'row',alignItems: 'center', gap: 0}}>
-                <IconButton onClick = {() => setMute(!mute)}>
-                  {mute ? 
-                    <VolumeOffIcon sx = {{fontSize: {sm: 28, xs: 24}}}/> : 
-                    <VolumeUp sx = {{fontSize: {sm: 28, xs: 24}}}/>
+            <Box sx = {{display: 'flex', flexDirection: 'row', gap: 1}}>
+              <IconButton onClick={()=>setCurrentSong(MusicData[currentSong.index - 1 < 0 ? MusicData.length - 1 : currentSong.index - 1])}>
+                  <SkipPreviousIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
+              </IconButton>
+              <IconButton onClick={()=>setIsPlaying(!isPlaying)}>
+                  {isPlaying ? 
+                    <PauseIcon sx = {{fontSize: {sm: 48, xs: 36}}}/> : 
+                    <PlayArrowIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
                   }
-                </IconButton>
-                <Slider 
-                    value = {volume * 100}
-                    onChange = {(event, newValue) => setVolume(newValue / 100)}
-                    sx = {{
-                        width: {sm: 75, xs: 40},
-                        '& .MuiSlider-thumb': {
-                            height: {sm: 14, xs: 12},
-                            width: {sm: 14, xs: 12}
-                        }
-                }}/>
-              </Box>
+              </IconButton>
+              <IconButton onClick={()=>setCurrentSong(MusicData[currentSong.index + 1 >= MusicData.length ? 0 : currentSong.index + 1])}>
+                  <SkipNextIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
+              </IconButton>
+            </Box>
+
+            <Box sx = {{display: 'flex', flexDirection: 'row',alignItems: 'center', gap: 0}}>
+              <IconButton onClick = {() => setMute(!mute)}>
+                {mute ? 
+                  <VolumeOffIcon sx = {{fontSize: {sm: 28, xs: 24}}}/> : 
+                  <VolumeUp sx = {{fontSize: {sm: 28, xs: 24}}}/>
+                }
+              </IconButton>
+              <Slider 
+                  value = {volume * 100}
+                  onChange = {(event, newValue) => setVolume(newValue / 100)}
+                  sx = {{
+                      width: {sm: 75, xs: 40},
+                      '& .MuiSlider-thumb': {
+                          height: {sm: 14, xs: 12},
+                          width: {sm: 14, xs: 12}
+                      }
+              }}/>
             </Box>
           </Box>
         </Paper>

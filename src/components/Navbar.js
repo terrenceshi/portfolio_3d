@@ -13,8 +13,11 @@ import { Link } from "react-router-dom";
 
 const pages = ['About', 'Art','CS','Music'];
 
-function Navbar () {
+function Navbar ({atTop, setAtTop}) {
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const bg = 'rgba(0,0,0,0.4)';
+  const bgBlur = 'blur(20px) opacity(1)';
 
   return (
     <Box>
@@ -25,13 +28,15 @@ function Navbar () {
         pt: 3,
         flexDirection: 'row',
         alignItems: 'center',
-        /*borderRadius: 2,
-        width: '100vw',
-        backgroundColor: 'rgba(0,0,0,0.4)',
-        backdropFilter: 'blur(20px)' */
+        borderRadius: 2,
+        transition: "900ms",
+        backgroundColor: atTop ? 'rgba(0,0,0,0.0)' : {xl: 'rgba(0,0,0,0.0)', lg: bg, md: bg, sm: bg},
+        backdropFilter: {xl: 'blur(20px) opacity(0)', lg: bgBlur, md: bgBlur, sm: bgBlur},
+        width: atTop ? "100%" : {xl: "100%", lg: "100vw", md: "100vw", sm: "100vw"}
       }}>
         <IconButton
           component = {Link}
+          onClick = {() => setAtTop(true)}
           to = {'/'}
         >
           <HomeIcon />
@@ -42,6 +47,7 @@ function Navbar () {
             variant="text"
             component = {Link}
             to = {`/${page}`}
+            onClick = {() => setAtTop(true)}
             key = {page}
             sx = {{color: 'white'}}
           >
@@ -62,7 +68,7 @@ function Navbar () {
           sx = {{".MuiMenu-list": { py: 0 }}}
         >
           <Link style = {{textDecoration: "none", color: "white"}} to = {'/'}>
-            <Box sx = {{pt: 1}} onClick={() => setAnchorEl(null)}>
+            <Box sx = {{pt: 1}} onClick={() => {setAnchorEl(null); setAtTop(true)}}>
               <MenuItem>
                 <Typography variant = "body2">
                     Home
@@ -73,7 +79,7 @@ function Navbar () {
 
           {pages.map((page, idx) => (
             <Link style = {{textDecoration: "none", color: "white"}} to = {`/${page}`} key={page}>
-              <Box sx = {{pb: idx === pages.length - 1 ? 1 : 0}} onClick={() => setAnchorEl(null)}>
+              <Box sx = {{pb: idx === pages.length - 1 ? 1 : 0}} onClick={() => {setAnchorEl(null); setAtTop(true)}}>
                 <MenuItem>
                   <Typography variant = "body2">
                       {page}

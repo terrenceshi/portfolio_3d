@@ -23,9 +23,19 @@ code {
   scrollbar-width: none;  /* Firefox */
 }
 
+@keyframes wait {
+  0% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
 @keyframes fadeIn {
   0%    { opacity: 0; }
   100%  { opacity: 1;}
+}
+
+@keyframes fadeIn6 {
+  0%    { opacity: 0; }
+  100%  { opacity: 0.6;}
 }
 
 @keyframes backdropAnimation {

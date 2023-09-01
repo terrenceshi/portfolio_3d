@@ -47,11 +47,6 @@ function Cs({setSceneNumber}) {
   }, []);
   
   return (
-    <Fade 
-      in={true}
-      timeout={{ enter: 1500 }}
-      style={{ transitionDelay: '1750ms' }}
-    >
       <Box sx = {{
         display: "flex",
         justifyContent: "center", 
@@ -64,7 +59,7 @@ function Cs({setSceneNumber}) {
 
           return (
             <Paper 
-              elevation={3} 
+              elevation={0} 
               key = {projectIdx} 
               sx = {{
                 position: "absolute",
@@ -77,6 +72,11 @@ function Cs({setSceneNumber}) {
                   projectIdx === activeIdx ? "scale(1)" :
                   projectIdx === indexLeft ?  leftTransform:
                   projectIdx === indexRight ? rightTransform : "",
+                backgroundColor: 'rgba(0,0,0,0.4)',
+                backdropFilter: 'blur(20px)' ,
+                animation: 
+                  projectIdx === activeIdx ? "1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn, 1750ms wait":
+                  "1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn6, 1750ms wait"
             }}>
             
               <Box sx = {{
@@ -174,7 +174,6 @@ function Cs({setSceneNumber}) {
           )
         })}
       </Box>
-    </Fade>
   );
 }
 

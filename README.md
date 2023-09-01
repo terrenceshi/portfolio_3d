@@ -1,6 +1,6 @@
 ## TO DO:
 
- - figure out why some things can blur and opacity and others cant so u can make cs page look preetty
+ - see if you can make CS less hacky
 
  - art height discrepency
     - either hardcode since height pixel values 

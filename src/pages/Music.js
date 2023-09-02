@@ -11,16 +11,18 @@ import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import Divider from '@mui/material/Divider';
 import Fade from '@mui/material/Fade';
 
-function Music({screenSize, setSceneNumber}) {
-  const [isPlaying, setIsPlaying] = useState(false);
+function Music({screenSize, setSceneNumber, audioPlaying, setAudioPlaying}) {
   const [currentSong, setCurrentSong] = useState(MusicData[0]);
   const [mute, setMute] = useState(false);
   const [volume, setVolume] = useState(1.0);
   const [currentTime, setCurrentTime] = useState(0)
+  const [readyToPlay, setReadyToPlay] = useState(false);
 
   const audioElem = useRef();
 
   useEffect(() => {
+    setAudioPlaying(false)
+    setReadyToPlay(true);
     setSceneNumber(4);
   }, []);
 
@@ -31,10 +33,12 @@ function Music({screenSize, setSceneNumber}) {
       audioElem.current.volume = volume;
     }
 
-    if (isPlaying) {
-      audioElem.current.play();
-    } else {
-      audioElem.current.pause();
+    if(readyToPlay){
+      if (audioPlaying) {
+        audioElem.current.play();
+      } else {
+        audioElem.current.pause();
+      }
     }
   })
 
@@ -45,18 +49,18 @@ function Music({screenSize, setSceneNumber}) {
       style={{ transitionDelay: '1750ms' }}
     >
       <Box sx = {{
-        display: 'flex', 
-        flexDirection: "column", 
-        width: {sm: 600, xs: 400},
-        pt: "8.75vh",
-        pb: 8
+          display: 'flex', 
+          flexDirection: "column", 
+          width: {sm: 600, xs: 400},
+          pt: "8.75vh",
+          pb: 8
       }}
       >
         <audio 
           src={currentSong.src}
           ref={audioElem}
           onEnded={() => {
-            setIsPlaying(false); 
+            setAudioPlaying(false); 
             setCurrentSong(MusicData[currentSong.index + 1 >= MusicData.length ? 0 : currentSong.index + 1]);
           }}
           onTimeUpdate={() => setCurrentTime(audioElem.current.currentTime)}
@@ -67,8 +71,8 @@ function Music({screenSize, setSceneNumber}) {
             audioElem = {audioElem}
             currentSong = {currentSong}
             setCurrentSong = {setCurrentSong}
-            isPlaying = {isPlaying}
-            setIsPlaying = {setIsPlaying}
+            audioPlaying = {audioPlaying}
+            setAudioPlaying = {setAudioPlaying}
             mute = {mute}
             setMute = {setMute}
             volume = {volume}
@@ -92,11 +96,11 @@ function Music({screenSize, setSceneNumber}) {
                 <IconButton 
                   sx={{ "&:hover": { backgroundColor: "transparent" }}}
                   onClick={() => {
-                    setIsPlaying(currentSong === song ? !isPlaying : true);
+                    setAudioPlaying(currentSong === song ? !audioPlaying : true);
                     setCurrentSong(song);
                   }}
                 >
-                  {isPlaying & currentSong === song ? <PauseCircleIcon/> : <PlayCircleIcon/>}
+                  {audioPlaying & currentSong === song ? <PauseCircleIcon/> : <PlayCircleIcon/>}
                 </IconButton>
               </Box>
 

@@ -43,6 +43,7 @@ function App() {
   const [ screenSize, setScreenSize ] = useState('md');
   const [ canvasLoaded, setCanvasLoaded ] = useState(false);
   const [ atTop, setAtTop ] = useState(true);
+  const [ audioPlaying, setAudioPlaying ] = useState(false);
 
   const theme = useTheme();
 
@@ -89,6 +90,7 @@ function App() {
               thumbnailsLoaded = {thumbnailsLoaded}
               screenSize = {screenSize}
               setCanvasLoaded = {setCanvasLoaded}
+              audioPlaying={audioPlaying}
             />
 
             <Box 
@@ -125,6 +127,8 @@ function App() {
                   <Music 
                     screenSize = {screenSize}
                     setSceneNumber={setSceneNumber}
+                    audioPlaying={audioPlaying}
+                    setAudioPlaying={setAudioPlaying}
                   />} 
                 />
               </Routes>

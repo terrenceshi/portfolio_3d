@@ -9,7 +9,7 @@ import * as THREE from 'three'
 import { Bloom, EffectComposer, BrightnessContrast, HueSaturation } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
 
-function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded}) {
+function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audioPlaying}) {
     function RotatingBox({position, rotation, color}) {
         const box = useRef()
         useFrame(({ clock }) => {
@@ -73,6 +73,7 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded}) {
                 sceneNumber = {sceneNumber} 
                 thumbnailsLoaded = {thumbnailsLoaded} 
                 screenSize = {screenSize}
+                audioPlaying={audioPlaying}
             />
 
             {/* Ground and Wall(s) */}

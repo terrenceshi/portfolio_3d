@@ -7,7 +7,18 @@ function lerp( a, b, alpha ) {
     return a + alpha * (b - a);
 }
 
-function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize}){
+function lerpColor( color, rgb, alpha ) {
+    var colorR = color.r;
+    var colorG = color.g;
+    var colorB = color.b;
+
+    var outR = colorR + alpha * (rgb[0] - colorR);
+    var outG = colorG + alpha * (rgb[1] - colorG);
+    var outB = colorB + alpha * (rgb[2] - colorB);
+    return {isColor: true, r: outR, g: outG, b: outB}
+}
+
+function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlaying}){
     const homeVec = new THREE.Vector3();
     const aboutVec = new THREE.Vector3();
     const artVec = new THREE.Vector3();
@@ -30,6 +41,19 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize}){
 
     const minIntensity = 0.135;
     const maxIntensity = 4;
+
+    const red = [237/255, 19/255, 41/255];
+    const yellow = [222/255, 158/255, 49/255];
+    const green = [19/255, 237/255, 114/255];
+    const blue = [19/255, 114/255, 237/255];
+    const purple = [55/255, 19/255, 237/255];
+    const pink = [201/255, 19/255, 237/255];
+    const colors = [red,yellow, green, blue, purple, pink];
+    const gray = [180/255, 200/255, 207/255];
+    let colorIdx = Math.floor(Math.random() * colors.length);
+    let colorTimer = 0;
+    const colorSwapTime = 0.75;
+    const colorLerpSpeed = 0.025;
 
     useFrame(state => {
         if(screenSize === 'xs'){
@@ -57,6 +81,18 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize}){
             aboutVec.set(25,0.25,10);
             csVec.set(74.75,-0.05,5);
             musicVec.set(99.75,0.525,5);
+        }
+
+        if(audioPlaying){
+            musicLight.current.color = lerpColor(musicLight.current.color, colors[colorIdx], colorLerpSpeed);
+        } else {
+            musicLight.current.color = lerpColor(musicLight.current.color, gray, colorLerpSpeed);
+        }
+
+        colorTimer += 1/60;
+        if(colorTimer >= colorSwapTime){
+            colorIdx + 1 === colors.length ? colorIdx = 0 : colorIdx += 1;
+            colorTimer = 0;
         }
 
         function handleSceneChange( vector, light ) {
@@ -114,13 +150,13 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize}){
                 ref = {artLight}
                 position={[50,1,3]}
                 intensity = {minIntensity}
-                color = {"#4f41cc"}
+                color = {"#484761"}
             />
             <pointLight
                 ref = {csLight}
                 position={[74.5,0.4,4]}
                 intensity = {minIntensity}
-                color = {"#ba5050"}
+                color = {"#de314a"}
                 distance = {30}
             />
             <pointLight

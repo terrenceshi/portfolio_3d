@@ -6,8 +6,6 @@
 
  - make two songs to make music height discrepency better
 
- - Add some cool effects for playing track
-
  - Should have boxes pop up on scroll (any page that requires scrolling should)
 
  - Improve run time by looking into this: https://github.com/pmndrs/gltfjsx
@@ -18,7 +16,5 @@
 
  - improve loading / not loading lerp (could use a timer before lerp just to see if images are loaded)
     - Could consider having a timer before every lerp to fade out
-
- - Look at different colors for Art page
 
  - look up use of chromatic abberation for fun

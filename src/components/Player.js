@@ -29,7 +29,7 @@ function convertToSeconds(stamp){
     return seconds + minutes * 60;
 }
 
-function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, mute, setMute, volume, setVolume, currentTime, audioElem, screenSize}) {
+function Player({currentSong, setCurrentSong, audioPlaying, setAudioPlaying, mute, setMute, volume, setVolume, currentTime, audioElem, screenSize}) {
     return(
         <Paper 
           elevation={0}
@@ -70,8 +70,8 @@ function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, mute, set
               <IconButton onClick={()=>setCurrentSong(MusicData[currentSong.index - 1 < 0 ? MusicData.length - 1 : currentSong.index - 1])}>
                   <SkipPreviousIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
               </IconButton>
-              <IconButton onClick={()=>setIsPlaying(!isPlaying)}>
-                  {isPlaying ? 
+              <IconButton onClick={()=>setAudioPlaying(!audioPlaying)}>
+                  {audioPlaying ? 
                     <PauseIcon sx = {{fontSize: {sm: 48, xs: 36}}}/> : 
                     <PlayArrowIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
                   }
@@ -83,7 +83,7 @@ function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, mute, set
 
             <Box sx = {{display: 'flex', flexDirection: 'row',alignItems: 'center', gap: 0}}>
               <IconButton onClick = {() => setMute(!mute)}>
-                {mute ? 
+                {mute || volume === 0 ? 
                   <VolumeOffIcon sx = {{fontSize: {sm: 28, xs: 24}}}/> : 
                   <VolumeUp sx = {{fontSize: {sm: 28, xs: 24}}}/>
                 }

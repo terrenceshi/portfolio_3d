@@ -2,8 +2,6 @@
 
  - make two songs to make music height discrepency better
 
- - Improve run time by looking into this: https://github.com/pmndrs/gltfjsx
-
  - Try to fix navbar blur transition
 
  - art height discrepency
@@ -18,3 +16,7 @@
     - Could consider having a timer before every lerp to fade out
 
  - look up use of chromatic abberation for fun
+
+
+ -------
+ src: https://github.com/pmndrs/gltfjsx

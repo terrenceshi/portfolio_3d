@@ -2,6 +2,8 @@ import { useRef } from 'react';
 
 import Model from "./Model.js"
 import LightsAndCamera from "./LightsAndCamera.js"
+import Wreck from "./models/Wreck.js"
+import Gtpd from "./models/Gtpd.js"
 
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useFBX } from "@react-three/drei";
@@ -54,8 +56,7 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
         )
     }
 
-    const policeFbx = useFBX('./models/gtpd.fbx');
-    const wreckFbx = useFBX('./models/wreck.fbx');
+    const policeFbx = useFBX('./models/gtpd_fbx.fbx');
 
     return (
         <Canvas 
@@ -91,7 +92,7 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
             {/* Landing Page Scene */}
 
             <Model
-                path = {'./models/robber_slide2.gltf'} 
+                path = {'./models/robber_slide_compressed.glb'} 
                 scale = {2.0} 
                 pos = {[2.0,-1,2]}
                 rot = {[0, -Math.PI / 3 ,0]}
@@ -125,10 +126,9 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
                 rotation={[0, THREE.MathUtils.degToRad(220), 0]}
             />
 
-            <primitive
-                object={wreckFbx}
+            <Wreck
                 position = {[26,-1,8]}
-                scale = {0.11}
+                scale = {11}
                 rotation={[0, THREE.MathUtils.degToRad(210), 0]}
             />
 
@@ -143,7 +143,7 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
             {/* CS */}
 
             <Model
-                path = {'./models/mon_crouch.gltf'} 
+                path = {'./models/mon_crouch_compressed.glb'} 
                 scale = {2} 
                 pos = {[73.5,-1,3]}
                 rot = {[0, Math.PI / 6 ,0]}
@@ -152,7 +152,7 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
             {/* Music */}
 
             <Model
-                path = {'./models/astro_strut.gltf'} 
+                path = {'./models/astro_strut_compressed.glb'} 
                 scale = {8.0} 
                 pos = {[101.75,-1,2.75]}
                 rot = {[0, -Math.PI / 6 ,0]}

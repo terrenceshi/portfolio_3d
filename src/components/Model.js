@@ -14,9 +14,13 @@ const Model = ({path, scale, pos, rot}) => {
         });
     }
   
+    /*
     useFrame((state, delta) => {
         mixer?.update(delta)
     })
+    */
+
+    mixer?.update(0.01)
   
     model.scene.traverse(child => {
         if (child.isMesh) {

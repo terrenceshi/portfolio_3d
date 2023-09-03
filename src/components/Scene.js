@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import Model from "./Model.js"
 import LightsAndCamera from "./LightsAndCamera.js"
 
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useFBX } from "@react-three/drei";
 import * as THREE from 'three'
 import { Bloom, EffectComposer, BrightnessContrast, HueSaturation } from '@react-three/postprocessing'
@@ -13,8 +13,12 @@ import { Stats } from "@react-three/drei";
 function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audioPlaying}) {
     function RotatingBox({position, rotation, color}) {
         const box = useRef()
+        const { invalidate } = useThree()
         useFrame(({ clock }) => {
-            box.current.rotation.x = clock.getElapsedTime()
+            if(!thumbnailsLoaded){
+                box.current.rotation.x = clock.getElapsedTime();
+                invalidate();
+            }
           })
         return (
             <mesh ref={box} position = {position} rotation = {rotation}>
@@ -72,7 +76,7 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
             {/*
             <Stats />
             */}
-            
+
             <Effects/>
 
             <LightsAndCamera 

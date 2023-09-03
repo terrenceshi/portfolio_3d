@@ -46,7 +46,7 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
     const colorSwapTime = 0.75;
     const colorLerpSpeed = 0.025;
 
-    const { invalidate } = useThree()
+    const { invalidate } = useThree();
 
     useFrame(state => {
         if(screenSize === 'xs'){
@@ -107,7 +107,6 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
 
         // Handle Scene Change
         if (sceneNumber === 0 && !isClose(state.camera.position, homeVec, 0.01)){
-            console.log(state.camera.position.x - homeVec.x)
             state.camera.position.lerp(homeVec, swapSpeed);
             invalidate()
             

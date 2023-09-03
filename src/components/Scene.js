@@ -2,7 +2,6 @@ import { useRef } from 'react';
 
 import Model from "./Model.js"
 import LightsAndCamera from "./LightsAndCamera.js"
-import Wreck from "./models/Wreck.js"
 
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useFBX } from "@react-three/drei";
@@ -56,6 +55,7 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
     }
 
     const policeFbx = useFBX('./models/gtpd_fbx.fbx');
+    const wreckFbx = useFBX('./models/wreck_fbx.fbx');
 
     return (
         <Canvas 
@@ -106,9 +106,10 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
                 rotation={[0, THREE.MathUtils.degToRad(220), 0]}
             />
 
-            <Wreck
-                position = {[26,-1,8]}
-                scale = {11}
+            <primitive
+                object={wreckFbx} 
+                position = {[26,-1,8]} 
+                scale = {0.11} 
                 rotation={[0, THREE.MathUtils.degToRad(210), 0]}
             />
 

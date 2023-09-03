@@ -83,7 +83,10 @@ function Player({currentSong, setCurrentSong, audioPlaying, setAudioPlaying, mut
             <Box sx = {{width: {sm: 119, xs: 80}, height: {sm: 44, xs: 40}}}/>
 
             <Box sx = {{display: 'flex', flexDirection: 'row', gap: 1}}>
-              <IconButton onClick={()=>setCurrentSong(MusicData[currentSong.index - 1 < 0 ? MusicData.length - 1 : currentSong.index - 1])}>
+              <IconButton onClick={()=>{
+                setCurrentSong(MusicData[currentSong.index - 1 < 0 ? MusicData.length - 1 : currentSong.index - 1]); 
+                audioElem.current.currentTime = 0;
+              }}>
                   <SkipPreviousIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
               </IconButton>
               <IconButton onClick={()=>setAudioPlaying(!audioPlaying)}>
@@ -92,7 +95,10 @@ function Player({currentSong, setCurrentSong, audioPlaying, setAudioPlaying, mut
                     <PlayArrowIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
                   }
               </IconButton>
-              <IconButton onClick={()=>setCurrentSong(MusicData[currentSong.index + 1 >= MusicData.length ? 0 : currentSong.index + 1])}>
+              <IconButton onClick={()=>{
+                setCurrentSong(MusicData[currentSong.index + 1 >= MusicData.length ? 0 : currentSong.index + 1]);
+                audioElem.current.currentTime = 0;
+              }}>
                   <SkipNextIcon sx = {{fontSize: {sm: 48, xs: 36}}}/>
               </IconButton>
             </Box>

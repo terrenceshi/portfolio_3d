@@ -15,7 +15,7 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
         const box = useRef()
         const { invalidate } = useThree()
         useFrame(({ clock }) => {
-            if(!thumbnailsLoaded){
+            if(!thumbnailsLoaded && sceneNumber === 2){
                 box.current.rotation.x = clock.getElapsedTime();
                 invalidate();
             }

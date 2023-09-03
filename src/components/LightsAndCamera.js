@@ -14,6 +14,32 @@ function lerpColor( color, rgb, alpha ) {
     return {isColor: true, r: outR, g: outG, b: outB}
 }
 
+function isClose(vec1, vec2, threshold){
+    var xDiff = Math.abs(vec1.x - vec2.x);
+    var yDiff = Math.abs(vec1.y - vec2.y);
+    var zDiff = Math.abs(vec1.z - vec2.z);
+
+    if(xDiff < threshold && yDiff < threshold && zDiff < threshold){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isCloseColor(color1, color2, threshold){
+    // Color1 is an object with RGB while color2 is a list with its rgb values.
+    // Definitely should make this consistent but iz w/e for now.
+    var rDiff = Math.abs(color1.r - color2[0]);
+    var gDiff = Math.abs(color1.g - color2[1]);
+    var bDiff = Math.abs(color1.b - color2[2]);
+
+    if(rDiff < threshold && gDiff < threshold && bDiff < threshold){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlaying}){
     const homeVec = new THREE.Vector3();
     const aboutVec = new THREE.Vector3();
@@ -45,6 +71,8 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
     let colorTimer = 0;
     const colorSwapTime = 0.75;
     const colorLerpSpeed = 0.025;
+
+    const stopLerpThreshold = 0.05;
 
     const { invalidate } = useThree();
 
@@ -78,8 +106,10 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
 
         if(audioPlaying){
             musicLight.current.color = lerpColor(musicLight.current.color, colors[colorIdx], colorLerpSpeed);
-        } else {
+            invalidate();
+        } else if (!isCloseColor(musicLight.current.color, gray, 0.05)){
             musicLight.current.color = lerpColor(musicLight.current.color, gray, colorLerpSpeed);
+            invalidate();
         }
 
         colorTimer += 1/60;
@@ -93,40 +123,29 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
             artVec.set(50,0.25,5);
         }
 
-        function isClose(vec1, vec2, threshold){
-            var xDiff = Math.abs(vec1.x - vec2.x);
-            var yDiff = Math.abs(vec1.y - vec2.y);
-            var zDiff = Math.abs(vec1.z - vec2.z);
-
-            if(xDiff < threshold && yDiff < threshold && zDiff < threshold){
-                return true;
-            } else {
-                return false;
-            }
-        }
-
         // Handle Scene Change
-        if (sceneNumber === 0 && !isClose(state.camera.position, homeVec, 0.01)){
+        if (sceneNumber === 0 && !isClose(state.camera.position, homeVec, stopLerpThreshold)){
             state.camera.position.lerp(homeVec, swapSpeed);
             invalidate()
             
-        } else if(sceneNumber === 1 && !isClose(state.camera.position, aboutVec, 0.01)){
+        } else if(sceneNumber === 1 && !isClose(state.camera.position, aboutVec, stopLerpThreshold)){
             state.camera.position.lerp(aboutVec, swapSpeed);
             invalidate()
             
-        } else if(sceneNumber === 2 && !isClose(state.camera.position, artVec, 0.01)){
+        } else if(sceneNumber === 2 && !isClose(state.camera.position, artVec, stopLerpThreshold)){
             state.camera.position.lerp(artVec, swapSpeed);
             invalidate()
             
-        } else if(sceneNumber === 3 && !isClose(state.camera.position, csVec, 0.01)){
+        } else if(sceneNumber === 3 && !isClose(state.camera.position, csVec, stopLerpThreshold)){
             state.camera.position.lerp(csVec, swapSpeed);
             invalidate()
             
-        } else if(sceneNumber === 4 && !isClose(state.camera.position, musicVec, 0.01)){
+        } else if(sceneNumber === 4 && !isClose(state.camera.position, musicVec, stopLerpThreshold)){
             state.camera.position.lerp(musicVec, swapSpeed);
             invalidate()
             
         }
+
         return null;
     })
 

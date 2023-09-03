@@ -8,6 +8,7 @@ import { useFBX } from "@react-three/drei";
 import * as THREE from 'three'
 import { Bloom, EffectComposer, BrightnessContrast, HueSaturation } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
+import { Stats } from "@react-three/drei";
 
 function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audioPlaying}) {
     function RotatingBox({position, rotation, color}) {
@@ -62,11 +63,13 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
             style = {{height: "100vh", background: "#171717", zIndex: -100, position: "absolute"}}
             camera = {{position: [0,0.25,5]}}
             shadows
+            frameloop='demand'
             onCreated={(state) => {
                 setCanvasLoaded(true);
                 state.camera.rotation.set(THREE.MathUtils.degToRad(-5), 0, 0);
             }}
         >
+            <Stats />
             <Effects/>
 
             <LightsAndCamera 

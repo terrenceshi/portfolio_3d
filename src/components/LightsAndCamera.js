@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { useFrame } from '@react-three/fiber'
+import { useThree, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
 function lerpColor( color, rgb, alpha ) {
@@ -45,6 +45,8 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
     let colorTimer = 0;
     const colorSwapTime = 0.75;
     const colorLerpSpeed = 0.025;
+
+    const { invalidate } = useThree()
 
     useFrame(state => {
         if(screenSize === 'xs'){
@@ -93,14 +95,19 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
 
         // Handle Scene Change
         if (sceneNumber === 0){
+            invalidate()
             state.camera.position.lerp(homeVec, swapSpeed);
         } else if(sceneNumber === 1){
+            invalidate()
             state.camera.position.lerp(aboutVec, swapSpeed);
         } else if(sceneNumber === 2){
+            invalidate()
             state.camera.position.lerp(artVec, swapSpeed);
         } else if(sceneNumber === 3){
+            invalidate()
             state.camera.position.lerp(csVec, swapSpeed);
         } else if(sceneNumber === 4){
+            invalidate()
             state.camera.position.lerp(musicVec, swapSpeed);
         }
         return null;

@@ -10,6 +10,11 @@
 
 ### Laptop Bugs
  - Fairly slow on laptop. 
+   - to be honest though, the biggest thing would be to have it such that useFrame only happens when our useStates change (scene # and screen size)
+   - could also try reducing use frame update rate
+   - try turning off anti aliasing
+   - try reducing pixel ratio (last resort)
+   - src: https://en.threejs-university.com/2021/08/06/optimizing-a-three-js-application-tips-for-achieving-a-fluid-rendering-at-60-fps/
 
  -------
  src: https://github.com/pmndrs/gltfjsx

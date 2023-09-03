@@ -8,7 +8,7 @@ import { useFBX } from "@react-three/drei";
 import * as THREE from 'three'
 import { Bloom, EffectComposer, BrightnessContrast, HueSaturation } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
-import { Stats } from "@react-three/drei";
+// import { Stats } from "@react-three/drei";
 
 function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audioPlaying}) {
     function RotatingBox({position, rotation, color}) {

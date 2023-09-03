@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import pfp from "../assets/pfp.jpg"
+import pfp from "../assets/pfp.png"
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';

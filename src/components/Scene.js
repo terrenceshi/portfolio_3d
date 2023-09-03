@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import Model from "./Model.js"
 import LightsAndCamera from "./LightsAndCamera.js"
 import Wreck from "./models/Wreck.js"
-import Gtpd from "./models/Gtpd.js"
 
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useFBX } from "@react-three/drei";
@@ -99,25 +98,6 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
             />
 
             {/* About Page Scene */}
-
-            {/*<fog attach="fog" color="#9ecfd9" near={-8} far={50} />*/}
-
-            {/*
-            <pointLight
-                position={[23,0, 5.5]}
-                intensity = {1}
-                color = {"red"}
-                distance = {2}
-            />
-
-            <spotLight
-                position={[30,1,8]}
-                intensity = {4}
-                color = {"yellow"}
-                angle = {Math.PI/4}
-                decay = {1.5}
-            />
-            */}
 
             <primitive
                 object={policeFbx} 

@@ -125,7 +125,6 @@ function App() {
                 <Route path="/CS" element={<Cs setSceneNumber={setSceneNumber}/>} />
                 <Route path="/Music" element={
                   <Music 
-                    screenSize = {screenSize}
                     setSceneNumber={setSceneNumber}
                     audioPlaying={audioPlaying}
                     setAudioPlaying={setAudioPlaying}
@@ -133,7 +132,11 @@ function App() {
                 />
               </Routes>
 
-              <Box sx = {{pb: 10}}>
+              <Box sx = {{
+                pb: 10,
+                opacity: sceneNumber === 4 ? 0 : 1,
+                transition: "900ms"
+              }}>
                 <Footer screenSize = {screenSize}/>
               </Box>
               

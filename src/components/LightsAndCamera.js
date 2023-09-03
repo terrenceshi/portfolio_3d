@@ -60,7 +60,7 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
             homeVec.set(1.05, 0.1, 7);
             aboutVec.set(25.5,1.25,13);
             csVec.set(74.6,0,6.5);
-            musicVec.set(100.85,0.85,7.25);
+            musicVec.set(100.8,0.425,7.25);
         } else if(screenSize === 'sm') {
             homeVec.set(0.6,0.15,6.5);
             aboutVec.set(25.5,0.5,11);
@@ -144,8 +144,8 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
                 position={[25,1,8]}
                 intensity = {minIntensity}
                 color = {"#6dd2ed"}
-                distance = {30}
             />
+            
             <pointLight
                 ref = {artLight}
                 position={[50,1,3]}
@@ -156,15 +156,13 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
                 ref = {csLight}
                 position={[74.5,0.4,4]}
                 intensity = {minIntensity}
-                color = {"#de314a"}
-                distance = {30}
+                color = {"#db4056"}
             />
             <pointLight
                 ref = {musicLight}
                 position={[100.8,1,3.6]}
                 intensity = {minIntensity}
                 color = {"#b4c8cf"}
-                distance = {30}
             />
         </group>
     );

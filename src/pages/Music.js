@@ -11,7 +11,7 @@ import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import Divider from '@mui/material/Divider';
 import Fade from '@mui/material/Fade';
 
-function Music({screenSize, setSceneNumber, audioPlaying, setAudioPlaying}) {
+function Music({setSceneNumber, audioPlaying, setAudioPlaying}) {
   const [currentSong, setCurrentSong] = useState(MusicData[0]);
   const [mute, setMute] = useState(false);
   const [volume, setVolume] = useState(1.0);
@@ -43,77 +43,78 @@ function Music({screenSize, setSceneNumber, audioPlaying, setAudioPlaying}) {
   })
 
   return (
-    <Fade 
-      in={true}
-      timeout={{ enter: 1500 }}
-      style={{ transitionDelay: '1750ms' }}
+    <Box sx = {{
+        display: 'flex', 
+        flexDirection: "column", 
+        width: "100%",
+        pt: "8.75vh",
+        pb: 8,
+        alignItems: 'center'
+    }}
     >
-      <Box sx = {{
-          display: 'flex', 
-          flexDirection: "column", 
-          width: {sm: 600, xs: 400},
-          pt: "8.75vh",
-          pb: 8
-      }}
+      <audio 
+        src={currentSong.src}
+        ref={audioElem}
+        onEnded={() => {
+          setAudioPlaying(false); 
+          setCurrentSong(MusicData[currentSong.index + 1 >= MusicData.length ? 0 : currentSong.index + 1]);
+        }}
+        onTimeUpdate={() => setCurrentTime(audioElem.current.currentTime)}
+      />
+
+      <Player
+        audioElem = {audioElem}
+        currentSong = {currentSong}
+        setCurrentSong = {setCurrentSong}
+        audioPlaying = {audioPlaying}
+        setAudioPlaying = {setAudioPlaying}
+        mute = {mute}
+        setMute = {setMute}
+        volume = {volume}
+        setVolume = {setVolume}
+        currentTime = {currentTime}
+      />
+
+      <Fade 
+        in={true}
+        timeout={{ enter: 1500 }}
+        style={{ transitionDelay: '1750ms' }}
       >
-        <audio 
-          src={currentSong.src}
-          ref={audioElem}
-          onEnded={() => {
-            setAudioPlaying(false); 
-            setCurrentSong(MusicData[currentSong.index + 1 >= MusicData.length ? 0 : currentSong.index + 1]);
-          }}
-          onTimeUpdate={() => setCurrentTime(audioElem.current.currentTime)}
-        />
+        <Box sx = {{
+          pt: 1,
+          width: {sm: 600, xs: 400}
+        }}>
+          {MusicData.map((song, idx) => (
+            <Box key = {idx}>
+              <Box sx = {{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 2,
+                py: 2
+              }}>
+                <Box sx = {{px: 1}}>
+                  <IconButton 
+                    sx={{ "&:hover": { backgroundColor: "transparent" }}}
+                    onClick={() => {
+                      setAudioPlaying(currentSong === song ? !audioPlaying : true);
+                      setCurrentSong(song);
+                    }}
+                  >
+                    {audioPlaying & currentSong === song ? <PauseCircleIcon/> : <PlayCircleIcon/>}
+                  </IconButton>
+                </Box>
 
-        <Box sx = {{pt: 1}}>
-          <Player
-            audioElem = {audioElem}
-            currentSong = {currentSong}
-            setCurrentSong = {setCurrentSong}
-            audioPlaying = {audioPlaying}
-            setAudioPlaying = {setAudioPlaying}
-            mute = {mute}
-            setMute = {setMute}
-            volume = {volume}
-            setVolume = {setVolume}
-            currentTime = {currentTime}
-            screenSize = {screenSize}
-          />
-        </Box>
-
-        <Box sx = {{pt: 1}}>
-        {MusicData.map((song, idx) => (
-          <Box key = {idx}>
-            <Box sx = {{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 2,
-              py: 2
-            }}>
-              <Box sx = {{px: 1}}>
-                <IconButton 
-                  sx={{ "&:hover": { backgroundColor: "transparent" }}}
-                  onClick={() => {
-                    setAudioPlaying(currentSong === song ? !audioPlaying : true);
-                    setCurrentSong(song);
-                  }}
-                >
-                  {audioPlaying & currentSong === song ? <PauseCircleIcon/> : <PlayCircleIcon/>}
-                </IconButton>
+                <Typography variant = "body2">
+                  {song.title}
+                </Typography>
               </Box>
-
-              <Typography variant = "body2">
-                {song.title}
-              </Typography>
+              {idx !== MusicData.length - 1 ? <Divider/> : <div/>}
             </Box>
-            {idx !== MusicData.length - 1 ? <Divider/> : <div/>}
-          </Box>
-        ))}
+          ))}
         </Box>
-      </Box>
-    </Fade>
+      </Fade>
+    </Box>
   );
 }
 

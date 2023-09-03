@@ -11,6 +11,7 @@ import VolumeUp from '@mui/icons-material/VolumeUp';
 import PauseIcon from '@mui/icons-material/Pause';
 import Slider from '@mui/material/Slider';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import Fade from '@mui/material/Fade';
 
 function convertToTimeStamp(ct){
     var minutes = Math.floor(ct / 60);
@@ -29,18 +30,33 @@ function convertToSeconds(stamp){
     return seconds + minutes * 60;
 }
 
-function Player({currentSong, setCurrentSong, audioPlaying, setAudioPlaying, mute, setMute, volume, setVolume, currentTime, audioElem, screenSize}) {
-    return(
-        <Paper 
-          elevation={0}
-          sx = {{
-            display: 'flex',
-            flexDirection: 'column', 
-            alignItems: 'center', 
-            gap: 2, 
-            p: 2,
-            backgroundColor: 'rgba(0,0,0,0.4)',
-            backdropFilter: 'blur(15px)'
+function Player({currentSong, setCurrentSong, audioPlaying, setAudioPlaying, mute, setMute, volume, setVolume, currentTime, audioElem}) {
+  return(
+    <Fade 
+      in={true}
+      timeout={{ enter: 1500 }}
+      style={{ transitionDelay: '1750ms' }}
+    >
+      <Paper 
+        elevation={0}
+        sx = {{
+          backgroundColor: 'rgba(0,0,0,0.4)',
+          backdropFilter: 'blur(15px)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          position: "fixed", 
+          bottom: 0, 
+          width: "100%", 
+          zIndex: 1001
+      }}>
+        <Box sx = {{
+          display: 'flex',
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          gap: 2, 
+          p: {sm: 3, xs: 2},
+          width: {sm: 600, xs: 400}
         }}>
           <Typography variant = "body2">
             {currentSong.title}
@@ -100,8 +116,10 @@ function Player({currentSong, setCurrentSong, audioPlaying, setAudioPlaying, mut
               }}/>
             </Box>
           </Box>
-        </Paper>
-    );
+        </Box>
+      </Paper>
+    </Fade>
+  );
 }
 
 export default Player;

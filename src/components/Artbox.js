@@ -1,6 +1,4 @@
-import './Artbox.css';
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ArtData from '../data/ArtData.js';
 
@@ -25,27 +23,54 @@ function objectMap(object, mapFn) {
     }, {})
 }
 
+function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+}
+
 const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
     const [artLoaded, setArtLoaded] = useState(false);
     const [open, setOpen] = useState(false);
     const [sliderX, setSliderX] = useState(0);
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
     
     let imgLst = artDict.images;
     let maxSliderX = (artDict.images.length - 1) * -100;
 
-    const dialogImgSize = {lg: 550, md: 525, sm: 425, xs: 320};
+    function calcWidth(percent) {
+        var height = windowDimensions.height * percent;
+        var width = height * (artDict.width / artDict.height);
+        return width;
+    }
+
+    const dialogImgSize = {lg: calcWidth(0.7), md: calcWidth(0.55), sm: calcWidth(0.55), xs: calcWidth(0.4)};
+
+    function handleResize() {
+        setWindowDimensions(getWindowDimensions());
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <Box sx = {{display: "flex"}}>
             <MuiImg 
-                className = "art_img"
                 src={artDict.images[0]} 
                 alt = {artDict.title} 
                 sx = {{
-                    width: {lg: 300, md: 250, sm: 190, xs: 300},
-                    height: {lg: 300, md: 250, sm: 190, xs: 300},
+                    width: {lg: 300, md: 250, sm: 190, xs: 320},
+                    height: {lg: 300, md: 250, sm: 190, xs: 320},
                     objectFit: 'cover',
-                    cursor: "pointer"
+                    cursor: "pointer",
+                    "&:hover": {
+                        filter: "brightness(50%)",
+                        transition: "all 0.35s ease"
+                    }
                 }}
                 onClick={() => {setSliderX(0); setArtLoaded(false); setOpen(true)}}
                 onLoad={() => {
@@ -94,8 +119,9 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
                                         }}
                                         sx = {{
                                             minWidth: dialogImgSize,
+                                            objectFit: 'cover',
                                             transform: `translateX(${sliderX}%)`, 
-                                            transition: "0.75s"
+                                            transition: "transform 0.75s"
                                         }}
                                     />
                                 )

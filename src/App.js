@@ -150,14 +150,14 @@ function App() {
             </Box>
 
             <Box sx = {{
+              display: 'flex',
               pb: 10,
               opacity: sceneNumber === 4 || (sceneNumber === 2 && thumbnailsLoaded) ? 0 : 1,
               transition: "opacity 900ms",
               position: "absolute",
               bottom: 0,
-              zIndex: 1001,
+              zIndex: sceneNumber === 4 || (sceneNumber === 2 && thumbnailsLoaded) ? 0 : 1001,
               width: "100vw",
-              display: "flex",
               flexDirection: "column",
               alignItems: "center"
             }}>

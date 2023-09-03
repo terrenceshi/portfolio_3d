@@ -65,8 +65,6 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded, setSceneNumber, screenSize,
           ))}
         </Box>
 
-        {/* Placeholder meaningless box that exists just so that the footer stays at the bottom when art is not loaded*/}
-
         <Box sx = {{
           pb: 10,
           display: "flex",

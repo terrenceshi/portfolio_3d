@@ -69,7 +69,10 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
                 state.camera.rotation.set(THREE.MathUtils.degToRad(-5), 0, 0);
             }}
         >
+            {/*
             <Stats />
+            */}
+            
             <Effects/>
 
             <LightsAndCamera 

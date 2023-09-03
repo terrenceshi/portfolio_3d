@@ -93,22 +93,40 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
             artVec.set(50,0.25,5);
         }
 
+        function isClose(vec1, vec2, threshold){
+            var xDiff = Math.abs(vec1.x - vec2.x);
+            var yDiff = Math.abs(vec1.y - vec2.y);
+            var zDiff = Math.abs(vec1.z - vec2.z);
+
+            if(xDiff < threshold && yDiff < threshold && zDiff < threshold){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         // Handle Scene Change
-        if (sceneNumber === 0){
-            invalidate()
+        if (sceneNumber === 0 && !isClose(state.camera.position, homeVec, 0.01)){
+            console.log(state.camera.position.x - homeVec.x)
             state.camera.position.lerp(homeVec, swapSpeed);
-        } else if(sceneNumber === 1){
             invalidate()
+            
+        } else if(sceneNumber === 1 && !isClose(state.camera.position, aboutVec, 0.01)){
             state.camera.position.lerp(aboutVec, swapSpeed);
-        } else if(sceneNumber === 2){
             invalidate()
+            
+        } else if(sceneNumber === 2 && !isClose(state.camera.position, artVec, 0.01)){
             state.camera.position.lerp(artVec, swapSpeed);
-        } else if(sceneNumber === 3){
             invalidate()
+            
+        } else if(sceneNumber === 3 && !isClose(state.camera.position, csVec, 0.01)){
             state.camera.position.lerp(csVec, swapSpeed);
-        } else if(sceneNumber === 4){
             invalidate()
+            
+        } else if(sceneNumber === 4 && !isClose(state.camera.position, musicVec, 0.01)){
             state.camera.position.lerp(musicVec, swapSpeed);
+            invalidate()
+            
         }
         return null;
     })

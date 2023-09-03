@@ -3,10 +3,6 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-function lerp( a, b, alpha ) {
-    return a + alpha * (b - a);
-}
-
 function lerpColor( color, rgb, alpha ) {
     var colorR = color.r;
     var colorG = color.g;
@@ -28,7 +24,6 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
     artVec.set(50,15,5);
 
     const swapSpeed = 0.05;
-    const lightSpeed = 0.014;
 
     const landingLight = useRef();
     const aboutLight = useRef();
@@ -36,10 +31,6 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
     const csLight = useRef();
     const musicLight = useRef();
 
-    let timer = 0;
-    const timeBeforeLight = 0.9;
-
-    const minIntensity = 0.135;
     const maxIntensity = 4;
 
     const red = [237/255, 19/255, 41/255];
@@ -95,19 +86,6 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
             colorTimer = 0;
         }
 
-        function handleSceneChange( vector, light ) {
-            state.camera.position.lerp(vector, swapSpeed);
-            if(light !== artLight || (thumbnailsLoaded)){
-                timer += 1/60;
-                if(timer >= timeBeforeLight || light === landingLight){
-                    light.current.intensity = lerp(light.current.intensity, maxIntensity, lightSpeed)
-                }
-                if(light.current.intensity >= maxIntensity){
-                    timer = 0;
-                }
-            }
-        }
-
         // Modify Art Camera depending on if pictures are loaded
         if (thumbnailsLoaded){
             artVec.set(50,0.25,5);
@@ -115,15 +93,15 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
 
         // Handle Scene Change
         if (sceneNumber === 0){
-            handleSceneChange(homeVec, landingLight)
+            state.camera.position.lerp(homeVec, swapSpeed);
         } else if(sceneNumber === 1){
-            handleSceneChange(aboutVec, aboutLight)
+            state.camera.position.lerp(aboutVec, swapSpeed);
         } else if(sceneNumber === 2){
-            handleSceneChange(artVec, artLight)
+            state.camera.position.lerp(artVec, swapSpeed);
         } else if(sceneNumber === 3){
-            handleSceneChange(csVec, csLight)
+            state.camera.position.lerp(csVec, swapSpeed);
         } else if(sceneNumber === 4){
-            handleSceneChange(musicVec, musicLight)
+            state.camera.position.lerp(musicVec, swapSpeed);
         }
         return null;
     })
@@ -133,7 +111,7 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
             <pointLight
                 ref = {landingLight}
                 position={[1, 1, 2.25]}
-                intensity = {minIntensity}
+                intensity = {maxIntensity}
                 color = {"#f792bc"}
                 castShadow
                 shadow-mapSize-height={512}
@@ -142,26 +120,26 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
             <pointLight
                 ref = {aboutLight}
                 position={[25,1,8]}
-                intensity = {minIntensity}
+                intensity = {maxIntensity}
                 color = {"#6dd2ed"}
             />
             
             <pointLight
                 ref = {artLight}
                 position={[50,1,3]}
-                intensity = {minIntensity}
+                intensity = {maxIntensity}
                 color = {"#484761"}
             />
             <pointLight
                 ref = {csLight}
                 position={[74.5,0.4,4]}
-                intensity = {minIntensity}
+                intensity = {maxIntensity}
                 color = {"#db4056"}
             />
             <pointLight
                 ref = {musicLight}
                 position={[100.8,1,3.6]}
-                intensity = {minIntensity}
+                intensity = {maxIntensity}
                 color = {"#b4c8cf"}
             />
         </group>

@@ -106,16 +106,15 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
 
         if(audioPlaying){
             musicLight.current.color = lerpColor(musicLight.current.color, colors[colorIdx], colorLerpSpeed);
+            colorTimer += 1/60;
+            if(colorTimer >= colorSwapTime){
+                colorIdx + 1 === colors.length ? colorIdx = 0 : colorIdx += 1;
+                colorTimer = 0;
+            }
             invalidate();
         } else if (!isCloseColor(musicLight.current.color, gray, 0.05)){
             musicLight.current.color = lerpColor(musicLight.current.color, gray, colorLerpSpeed);
             invalidate();
-        }
-
-        colorTimer += 1/60;
-        if(colorTimer >= colorSwapTime){
-            colorIdx + 1 === colors.length ? colorIdx = 0 : colorIdx += 1;
-            colorTimer = 0;
         }
 
         // Modify Art Camera depending on if pictures are loaded

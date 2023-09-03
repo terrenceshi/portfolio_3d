@@ -82,7 +82,7 @@ function Cs({setSceneNumber}) {
                 animation: 
                   !firstLoad ? "" :
                   projectIdx === activeIdx ? "1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn, 1750ms wait":"1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn6, 1750ms wait",
-                borderRadius: 2
+                borderRadius: 2,
                 
             }}>
               <Box sx = {{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2}}>

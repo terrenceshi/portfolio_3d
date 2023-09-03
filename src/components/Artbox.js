@@ -23,19 +23,10 @@ function objectMap(object, mapFn) {
     }, {})
 }
 
-function getWindowDimensions() {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-      width,
-      height
-    };
-}
-
-const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
+const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst, windowDimensions }) => {
     const [artLoaded, setArtLoaded] = useState(false);
     const [open, setOpen] = useState(false);
     const [sliderX, setSliderX] = useState(0);
-    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
     
     let imgLst = artDict.images;
     let maxSliderX = (artDict.images.length - 1) * -100;
@@ -47,15 +38,6 @@ const ArtBox = ({ artDict, idx, setThumbnailsLoaded, thumbnailLoadLst }) => {
     }
 
     const dialogImgSize = {lg: calcWidth(0.7), md: calcWidth(0.55), sm: calcWidth(0.55), xs: calcWidth(0.4)};
-
-    function handleResize() {
-        setWindowDimensions(getWindowDimensions());
-    }
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     return (
         <Box sx = {{display: "flex"}}>

@@ -9,9 +9,6 @@
  - look up use of chromatic abberation for fun
 
 ### Laptop Bugs
- - Due to smaller height, when moving to music page, footer displaces before fading out
-    - This is because with smaller height, the content of music forces the footer out of its space between flex position
- - cs cards overlap with footer. (could look into having the font size scale with height of browser)
  - Fairly slow on laptop. 
 
  -------

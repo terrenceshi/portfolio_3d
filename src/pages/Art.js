@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 
 import ArtData from '../data/ArtData.js';
 import ArtBox from '../components/Artbox.js';
-
+import Footer from "../components/Footer.js"
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 
 var thumbnailLoadLst = new Array(ArtData.length).fill(0);
 
-function Art({thumbnailsLoaded, setThumbnailsLoaded, setSceneNumber}) {
+function Art({thumbnailsLoaded, setThumbnailsLoaded, setSceneNumber, screenSize, windowDimensions}) {
   const artDataChunks = ArtData.reduce((resultArray, item, index) => { 
     const chunkIndex = Math.floor(index/3)
   
@@ -58,6 +58,7 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded, setSceneNumber}) {
                   artDict = {dict} 
                   setThumbnailsLoaded = {setThumbnailsLoaded}
                   thumbnailLoadLst = {thumbnailLoadLst}
+                  windowDimensions = {windowDimensions}
                 />
               ))}
             </Box>
@@ -67,8 +68,13 @@ function Art({thumbnailsLoaded, setThumbnailsLoaded, setSceneNumber}) {
         {/* Placeholder meaningless box that exists just so that the footer stays at the bottom when art is not loaded*/}
 
         <Box sx = {{
-          display: thumbnailsLoaded ? 'none' : 'flex'
-        }}/>
+          pb: 10,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+        }}>
+          <Footer screenSize = {screenSize}/>
+        </Box>
 
       </Box>
     </Fade>

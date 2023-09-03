@@ -17,7 +17,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme } from "@mui/material/styles";
 import Fade from '@mui/material/Fade';
 
-const darkTheme = createTheme({
+const bigFontTheme = createTheme({
   palette: {
     mode: 'dark',
   },
@@ -26,6 +26,17 @@ const darkTheme = createTheme({
       textTransform: 'none'
     },
     fontSize: 18
+  },
+});
+const smallFontTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+  typography: {
+    button: {
+      textTransform: 'none'
+    },
+    fontSize: 14
   },
 });
 
@@ -44,10 +55,13 @@ function App() {
   const [ canvasLoaded, setCanvasLoaded ] = useState(false);
   const [ atTop, setAtTop ] = useState(true);
   const [ audioPlaying, setAudioPlaying ] = useState(false);
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
   const theme = useTheme();
 
   function handleResize() {
+    setWindowDimensions(getWindowDimensions());
+
     var width = getWindowDimensions().width;
     if (width >= theme.breakpoints.values.xs && width < theme.breakpoints.values.sm) {
       setScreenSize('xs');
@@ -70,7 +84,7 @@ function App() {
 
   return (
     <div className = "App">
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={windowDimensions.height <= 770 ? smallFontTheme : bigFontTheme}>
         <CssBaseline />
 
         <Fade 
@@ -120,6 +134,8 @@ function App() {
                     thumbnailsLoaded = {thumbnailsLoaded}
                     setThumbnailsLoaded = {setThumbnailsLoaded} 
                     setSceneNumber={setSceneNumber}
+                    screenSize = {screenSize}
+                    windowDimensions = {windowDimensions}
                   />
                 } />
                 <Route path="/CS" element={<Cs setSceneNumber={setSceneNumber}/>} />
@@ -131,15 +147,21 @@ function App() {
                   />} 
                 />
               </Routes>
+            </Box>
 
-              <Box sx = {{
-                pb: 10,
-                opacity: sceneNumber === 4 ? 0 : 1,
-                transition: "900ms"
-              }}>
-                <Footer screenSize = {screenSize}/>
-              </Box>
-              
+            <Box sx = {{
+              pb: 10,
+              opacity: sceneNumber === 4 || (sceneNumber === 2 && thumbnailsLoaded) ? 0 : 1,
+              transition: "opacity 900ms",
+              position: "absolute",
+              bottom: 0,
+              zIndex: 1001,
+              width: "100vw",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center"
+            }}>
+              <Footer screenSize = {screenSize}/>
             </Box>
 
           </Box>

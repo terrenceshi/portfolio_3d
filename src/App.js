@@ -92,7 +92,7 @@ function App() {
           timeout={{ enter: 1500 }}
         >
           <Box>
-            <Box sx = {{zIndex: 1002, position: "absolute"}}>
+            <Box sx = {{zIndex: 1003, position: "absolute"}}>
               <Navbar 
                 atTop = {atTop} 
                 setAtTop = {setAtTop}
@@ -116,7 +116,7 @@ function App() {
                 }
               }}
               sx = {{
-                zIndex: 1000, 
+                zIndex: 1002, 
                 position: "relative",
                 overflowY: "scroll",
                 display: "flex", 

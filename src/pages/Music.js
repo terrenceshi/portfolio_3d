@@ -48,7 +48,7 @@ function Music({setSceneNumber, audioPlaying, setAudioPlaying}) {
         flexDirection: "column", 
         width: "100%",
         pt: "8.75vh",
-        pb: 8,
+        pb: 25,
         alignItems: 'center'
     }}
     >

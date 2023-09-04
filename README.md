@@ -283,7 +283,7 @@ Changing the domain name is as easy as simply following a list of steps.
 * Add 185.199.111.153, 185.199.110.153, 185.199.109.153, 185.199.108.153 as an A record. (Check here if these values are outdated https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-records-with-your-dns-provider)
 * Add a CNAME with a value of "www" that points to "terrenceshi.github.io."
 
-* Keep your homepage value as "./" as that allows your code to be dynamic and able to be deployed onto host name. 
+* Keep your homepage value as "./" as that allows your code to be dynamic and able to be deployed onto any host name. 
 
 Article source: https://dev.to/trentyang/how-to-setup-google-domain-for-github-pages-1p58.
 

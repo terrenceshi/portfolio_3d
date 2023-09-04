@@ -267,3 +267,45 @@ Changing the domain name is as easy as simply following a list of steps.
 * Keep your homepage value as "./" as that allows your code to be dynamic and able to be deployed onto host name. 
 
 Article source: https://dev.to/trentyang/how-to-setup-google-domain-for-github-pages-1p58.
+
+## 8. Git bash commands <a name="gitbashcommands"></a>
+Not sure how much programming I'll be doing this semester so I'll just put down some useful git bash commands.
+
+```
+git add .
+git commit -m "commit message"
+git push
+```
+
+```
+git diff
+```
+
+```
+git pull
+```
+
+```
+git stash
+git stash apply
+```
+
+```
+git reset --hard
+```
+Gets rid of all your local changes.
+
+```
+git branch -a
+```
+Gets all your branches.
+
+```
+git checkout branchName
+```
+Switches to branch.
+
+```
+git checkout -- filename.txt
+```
+Resets local changes to file.

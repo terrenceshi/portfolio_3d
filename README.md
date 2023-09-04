@@ -328,3 +328,5 @@ Switches to branch.
 git checkout -- filename.txt
 ```
 Resets local changes to file.
+
+Well. It's 9/4/23, 2:21 am. I have labor day monday tomorrow (today). Gonna enjoy myself and "catch up" on my low amount of assignments!

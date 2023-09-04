@@ -18,28 +18,45 @@ Classic victory lap documentation.
 
 ## Table of Contents
 1. [Introduction](#introduction)
+
     1.1 [Mindset](#mindset)
+
     1.2 [Inspiration](#inspiration)
 
 2. [Root Files](#rootfiles)
+
     2.1 [App.js](#app)
+
     2.2 [Index.css](#index)
 
 3. [Pages](#pages)
+
     3.1 [About.js](#about)
+
     3.2 [Art.js](#art)
+
     3.3 [Cs.js](#cs)
+
     3.4 [Landing.js](#landing)
+
     3.5 [Music.js](#music)
 
 4. [Components](#components)
+
     4.1 [Artbox.js](#artbox)
+
     4.2 [FakeLanding.js](#fakelanding)
+
     4.3 [Footer.js](#footer)
+
     4.4 [LightsAndCamera.js](#lightsandcamera)
+
     4.5 [Model.js](#model)
+
     4.6 [Navbar.js](#navbar)
+
     4.7 [Player.js](#player)
+    
     4.8 [Scene.js](#scene)
 
 5. [Data](#data)

@@ -56,7 +56,7 @@ Classic victory lap documentation.
     4.6 [Navbar.js](#navbar)
 
     4.7 [Player.js](#player)
-    
+
     4.8 [Scene.js](#scene)
 
 5. [Data](#data)
@@ -64,6 +64,8 @@ Classic victory lap documentation.
 6. [Deployment](#deployment)
 
 7. [Custom Domain Name](#customdomainname)
+
+8. [Git Bash Commands](#gitbashcommands)
 
 ## 1. Introduction <a name="introduction"></a>
 Well, once again, I am humbled in realizing that I should've planned out my website's architecture more. What can I say, I just love going straight in and implementing. The website is not as efficient as I'd like it to be (still not bad and definitely better than the last website), but it gets the job done, and after about two weeks, I'm ready to just move on. 

@@ -116,7 +116,7 @@ function App() {
                 }
               }}
               sx = {{
-                zIndex: 1002, 
+                zIndex: 1001, 
                 position: "relative",
                 overflowY: "scroll",
                 display: "flex", 
@@ -138,7 +138,7 @@ function App() {
                     windowDimensions = {windowDimensions}
                   />
                 } />
-                <Route path="/CS" element={<Cs setSceneNumber={setSceneNumber}/>} />
+                <Route path="/CS" element={<Cs setSceneNumber={setSceneNumber} />} />
                 <Route path="/Music" element={
                   <Music 
                     setSceneNumber={setSceneNumber}
@@ -152,11 +152,11 @@ function App() {
             <Box sx = {{
               display: 'flex',
               pb: 10,
-              opacity: sceneNumber === 4 || (sceneNumber === 2 && thumbnailsLoaded) ? 0 : 1,
+              opacity: sceneNumber === 1 || sceneNumber === 0 ? 1 : 0,
               transition: "opacity 900ms",
               position: "absolute",
               bottom: 0,
-              zIndex: sceneNumber === 4 || (sceneNumber === 2 && thumbnailsLoaded) ? 0 : 1001,
+              zIndex: sceneNumber === 1 || sceneNumber === 0 ? 1002 : 0,
               width: "100vw",
               flexDirection: "column",
               alignItems: "center"

@@ -8,8 +8,8 @@ const CsData = [
                 "Cosine Similarity scores were then computed for all songs and books. Whenever the user selects a book, the top 15 similar songs are returned."
             ],
         "image":require("../assets/cs_thumbs/b2n2.png"),
-        "link":"books2nooks.ml",
-        "disabled":true
+        "link":"https://terrenceshi.github.io/books2nooks2/",
+        "disabled":false
     },
     {
         "title":"Authorship Attribution",
@@ -20,7 +20,7 @@ const CsData = [
                 "Surprisingly, the model had better results with the similar YA authors over the fairly different music artists."
             ],
         "image":require("../assets/cs_thumbs/authorship_comp.jpg"),
-        "link":"books2nooks.ml",
+        "link":"https://terrenceshi.github.io/books2nooks2/",
         "disabled":true
     },
     {
@@ -32,7 +32,7 @@ const CsData = [
                 "Day / Night worked with 94% accuracy, while Indoor / Outdoor could not break 80% and avoid overfitting."
             ],
         "image":require("../assets/cs_thumbs/cv.png"),
-        "link":"books2nooks.ml",
+        "link":"https://terrenceshi.github.io/books2nooks2/",
         "disabled":true
     },
     

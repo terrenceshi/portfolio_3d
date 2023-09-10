@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import LaunchIcon from '@mui/icons-material/Launch'
-import Link from '@mui/material/Link';
+import { Link } from "react-router-dom";  
 import Button from '@mui/material/Button';
 import Skeleton from '@mui/material/Skeleton';
 import { styled } from '@mui/material';
@@ -90,7 +90,14 @@ function Cs({setSceneNumber}) {
                 {project.title}
               </Typography>
 
-              <IconButton disabled = {project.disabled} sx = {{display: {sm: 'inline-flex', xs: 'none'}}}>
+              <IconButton 
+                disabled = {project.disabled} 
+                component = {Link}
+                to = {project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx = {{display: {sm: 'inline-flex', xs: 'none'}}}
+              >
                 <LaunchIcon/>
               </IconButton>
             </Box>
@@ -136,12 +143,14 @@ function Cs({setSceneNumber}) {
                   {text}
                 </Typography>
               ))}
-              
               <Button
                 variant="text"
                 component = {Link}
                 to = {project.link}
-                sx = {{color: 'primary.main', display: {sm: "none", xs: "block"}}}
+                target="_blank"
+                rel="noopener noreferrer"
+                fullWidth={false}
+                sx = {{color: 'primary.main', display: {sm: "none", xs: "inline-flex"}}}
                 disabled = {project.disabled}
               >
                 Read more

@@ -62,7 +62,6 @@ function Cs({setSceneNumber}) {
             key = {projectIdx} 
             sx = {{
               position: "absolute",
-              display: 'flex', 
               flexDirection: "column", 
               width: { lg: 500, md: 500, sm: 380, xs: 270 },
               gap: 2,
@@ -70,6 +69,7 @@ function Cs({setSceneNumber}) {
               pt: 3,
               transition: "900ms",
               zIndex: projectIdx === activeIdx ? 1002 : 1001,
+              display: projectIdx === activeIdx || projectIdx === indexRight || projectIdx === indexLeft ? 'flex' : 'none',
               opacity: 
                 projectIdx === activeIdx ? 1 : 
                 projectIdx === indexRight || projectIdx === indexLeft ? 0.6 : 0,

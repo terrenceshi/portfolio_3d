@@ -133,9 +133,12 @@ I got this main gimmick from a youtube video:
 
 https://www.youtube.com/watch?v=AVvSpROUvtk
 
-In essence, the main image and the left / right image have certain styles (opacity, zIndex, transform: translate, scale) and with the transition property, you can make it look like they're genuinely flipping around. This works with even 3+ entries, as access entries are just not shown. There is some modulus math to compute which images get the various styles. 
+In essence, the main image and the left / right image have certain styles (opacity, zIndex, transform: translate, scale) and with the transition property, you can make it look like they're genuinely flipping around. This works with even 3+ entries, as excess entries are just not shown. There is some modulus math to compute which images get the various styles. 
 
 I wanted to give each entry a background with a blur filter. Because of this, the MUI fade transition would no longer work properly. The solution to this is to give the blur filter a fade animation directly. 
+
+UPDATE 1/3/24:
+So with the addition of KBAI movie recs, I reached > 3 entries. I ran into an issue where the 4th project would interact with the blur background poorly. I had a soft fix where if the projectIdx is not active nor left nor right, the image will simply have a display of none. However, this also does not transition perfectly when switching between projects. At this point, this fix is good enough for me, and if I wanted to make this page better, I'd be better off just redoing the whole thing.
 
 ### 3.4 Landing.js <a name="landing"></a>
 Should've been super simple, but I ended up giving this one absolute positioning so that it would be between the Pig's arm and leg in as many window dimensions as possible. 

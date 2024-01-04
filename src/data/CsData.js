@@ -1,5 +1,17 @@
 const CsData = [
     {
+        "title":"KBAI Movie Recs",
+        "description":
+            [
+                "This movie recommender bypasses the cold start problem by using a Knowledge Based algorithm. I collected 24k movies.",
+                "The user goes through a tinder inspired app to like and dislike movies. The app gives recs after 15 movies.",
+                "The algorithm uses Incremental Concept learning. With the liked movies, the movie makes hypotheses on the types of movies the user likes."
+            ],
+        "image":require("../assets/cs_thumbs/movierec.png"),
+        "link":"https://terrenceshi.github.io/kbai_proj/",
+        "disabled":false
+    },
+    {
         "title":"Books2Nooks",
         "description":
             [

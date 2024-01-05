@@ -69,7 +69,7 @@ function Cs({setSceneNumber}) {
               pt: 3,
               transition: "900ms",
               zIndex: projectIdx === activeIdx ? 1002 : 1001,
-              display: projectIdx === activeIdx || projectIdx === indexRight || projectIdx === indexLeft ? 'flex' : 'none',
+              display: 'flex',
               opacity: 
                 projectIdx === activeIdx ? 1 : 
                 projectIdx === indexRight || projectIdx === indexLeft ? 0.6 : 0,
@@ -80,7 +80,7 @@ function Cs({setSceneNumber}) {
               backgroundColor: 'rgba(0,0,0,0.4)',
               backdropFilter: 'blur(20px)' ,
               animation: 
-                !firstLoad ? "" :
+                !firstLoad || (projectIdx !== activeIdx && projectIdx !== indexLeft && projectIdx !== indexRight)? "" :
                 projectIdx === activeIdx ? "1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn, 1750ms wait":"1500ms cubic-bezier(0.4,0,0.2,1) 1750ms fadeIn6, 1750ms wait",
               borderRadius: 2,
               

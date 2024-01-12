@@ -1,5 +1,23 @@
 const ArtData = [
     {
+        "title": "Satoru Gojo",
+        "year": "2024",
+        "description": "Since I saw his subway scene, I wanted to draw Gojo. I went through a few iterations before I realized what I wanted was a simple close up. On top of doing big fills for the outline, I was able to try out bloom (the super shiny parts) to moderate success.",
+        "images":
+                [
+                    require("../assets/art/gojo/g5.png"), 
+                    require("../assets/art/gojo/old.png"), 
+                    require("../assets/art/gojo/g0.png"),
+                    require("../assets/art/gojo/g1.png"),
+                    require("../assets/art/gojo/g2.png"),
+                    require("../assets/art/gojo/g3.png"),
+                    require("../assets/art/gojo/g4.png"),
+                    require("../assets/art/gojo/g5.png")
+                ],
+        "width": 700,
+        "height": 875
+    },
+    {
         "title": "Azula",
         "year": "2023",
         "description": "Wanted to draw a character with a crazy smile! I added orange lighting to the left for fun and had ambitious plans for the image to be the reflection of a broken mirror, like in the last episodes of the show. However, I did not like how my prototypes came out.",

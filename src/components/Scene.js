@@ -77,8 +77,6 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
             <Stats />
             */}
 
-            <Effects/>
-
             <LightsAndCamera 
                 sceneNumber = {sceneNumber} 
                 thumbnailsLoaded = {thumbnailsLoaded} 

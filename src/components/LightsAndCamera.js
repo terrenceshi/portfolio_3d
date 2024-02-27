@@ -57,7 +57,7 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
     const csLight = useRef();
     const musicLight = useRef();
 
-    const maxIntensity = 4;
+    const maxIntensity = 5.5;
 
     const red = [237/255, 19/255, 41/255];
     const yellow = [222/255, 158/255, 49/255];
@@ -150,6 +150,8 @@ function LightsAndCamera({sceneNumber, thumbnailsLoaded, screenSize, audioPlayin
 
     return (
         <group>
+            <ambientLight color = {"#00FFFF"} intensity = {0.04}/>
+            
             <pointLight
                 ref = {landingLight}
                 position={[1, 1, 2.25]}

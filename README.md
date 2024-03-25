@@ -78,11 +78,11 @@ Throughout the Summer of 2023, I worked as a software engineer intern at LMI, an
 I already knew that I could make the previous website more robust, as all the art and other data was hardcoded in. Adding more art would require shifting the entire art gallery. The ideal solution would be to have a file with all the data and mapping that file to your web page.
 
 ### 1.2 Inspiration <a name="inspiration"></a>
-In terms of significantly more impressive, the most impressive website I've seen was a fake one in a TV show titled "How to Sell Drugs Online (Fast)". 
+In terms of significantly more impressive, the most impressive website I've seen was a fake one in a netflix TV show.
 
 https://www.youtube.com/watch?v=m1HU91k7aNw
 
-For context, our main character is struggling to remake the frontend for his dark web drug trading business. He then gets a message which shows his competitor with a crazy good website. It's a little bit nonsensical, because the website was definitely made with visual effects and not made as an actual website, but this inspired me to try and put my website into a 3D environment.
+For context, our main character is struggling to remake the frontend for his business. He then gets a message which shows his competitor with a crazy good website. It's a little bit nonsensical, because the website was definitely made with visual effects and not made as an actual website, but this inspired me to try and put my website into a 3D environment.
 
 However, that alone was not an idea. I had to rack my brain for something more. Somehow, I made the connection that I could look at TV show openings for inspiration. Then, I saw Arcane's intro.
 

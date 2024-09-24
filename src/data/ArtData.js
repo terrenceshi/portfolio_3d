@@ -1,5 +1,21 @@
 const ArtData = [
     {
+        "title": "Satoru Gojo 2",
+        "year": "2024",
+        "description": "After viewing a larger variety of instagram art, I wanted to try drawing Gojo again with a few new concepts, including perspective, more body anatomy, and using black shapes in my line art.",
+        "images":
+                [
+                    require("../assets/art/gojo2/g5.png"),
+                    require("../assets/art/gojo2/g1.png"),
+                    require("../assets/art/gojo2/g2.png"),
+                    require("../assets/art/gojo2/g3.png"),
+                    require("../assets/art/gojo2/g4.png"),
+                    require("../assets/art/gojo2/g5.png")
+                ],
+        "width": 700,
+        "height": 875
+    },
+    {
         "title": "Satoru Gojo",
         "year": "2024",
         "description": "Since I saw his subway scene, I wanted to draw Gojo. I went through a few iterations before I realized what I wanted was a simple close up. On top of doing big fills for the outline, I was able to try out bloom (the super shiny parts) to moderate success.",

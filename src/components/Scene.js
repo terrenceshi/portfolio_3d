@@ -6,8 +6,8 @@ import LightsAndCamera from "./LightsAndCamera.js"
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useFBX } from "@react-three/drei";
 import * as THREE from 'three'
-import { Bloom, EffectComposer, BrightnessContrast, HueSaturation } from '@react-three/postprocessing'
-import { BlendFunction } from 'postprocessing'
+// import { Bloom, EffectComposer, BrightnessContrast, HueSaturation } from '@react-three/postprocessing'
+// import { BlendFunction } from 'postprocessing'
 // import { Stats } from "@react-three/drei";
 
 function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audioPlaying}) {
@@ -28,6 +28,7 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
         )
     }
 
+    /*
     function Effects(){
         const bloomRef = useRef()
 
@@ -58,6 +59,7 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
             </EffectComposer>
         )
     }
+    */
 
     const policeFbx = useFBX('./models/gtpd_fbx.fbx');
     const wreckFbx = useFBX('./models/wreck_fbx.fbx');
@@ -86,13 +88,13 @@ function Scene({sceneNumber, thumbnailsLoaded, screenSize, setCanvasLoaded, audi
 
             {/* Ground and Wall(s) */}
 
-            <mesh receiveShadow position={[50, -1, 0]} rotation-x={-Math.PI / 2}>
-                <planeGeometry args={[140, 25]} />
+            <mesh receiveShadow position={[50, -1, 0]} rotation-x={-Math.PI / 2} scale = {[140, 25, 1]}>
+                <planeGeometry/>
                 <meshPhongMaterial />
             </mesh>
 
-            <mesh receiveShadow position={[50, -1, 0]}>
-                <planeGeometry args={[140, 40]} />
+            <mesh receiveShadow position={[50, -1, 0]} scale={[140, 40, 1]}>
+                <planeGeometry/>
                 <meshPhongMaterial />
             </mesh>
 
